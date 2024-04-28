@@ -1,0 +1,76 @@
+@import url(../../style/default.less);
+@pre: chai-menu;
+@hei: 40px;
+.chai-menu {
+  &-itm {
+    display: flex;
+    height: @hei;
+    padding: 0 10px;
+    margin: 2px;
+    border-radius: 4px;
+    align-items: center;
+    text-align: left;
+    line-height:  @hei;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;
+    transition: background-color 200ms;
+    a {
+      color: inherit;
+    }
+    &:hover {
+      background-color: #clrs[gray];
+    }
+    &.actived {
+      background-color: #bgtxtclr[primary];
+      color: #clrs[primary];
+      &.trigger {
+        background-color: transparent;
+      }
+    }
+    .@{pre}-icon {
+      display: inline-block;
+      width: 36px;
+      text-align: center;
+      line-height: 0;
+    }
+    .@{pre}-label {
+      flex: 1
+    }
+    .@{pre}-arrow {
+      color: inherit;
+    }
+    a {
+      color: inherit;
+    }
+    [data-scope='accordion'][data-part='item-indicator'] {
+      transition: transform 0.1s linear;
+      &[data-state='open'] {
+        transform: rotate(-180deg);
+      }
+    }
+  }
+  &-box {
+    overflow: hidden;
+    background-color: #clrs[lightergray];
+    transition: height 2s linear;
+  }
+  .folded {
+    height: 0;
+  }
+  &-sub {
+    background-color: #clrs[lightgray];
+    .@{pre}-itm {
+      text-indent: 2em;
+    }
+  }
+  .chai-collapsed {}
+}
+
+[data-scope='tooltip'] {
+  [data-part='content'][data-state='open'] + [data-part='arrow'] {
+    --arrow-size: 10px;
+    --arrow-background: rgb(31 41 55);
+  }
+}

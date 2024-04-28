@@ -1,0 +1,128 @@
+.login {
+  &_wrapper {
+    background-image: linear-gradient(to right, #659fff 0%, #659fff 66%, #6ea5ff 66%, #6ea5ff 100%);
+  }
+  &_inner {
+    width: 680px;
+    margin: 0 auto;
+    transform: translateY(15vh);
+    overflow: hidden;
+    border-radius: 8px;
+    background-image: linear-gradient(to right, #f0f5fa 0, #f0f5fa 350px, #fff 350px);
+    .section_left {
+      // display: flex;
+      // flex-flow: column;
+      flex: 1;
+      padding: 20px;
+      background-image: url(../assets/images/login/pexels-google-deepmind-18069488.jpg), url(../assets/images/login/pexels-google-deepmind-18069520.jpg), url(../assets/images/login/pexels-google-deepmind-18069488.jpg);
+      background-position-x: 0, 400, 800px;
+      background-position-y: center;
+      background-size: 400px auto;
+      background-repeat: no-repeat;
+      animation: bgslid 12s linear infinite;
+    }
+    .section_right {
+      width: 280px;
+      padding: 50px 20px 80px;
+      h3 {
+        font-weight: normal;
+      }
+      .row {
+        padding-top: 20px;
+      }
+      .ext {
+        padding-bottom: 5px;
+        display: flex;
+        justify-content: space-between;
+      }
+      .footer {
+        .ext {
+          padding: 10px 0 20px;
+        }
+      }
+      .btn-sub {
+        width: 100%;
+        height: 36px;
+        border-radius: 20px;
+      }
+    }
+  }
+  .err-tip {
+    color: #clrs[danger];
+  }
+
+  @keyframes bgslid {
+    0% {
+      background-position-x: 0, 400px, 800px;
+    }
+    36% {
+      background-position-x: 0, 400px, 800px;
+    }
+    40% {
+      background-position-x: -400px, 0, 400px;
+    }
+    86% {
+      background-position-x: -400px, 0, 400px;
+    }
+    90% {
+      background-position-x: -800px, -400px, 0;
+    }
+    100% {
+      background-position-x: -800px, -400px, 0;
+    }
+  }
+}
+html, body, #root {
+  height: 100vh;
+}
+
+.main-layout {
+  height: 100%;
+  a {
+    color: inherit;
+    &:hover{
+      color: inherit;
+    }
+  }
+  .side-menu {
+    overflow: hidden;
+    height: 100%;
+    overflow-y: auto;
+    border-right: 4px solid #clrs[lightgray];
+  }
+  /* 全局样式 */
+  ::-webkit-scrollbar {
+    width: 6px; /* 设置滚动条宽度 */
+  }
+
+  /* 水平滚动条样式 */
+  ::-webkit-scrollbar-track {
+    background-color: #clrs[lightgray]; /* 设置滑道背景色 */
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color:  #clrs[gray]; /* 设置滑块背景色 */
+    border-radius: 4px; /* 设置滑块圆角 */
+  }
+
+  /* 垂直滚动条样式 */
+  ::-webkit-scrollbar-corner {
+    display: none; /* 去除交叉点 */
+  }
+  header.top-bar {
+    @h: 40px;
+    height: @h;
+    padding: 0 10px;
+    border-bottom: 1px solid #clrs[gray];
+    line-height: @h;
+    .menuctrl {
+      cursor: pointer;
+    }
+  }
+  div.layout-main {
+    flex: auto;
+  }
+  main.contain-box {
+    padding: 10px;
+  }
+}

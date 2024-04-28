@@ -1,0 +1,28 @@
+@import url(dlibs/src/assets/base.less);
+.@{pre}container {
+  @apply flex overflow-hidden;
+  height: 100vh;
+  >.@{pre}aside {
+    width: 220px;
+    >.enn-menu {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 220px;
+    }
+    
+    &:has(.collapsed), >.collapsed {
+      width: 58px;
+    }
+    @apply h-full overflow-y-auto border-r-2 border-gray-100;
+  }
+  >.@{pre}main {
+    @apply flex-1;
+  }
+  .@{pre}navbar {
+    @apply bg-base-100 border-b;
+  }
+  .@{pre}content {
+    @apply p-3 bg-slate-50;
+  }
+}

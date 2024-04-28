@@ -1,0 +1,152 @@
+import { Component } from 'solid-js'
+
+export const BUTTONAMES = {
+  default: 'bg-stone-500 text-stone-500',
+  primary: 'bg-indigo-500 text-indigo-50',
+  success: 'bg-emerald-500 text-emerald-50',
+  danger: 'bg-rose-500 text-rose-50'
+}
+
+const BGCOLORSCOMP: any = () => {
+  return (
+    <>
+      <span class="bg-inherit">bg-inherit</span>
+      <span class="bg-current">bg-current</span>
+      <span class="bg-transparent">bg-transparent</span>
+      <span class="bg-black">bg-black</span>
+      <span class="bg-white">bg-white</span>
+      <span class="bg-gray-100">bg-gray-100</span>
+      <span class="bg-gray-200">bg-gray-200</span>
+      <span class="bg-gray-300">bg-gray-300</span>
+      <span class="bg-gray-400">bg-gray-400</span>
+      <span class="bg-gray-500">bg-gray-500</span>
+      <span class="bg-gray-600">bg-gray-600</span>
+      <span class="bg-gray-700">bg-gray-700</span>
+      <span class="bg-gray-800">bg-gray-800</span>
+      <span class="bg-stone-50">bg-stone-50</span>
+      <span class="bg-stone-100">bg-stone-100</span>
+      <span class="bg-stone-200">bg-stone-200</span>
+      <span class="bg-stone-300">bg-stone-300</span>
+      <span class="bg-stone-400">bg-stone-400</span>
+      <span class="bg-stone-500">bg-stone-500</span>
+      <span class="bg-stone-600">bg-stone-600</span>
+      <span class="bg-stone-700">bg-stone-700</span>
+      <span class="bg-stone-800">bg-stone-800</span>
+      <span class="bg-red-50">bg-red-50</span>
+      <span class="bg-red-100">bg-red-100</span>
+      <span class="bg-red-200">bg-red-200</span>
+      <span class="bg-red-300">bg-red-300</span>
+      <span class="bg-red-400">bg-red-400</span>
+      <span class="bg-red-500">bg-red-500</span>
+      <span class="bg-red-600">bg-red-600</span>
+      <span class="bg-red-700">bg-red-700</span>
+      <span class="bg-red-800">bg-red-800</span>
+      <span class="bg-cyan-50">bg-cyan-50</span>
+      <span class="bg-cyan-100">bg-cyan-100</span>
+      <span class="bg-cyan-200">bg-cyan-200</span>
+      <span class="bg-cyan-300">bg-cyan-300</span>
+      <span class="bg-cyan-400">bg-cyan-400</span>
+      <span class="bg-cyan-500">bg-cyan-500</span>
+      <span class="bg-cyan-600">bg-cyan-600</span>
+      <span class="bg-cyan-700">bg-cyan-700</span>
+      <span class="bg-cyan-800">bg-cyan-800</span>
+      <span class="text-indigo-50">text-indigo-50</span>
+      <span class="bg-indigo-500">bg-indigo-500</span>
+      <span class="text-emerald-50"></span>
+      <span class="bg-emerald-500"></span>
+      <span class="bg-rose-50"></span>
+      <span class="bg-rose-500"></span>
+      <span class=""></span>
+      <span class=""></span>
+      <span class=""></span>
+      <span class=""></span>
+      <span class=""></span>
+      <span class=""></span>
+      <span class=""></span>
+      <span class=""></span>
+      <span class=""></span>
+      <span class=""></span>
+      <span class=""></span>
+      <span class=""></span>
+      <span class=""></span>
+      <span class=""></span>
+      <span class=""></span>
+      <span class=""></span>
+      <span class=""></span>
+      <span class=""></span>
+      <span class=""></span>
+      <span class=""></span>
+      <span class=""></span>
+      <span class=""></span>
+      <span class=""></span>
+      <span class=""></span>
+      <span class=""></span>
+      <span class=""></span>
+      <span class=""></span>
+      <span class=""></span>
+      <span class=""></span>
+      <span class=""></span>
+      <span class=""></span>
+      <span class=""></span>
+      <span class=""></span>
+      <span class=""></span>
+      <span class=""></span>
+      <span class=""></span>
+      <span class=""></span>
+      <span class=""></span>
+      <span class=""></span>
+      <span class=""></span>
+      <span class=""></span>
+      <span class=""></span>
+      <span class=""></span>
+      <span class=""></span>
+      <span class=""></span>
+      <span class=""></span>
+      <span class=""></span>
+      <span class=""></span>
+      <span class=""></span>
+      <span class=""></span>
+      <span class=""></span>
+      <span class=""></span>
+      <span class=""></span>
+      <span class=""></span>
+      <span class=""></span>
+      <span class=""></span>
+      <span class=""></span>
+      <span class=""></span>
+      <span class=""></span>
+      <span class=""></span>
+      <span class=""></span>
+      <span class=""></span>
+      <span class=""></span>
+      <span class=""></span>
+      <span class=""></span>
+      <span class=""></span>
+      <span class=""></span>
+      <span class=""></span>
+      <span class=""></span>
+      <span class=""></span>
+      <span class=""></span>
+      <span class=""></span>
+      <span class=""></span>
+      <span class=""></span>
+      <span class=""></span>
+      <span class=""></span>
+      <span class=""></span>
+      <span class=""></span>
+      <span class=""></span>
+      <span class=""></span>
+      <span class=""></span>
+      <span class=""></span>
+      <span class=""></span>
+      <span class=""></span>
+      <span class=""></span>
+      <span class=""></span>
+      <span class=""></span>
+      <span class=""></span>
+      <span class="chai-btn-default chai-btn-primary"></span>
+      <span class="text-right text-xs"></span>
+      <i class="i-tdesign-chevron-up i-tdesign-chevron-down"></i>
+    </>
+  )
+}

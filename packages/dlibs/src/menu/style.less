@@ -1,0 +1,74 @@
+@import url(../assets//base.less);
+
+&.collapsed {
+  width: 55px;
+  :where(li > details > summary, li > .enn-menu-dropdown-toggle):after {
+    display: none
+  }
+}
+.@{pre}menu {
+  @apply p-1;
+  &-item, &-item a {
+    @apply grid;
+    height: 38px;
+    line-height: 1;
+    white-space: nowrap;
+  }
+  .active {
+    @apply bg-primary/20 text-cyan-800;
+  }
+  .@{pre}dropdown-content {
+    @apply ms-2 bg-base-100 shadow-md;
+  }
+  .@{pre}dropdown {
+    >ul {
+      transform-origin: var(--kb-menu-content-transform-origin);
+      animation: contenthide 250ms ease-in forwards;
+    }
+    >.isopen {
+      animation: contentshow 250ms ease-out;
+    }
+  }
+
+  // daisy
+  li > *:not(ul, .enn-menu-title, details, .enn-btn):active, li > *:not(ul, .enn-menu-title, details, .enn-btn).enn-active, li > details > summary:active {
+    @apply bg-slate-200 text-cyan-800;
+  }
+  :where(li:not(.enn-menu-title, .disabled) > *:not(ul, details, .enn-menu-title)),
+  :where(li:not(.enn-menu-title, .disabled) > details > summary:not(.enn-menu-title)) {
+    &:not(summary, .active, .btn).focus,
+    &:not(summary, .active, .btn):focus,
+    &:is(summary):not(.active, .btn):focus-visible {
+      @apply bg-slate-50 text-cyan-800 cursor-pointer outline-none;
+    }
+    @media (hover: hover) {
+      &:not(.active, .btn):hover {
+        @apply cursor-pointer outline-none;
+        @supports (color: oklch(0 0 0)) {
+          @apply bg-slate-50 text-cyan-800;
+        }
+      }
+    }
+  }
+}
+
+@keyframes contentshow {
+	from {
+		opacity: 0;
+		transform: scale(0.2);
+	}
+	to {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+@keyframes contenthider {
+	from {
+		opacity: 1;
+		transform: scale(1);
+	}
+	to {
+		opacity: 0;
+		transform: scale(0.2);
+	}
+}
