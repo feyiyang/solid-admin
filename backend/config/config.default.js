@@ -21,6 +21,12 @@ module.exports = (appInfo) => {
         autoPort: true
       }
     },
+    cluster: {
+      listen: {
+        port: '9000',
+        hostname: '127.0.0.1'
+      }
+    },
     mongoose: {
       url: 'mongodb://127.0.0.1:27017/MongoDB'
     }

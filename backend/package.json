@@ -5,6 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "egg-bin dev",
+    "start": "egg-scripts start --port=9000 --daemon --title=egg-sadm",
+    "stop": "egg-scripts stop",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -13,6 +15,7 @@
   "dependencies": {
     "egg": "^3.20.0",
     "egg-mongoose": "^4.0.1",
+    "egg-scripts": "^3.0.0",
     "egg-validate": "^2.0.2",
     "egg-view-assets": "^1.9.0",
     "egg-view-nunjucks": "^2.3.0"
