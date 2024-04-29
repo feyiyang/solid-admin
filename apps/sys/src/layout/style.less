@@ -4,6 +4,7 @@
   height: 100vh;
   >.@{pre}aside {
     width: 220px;
+    flex-shrink: 0;
     >.enn-menu {
       position: absolute;
       left: 0;
@@ -23,6 +24,8 @@
     @apply bg-base-100 border-b;
   }
   .@{pre}content {
+    height: calc(100% - 65px);
     @apply p-3 bg-slate-50;
+    overflow-y: auto;
   }
 }

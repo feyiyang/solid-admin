@@ -22,6 +22,18 @@
     },
     "children": [
         {
+            "name": "Menu",
+            "path": "menu",
+            "hidden": false,
+            "component": "system/menu/index",
+            "meta": {
+                "title": "菜单管理",
+                "icon": "icon-[tdesign--menu-application]",
+                "noCache": false,
+                "link": null
+            }
+        },
+        {
             "name": "User",
             "path": "user",
             "hidden": false,
@@ -41,18 +53,6 @@
             "meta": {
                 "title": "角色管理",
                 "icon": "icon-[tdesign--assignment-user]",
-                "noCache": false,
-                "link": null
-            }
-        },
-        {
-            "name": "Menu",
-            "path": "menu",
-            "hidden": false,
-            "component": "system/menu/index",
-            "meta": {
-                "title": "菜单管理",
-                "icon": "icon-[tdesign--menu-application]",
                 "noCache": false,
                 "link": null
             }

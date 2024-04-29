@@ -1,12 +1,23 @@
 @import url(dlibs/src/assets/base.less);
+.page-menu-manage {
+  @apply py-6 bg-white;
+}
 .@{pre}search-form {
-  @apply bg-white px-4 py-6 border;
+  @apply px-4;
   .form-item {
-    height: 24px;
-    line-height: 24px;
+    height: 32px;
+    line-height: 32px;
     @apply inline-flex items-center;
     .label {
       @apply mr-2;
+    }
+  }
+}
+.@{pre}search-result {
+  @apply px-4;
+  .handlers {
+    .btn {
+      @apply mx-1;
     }
   }
 }

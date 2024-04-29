@@ -1,4 +1,4 @@
-import { createFetch } from "@solid-primitives/fetch"
+import { createFetch, withAggregation } from "@solid-primitives/fetch"
 
 export function aggregation(response: resType) {
   const { success, data, msg, code } = response
@@ -27,12 +27,13 @@ export const useFetch = (opt: optType) => {
     headers: {
       "Content-Type": "application/json",
     }
-  })
+  }, 
+  [withAggregation(aggregation)])
 }
 
 interface optType {
   url: string
   method: 'GET' | 'POST' | 'PUT' | 'DELETE',
-  headers: Request
+  headers?: Request
   params?: any
 }

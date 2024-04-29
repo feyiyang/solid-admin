@@ -35,6 +35,9 @@ importers:
       solid-js:
         specifier: ^1.8.15
         version: 1.8.15
+      tabulator-tables:
+        specifier: ^6.2.1
+        version: 6.2.1
     devDependencies:
       '@antfu/ni':
         specifier: ^0.21.12
@@ -48,6 +51,9 @@ importers:
       '@types/node':
         specifier: ^20.11.25
         version: 20.11.25
+      '@types/tabulator-tables':
+        specifier: ^6.2.0
+        version: 6.2.0
       '@xbmlz/eslint-config-prettier':
         specifier: ^0.1.17
         version: 0.1.17(eslint@8.57.0)
@@ -2022,6 +2028,10 @@ packages:
       '@types/mime': 3.0.4
       '@types/node': 20.11.27
     dev: false
+
+  /@types/tabulator-tables@6.2.0:
+    resolution: {integrity: sha512-dKEz3X/1SuEBa25RpbPhG4a5mVa+/nL5G4hHDWf+W+Xs6m1HREN9lX2qVhEIoJSeTqfqpvze8Fw5+qbCakH86g==, tarball: https://registry.npmmirror.com/@types/tabulator-tables/-/tabulator-tables-6.2.0.tgz}
+    dev: true
 
   /@types/unist@2.0.10:
     resolution: {integrity: sha512-IfYcSBWE3hLpBg8+X2SEa8LVkJdJEkT2Ese2aaLs3ptGdVtABxndrMaxuFlQ1qdFf9Q5rDvDpxI3WwgvKFAsQA==, tarball: https://registry.npmmirror.com/@types/unist/-/unist-2.0.10.tgz}
@@ -8989,6 +8999,10 @@ packages:
       typical: 5.2.0
       wordwrapjs: 4.0.1
     dev: true
+
+  /tabulator-tables@6.2.1:
+    resolution: {integrity: sha512-iCyLUzE9xEesEWqHDzNgShr6fpIIsRXnvTSDxiEti3sVbVYwlRt5HTBnXsl8bxY+4p64Rxxdlk9jT3voNLcIZQ==, tarball: https://registry.npmmirror.com/tabulator-tables/-/tabulator-tables-6.2.1.tgz}
+    dev: false
 
   /tailwindcss@3.4.1:
     resolution: {integrity: sha512-qAYmXRfk3ENzuPBakNK0SRrUDipP8NQnEY6772uDhflcQz5EhRdD7JNZxyrFHVQNCwULPBn6FNPp9brpO7ctcA==, tarball: https://registry.npmmirror.com/tailwindcss/-/tailwindcss-3.4.1.tgz}

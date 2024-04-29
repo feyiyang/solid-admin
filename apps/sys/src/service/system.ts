@@ -1,8 +1,7 @@
 import { useFetch } from './mix'
 
 const menus = (params: any) => {
-  const [resource] = useFetch({url:'/api/system/menus/get', method:'GET', params})
-  return resource
+  return useFetch({url:'/api/system/menus/get', method:'GET', params})
 }
 
 export const settingServe = {
