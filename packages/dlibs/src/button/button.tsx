@@ -14,7 +14,7 @@ const Button: Component<ButtonProps> = (props) => {
   }
   
   return (
-    <KButton.Root as='input' class={clazz} classList={clazzObj} type='button' aria-label={cld() as string} value={cld() as string} />
+    <KButton.Root as='button' class={clazz} classList={clazzObj} type='button'>{cld()}</KButton.Root>
   )
 }
 

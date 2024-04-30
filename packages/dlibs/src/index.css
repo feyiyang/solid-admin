@@ -6,4 +6,7 @@
   html {
     font-family: "Yahei", "Proxima Nova", system-ui, sans-serif;
   }
+  ul,li,menu {
+    outline: none;
+  }
 }

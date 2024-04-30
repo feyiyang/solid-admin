@@ -41,7 +41,9 @@ const mainLayout: Component<ComponentProps<'div'>> = (props) => {
           </div>
         </header>
         <main class="enn-content">
-          <ErrorBoundary fallback={(err, reset) => <div onClick={reset}>Error: {err.toString()}</div>}>
+          <ErrorBoundary
+            fallback={(err, reset) => <div onClick={reset}>Error: {err.toString()}</div>}
+          >
             {props.children}
           </ErrorBoundary>
         </main>
@@ -52,7 +54,7 @@ const mainLayout: Component<ComponentProps<'div'>> = (props) => {
 
 function mainMenu(menus: any) {
   return (
-    <DMenu.Root classList={{collapsed: collapse()}} collapse={collapse} select={menuValueChg}>
+    <DMenu.Root classList={{ collapsed: collapse() }} collapse={collapse} select={menuValueChg}>
       <For each={menus()}>
         {(menu) => {
           if (menu?.children?.length) {
@@ -75,7 +77,7 @@ function subMenu(menu: any, parentIndex?: string) {
     <DMenu.Sub index={menu.name}>
       <DMenu.Trigger>
         <i class={`w-[16px] h-[18px] ${menu.meta.icon}`} />
-        {(!collapse()|| parentIndex) && menu.meta.title}
+        {(!collapse() || parentIndex) && menu.meta.title}
       </DMenu.Trigger>
       <For each={menu.children}>
         {(submenu) => {

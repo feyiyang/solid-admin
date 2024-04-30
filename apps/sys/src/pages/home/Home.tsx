@@ -1,7 +1,7 @@
 import type { Component, ComponentProps } from 'solid-js'
 import './style.less'
 
-const Home: Component<ComponentProps<'div'>> = (props) => {
+const Home: Component<ComponentProps<'div'>> = () => {
   return (
     <div class="home-board">
       <div class="top-states">

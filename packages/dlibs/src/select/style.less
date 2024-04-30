@@ -1,0 +1,40 @@
+@import url(../assets//base.less);
+.@{pre}select-content {
+  @apply p-1 enn-dropdown-open bg-white border;
+  z-index: 99;
+  transform-origin: var(--kb-select-content-transform-origin);
+  animation: contentHide 200ms ease-in forwards;
+  &[data-expanded] {
+    animation: contentShow 200ms ease-out;
+  }
+  .select-item {
+    &:not(:last-of-type) {
+      @apply mb-1;
+    }
+    @apply flex justify-between items-center p-1 cursor-pointer text-sm;
+    &:hover {
+      @apply bg-slate-50;
+    }
+  }
+}
+
+@keyframes contentShow {
+	from {
+		opacity: 0;
+		transform: translateY(-8px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+@keyframes contentHide {
+	from {
+		opacity: 1;
+		transform: translateY(0);
+	}
+	to {
+		opacity: 0;
+		transform: translateY(-8px);
+	}
+}

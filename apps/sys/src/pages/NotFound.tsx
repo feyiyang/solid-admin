@@ -1,11 +1,11 @@
-import { type Component } from "solid-js"
+import { type Component } from 'solid-js'
 
 const NotFound: Component = (props) => {
   return (
     <>
-     404
-     <div class="divider">page not found</div>
-     {props.children}
+      404
+      <div class="divider">page not found</div>
+      {props.children}
     </>
   )
 }

@@ -9,7 +9,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Yahei','Sui Bian', 'sans-serif', 'Inter var', ...defaultTheme.fontFamily.sans],
+        sans: ['Yahei', 'sans-serif', 'Inter var', ...defaultTheme.fontFamily.sans],
       },
   }
   },

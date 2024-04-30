@@ -1,6 +1,7 @@
 import { lazy } from 'solid-js'
 import type { RouteDefinition } from '@solidjs/router'
 import mainLayout from '../layout/Main'
+import LoginPage from '../pages/login/Login.tsx'
 import * as NAMES from './names'
 
 const routeEnums = new Map()
@@ -25,6 +26,11 @@ const routes: ({ name?: symbol } & RouteDefinition<string, unknown>)[] = [
         component: lazy(() => import('../pages/NotFound.tsx'))
       }
     ]
+  },
+  {
+    name: NAMES.LOGINNAME,
+    path: NAMES.LOGINPATH,
+    component: LoginPage
   }
 ]
 

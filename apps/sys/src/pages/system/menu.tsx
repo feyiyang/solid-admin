@@ -5,11 +5,19 @@ import { settingServe } from '@/service'
 import 'tabulator-tables/dist/css/tabulator_semanticui.min.css'
 import './style.less'
 
+interface Item {
+  value: string
+  label: string
+  disabled?: boolean
+}
 const MenuListSet: Component<any> = () => {
-  const [resData] = settingServe.menus({roleType: 1, t: Date.now()})
+  const [resData] = settingServe.menus({ roleType: 1, t: Date.now() })
+  const options: Item[] = [
+    { label: '正常', value: '0', disabled: false },
+    { label: '异常', value: '1' }
+  ]
   onMount(() => {
     const table = new Tabulator('#tableEle', {
-      // height: 'calc(100% - 70px)',
       layout: 'fitColumns',
       dataTree: true,
       dataTreeChildField: 'children',
@@ -19,40 +27,43 @@ const MenuListSet: Component<any> = () => {
       dataTreeBranchElement: '<i></i>',
       dataTreeChildIndent: 18,
       selectableRows: false,
+      responsiveLayout: true,
       columns: [
         { title: '菜单名称', field: 'menuName', headerSort: false },
         { title: '排序', field: 'orderNum', width: 80 },
         { title: '权限标识', field: 'perms', headerSort: false, width: 200 },
         { title: '组件路径', field: 'component', headerSort: false, width: 200 },
-        { 
+        {
           title: '状态',
           field: 'status',
           headerSort: false,
           width: 80,
-          formatter: (cell) => {
-            return cell.getValue() ? 
+          formatter: (cell) => (
+            cell.getValue() ?
               <span class="enn-badge enn-badge-primary">正常</span> :
-              <i class="enn-badge">异常</i>
-          }
+              <span class="enn-badge">异常</span>
+          ) as any
         },
         { title: '创建时间', field: 'createTime', width: 180 },
-        { 
+        {
           title: '操作',
           headerSort: false,
           width: 160,
           formatter: () => {
-            return <div class='handlers'>
-              <span class='btn btn-edit'>编辑</span>
-              <span class="btn btn-add">新增</span>
-              <span class="btn btn-del">删除</span>
-            </div>
+            return (
+              <div class="handlers">
+                <span class="btn btn-edit">编辑</span>
+                <span class="btn btn-add">新增</span>
+                <span class="btn btn-del">删除</span>
+              </div>
+            ) as any
           }
-         }
+        }
       ]
     })
-    table.on('rowClick', (e, row) => {
-      console.log(row.getData())
-    })
+    // table.on('rowClick', (e, row) => {
+    //   console.log(row.getData())
+    // })
     createEffect(() => {
       if (!resData.loading) {
         table.setData(treeMaker(resData() as []))
@@ -61,32 +72,43 @@ const MenuListSet: Component<any> = () => {
   })
   return (
     <div class="page-menu-manage">
-      <section class='enn-search-form'>
+      <section class="enn-search-form flex">
         <div class="form-item pr-4">
-          <span class='label'>菜单名称</span>
+          <span class="label">菜单名称</span>
           <DInput.Root>
-            <DInput.Input placeholder='请输入菜单名称' />
+            <DInput.Input placeholder="请输入菜单名称" />
           </DInput.Root>
         </div>
         <div class="form-item pr-4">
-          <span class='label'>状态</span>
-          <select class='enn-select enn-select-bordered enn-select-sm'>
-            <option value="0">正常</option>
-            <option value="1">异常</option>
-          </select>
+          <span class="label">状态</span>
+          <DSelect.Root
+            class="w-32"
+            placeholder="请选择"
+            options={options}
+            itemComponent={(props) => (
+              <DSelect.Option item={props.item} label={props.item.rawValue.label} />
+            )}
+          />
         </div>
-        <DButton.Root type='primary' size='sm' outline>搜索</DButton.Root>
+        <DButton.Root type="primary" size="sm" outline>
+          搜索
+        </DButton.Root>
+        <div class="w-full" />
+        <DButton.Root type="primary" size="sm">
+          <span class="icon-[tdesign--add]" />
+          新增
+        </DButton.Root>
       </section>
-      <section class='enn-search-result'>
+      <section class="enn-search-result">
         <div id="tableEle" />
       </section>
     </div>
   )
 }
 
-function treeMaker (data: any[], pid: string | number = 0) {
+function treeMaker(data: any[], pid: string | number = 0) {
   const ret: any = []
-  data.forEach(v => {
+  data.forEach((v) => {
     if (v.parentId === pid) {
       v.children = treeMaker(data, v.menuId)
       if (!v.children?.length) {
