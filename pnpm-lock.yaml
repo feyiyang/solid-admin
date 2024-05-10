@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       dayjs:
-        specifier: ^1.11.10
-        version: 1.11.10
+        specifier: ^1.11.11
+        version: 1.11.11
       dlibs:
         specifier: workspace:*
         version: link:packages/dlibs
@@ -114,7 +114,7 @@ importers:
     devDependencies:
       egg-bin:
         specifier: ^6.8.1
-        version: 6.8.1(@types/node@20.12.7)(typescript@5.4.5)
+        version: 6.8.1(@types/node@20.12.8)(typescript@5.4.5)
 
   frontend:
     dependencies:
@@ -176,12 +176,18 @@ importers:
 
   packages/dlibs:
     dependencies:
+      '@ark-ui/solid':
+        specifier: ^2.2.0
+        version: 2.2.0(@internationalized/date@3.5.3)(solid-js@1.8.15)
       '@felte/solid':
         specifier: ^1.2.13
         version: 1.2.13(solid-js@1.8.15)
       '@kobalte/core':
         specifier: ^0.12.3
         version: 0.12.3(solid-js@1.8.15)
+      '@solid-primitives/context':
+        specifier: ^0.2.3
+        version: 0.2.3(solid-js@1.8.15)
       solid-js:
         specifier: ^1.8.15
         version: 1.8.15
@@ -224,7 +230,7 @@ importers:
     dependencies:
       '@ark-ui/solid':
         specifier: ^2.2.0
-        version: 2.2.0(@internationalized/date@3.5.2)(solid-js@1.8.15)
+        version: 2.2.0(@internationalized/date@3.5.3)(solid-js@1.8.15)
       '@solidjs/router':
         specifier: ^0.10.9
         version: 0.10.10(solid-js@1.8.15)
@@ -532,7 +538,7 @@ packages:
       tslib: 2.6.2
     dev: false
 
-  /@ark-ui/anatomy@2.3.1(@internationalized/date@3.5.2):
+  /@ark-ui/anatomy@2.3.1(@internationalized/date@3.5.3):
     resolution: {integrity: sha512-pfHDkuFRFdzOnZxqNcAld1b03ehvFrOqXery9JHBTchP8+VmAmxg6ZDn4Se1ie4HvcmXD6IU61jltJB/aXYpJg==, tarball: https://registry.npmmirror.com/@ark-ui/anatomy/-/anatomy-2.3.1.tgz}
     dependencies:
       '@zag-js/accordion': 0.38.0
@@ -546,7 +552,7 @@ packages:
       '@zag-js/color-utils': 0.38.0
       '@zag-js/combobox': 0.38.0
       '@zag-js/date-picker': 0.38.0
-      '@zag-js/date-utils': 0.38.0(@internationalized/date@3.5.2)
+      '@zag-js/date-utils': 0.38.0(@internationalized/date@3.5.3)
       '@zag-js/dialog': 0.38.0
       '@zag-js/editable': 0.38.0
       '@zag-js/file-upload': 0.38.0
@@ -574,12 +580,12 @@ packages:
       - '@internationalized/date'
     dev: false
 
-  /@ark-ui/solid@2.2.0(@internationalized/date@3.5.2)(solid-js@1.8.15):
+  /@ark-ui/solid@2.2.0(@internationalized/date@3.5.3)(solid-js@1.8.15):
     resolution: {integrity: sha512-FpkdpMlifJIMFabVpLD+WQJWy9MuAlm9QtRVAq5kI6bKB2e8hc3YabCyo9Liz9nrzGE9tCu4jyd2lE6v/8cXkQ==, tarball: https://registry.npmmirror.com/@ark-ui/solid/-/solid-2.2.0.tgz}
     peerDependencies:
       solid-js: '>=1.6.0'
     dependencies:
-      '@ark-ui/anatomy': 2.3.1(@internationalized/date@3.5.2)
+      '@ark-ui/anatomy': 2.3.1(@internationalized/date@3.5.3)
       '@zag-js/accordion': 0.38.0
       '@zag-js/avatar': 0.38.0
       '@zag-js/carousel': 0.38.0
@@ -1391,6 +1397,12 @@ packages:
       '@swc/helpers': 0.5.6
     dev: false
 
+  /@internationalized/date@3.5.3:
+    resolution: {integrity: sha512-X9bi8NAEHAjD8yzmPYT2pdJsbe+tYSEBAfowtlxJVJdZR3aK8Vg7ZUT1Fm5M47KLzp/M1p1VwAaeSma3RT7biw==, tarball: https://registry.npmmirror.com/@internationalized/date/-/date-3.5.3.tgz}
+    dependencies:
+      '@swc/helpers': 0.5.11
+    dev: false
+
   /@internationalized/number@3.5.1:
     resolution: {integrity: sha512-N0fPU/nz15SwR9IbfJ5xaS9Ss/O5h1sVXMZf43vc9mxEG48ovglvvzBjF53aHlq20uoR6c+88CrIXipU/LSzwg==, tarball: https://registry.npmmirror.com/@internationalized/number/-/number-3.5.1.tgz}
     dependencies:
@@ -1512,8 +1524,8 @@ packages:
       call-bind: 1.0.7
     dev: false
 
-  /@mongodb-js/saslprep@1.1.5:
-    resolution: {integrity: sha512-XLNOMH66KhJzUJNwT/qlMnS4WsNDWD5ASdyaSH3EtK+F4r/CFGa3jT4GNi4mfOitGvWXtdLgQJkQjxSVrio+jA==, tarball: https://registry.npmmirror.com/@mongodb-js/saslprep/-/saslprep-1.1.5.tgz}
+  /@mongodb-js/saslprep@1.1.6:
+    resolution: {integrity: sha512-jqTTXQ46H8cAxmXBu8wm1HTSIMBMrIcoVrsjdQkKdMBj3il/fSCgWyya4P2I1xjPBl69mw+nRphrPlcIqBd20Q==, tarball: https://registry.npmmirror.com/@mongodb-js/saslprep/-/saslprep-1.1.6.tgz}
     requiresBuild: true
     dependencies:
       sparse-bitfield: 3.0.3
@@ -1680,6 +1692,14 @@ packages:
     resolution: {integrity: sha512-+Fj43pSMwJs4KRrH/938Uf+uAELIgVBmQzg/q1YG10djyfA3TnrU8N8XzqCh/okZdszqBQTZf96idMfE5lnwTA==, tarball: https://registry.npmmirror.com/@sinclair/typebox/-/typebox-0.27.8.tgz}
     dev: true
 
+  /@solid-primitives/context@0.2.3(solid-js@1.8.15):
+    resolution: {integrity: sha512-6/e8qu9qJf48FJ+sxc/B782NdgFw5TvI8+r6U0gHizumfZcWZg8FAJqvRZAiwlygkUNiTQOGTeO10LVbMm0kvg==, tarball: https://registry.npmmirror.com/@solid-primitives/context/-/context-0.2.3.tgz}
+    peerDependencies:
+      solid-js: ^1.6.12
+    dependencies:
+      solid-js: 1.8.15
+    dev: false
+
   /@solid-primitives/event-listener@2.3.3(solid-js@1.8.15):
     resolution: {integrity: sha512-DAJbl+F0wrFW2xmcV8dKMBhk9QLVLuBSW+TR4JmIfTaObxd13PuL7nqaXnaYKDWOYa6otB00qcCUIGbuIhSUgQ==, tarball: https://registry.npmmirror.com/@solid-primitives/event-listener/-/event-listener-2.3.3.tgz}
     peerDependencies:
@@ -1793,6 +1813,12 @@ packages:
       solid-js: ^1.8.6
     dependencies:
       solid-js: 1.8.15
+    dev: false
+
+  /@swc/helpers@0.5.11:
+    resolution: {integrity: sha512-YNlnKRWF2sVojTpIyzwou9XoTNbzbzONwRhOoniEioF1AtaitTvVZblaQRrAzChWQ1bLYyYSWzM18y4WwgzJ+A==, tarball: https://registry.npmmirror.com/@swc/helpers/-/helpers-0.5.11.tgz}
+    dependencies:
+      tslib: 2.6.2
     dev: false
 
   /@swc/helpers@0.5.6:
@@ -1992,8 +2018,8 @@ packages:
     dependencies:
       undici-types: 5.26.5
 
-  /@types/node@20.12.7:
-    resolution: {integrity: sha512-wq0cICSkRLVaf3UGLMGItu/PtdY7oaXaI/RVU+xliKVOtRna3PRY57ZDfztpDL0n11vfymMUnXv8QwYCO7L1wg==, tarball: https://registry.npmmirror.com/@types/node/-/node-20.12.7.tgz}
+  /@types/node@20.12.8:
+    resolution: {integrity: sha512-NU0rJLJnshZWdE/097cdCBbyW1h4hEg0xpovcoAQYHl8dnEyp/NAOiE45pvc+Bd1Dt+2r94v2eGFpQJ4R7g+2w==, tarball: https://registry.npmmirror.com/@types/node/-/node-20.12.8.tgz}
     dependencies:
       undici-types: 5.26.5
     dev: true
@@ -2675,6 +2701,14 @@ packages:
       '@internationalized/date': '>=3.0.0'
     dependencies:
       '@internationalized/date': 3.5.2
+    dev: false
+
+  /@zag-js/date-utils@0.38.0(@internationalized/date@3.5.3):
+    resolution: {integrity: sha512-H6dR/HcFEJTATKDc19YRg6fabpF26DbCI1o0YmuclKY68jF9XWfbeAwjyr/V71DjB2QHzvODALWWSbNLDKxQDg==, tarball: https://registry.npmmirror.com/@zag-js/date-utils/-/date-utils-0.38.0.tgz}
+    peerDependencies:
+      '@internationalized/date': '>=3.0.0'
+    dependencies:
+      '@internationalized/date': 3.5.3
     dev: false
 
   /@zag-js/dialog@0.38.0:
@@ -4246,8 +4280,8 @@ packages:
     resolution: {integrity: sha512-2P0p0pFGzHS5EMnhdxQi7aJN+iMheud0UhG4dlE1DLAlvL8JHjJJTX/CSm4JXwV0Ka5nGk3zC5mcb5bUQUxxMA==, tarball: https://registry.npmmirror.com/dateformat/-/dateformat-4.6.3.tgz}
     dev: true
 
-  /dayjs@1.11.10:
-    resolution: {integrity: sha512-vjAczensTgRcqDERK0SR2XMwsF/tSvnvlv6VcF2GIhg6Sx4yOIt/irsr1RDJsKiIyBzJDpCoXiWWq28MqH2cnQ==, tarball: https://registry.npmmirror.com/dayjs/-/dayjs-1.11.10.tgz}
+  /dayjs@1.11.11:
+    resolution: {integrity: sha512-okzr3f11N6WuqYtZSvm+F776mB41wRZMhKP+hc34YdW+KmtYYK9iqvHSwo2k9FEH3fhGXvOPV6yz2IcSrfRUDg==, tarball: https://registry.npmmirror.com/dayjs/-/dayjs-1.11.11.tgz}
     dev: false
 
   /debounce@1.2.1:
@@ -4529,7 +4563,7 @@ packages:
     resolution: {integrity: sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==, tarball: https://registry.npmmirror.com/ee-first/-/ee-first-1.1.1.tgz}
     dev: false
 
-  /egg-bin@6.8.1(@types/node@20.12.7)(typescript@5.4.5):
+  /egg-bin@6.8.1(@types/node@20.12.8)(typescript@5.4.5):
     resolution: {integrity: sha512-+4I69kJDRFixrEBO3/Zfia4CSOG0vl16l5Ut7dRpx3wZaabQRnHopq61A+v2Dyn1gqOl6TrlPO/IL9J40VCqOA==, tarball: https://registry.npmmirror.com/egg-bin/-/egg-bin-6.8.1.tgz}
     engines: {node: '>= 16.19.0'}
     hasBin: true
@@ -4545,14 +4579,14 @@ packages:
       '@artus-cli/plugin-version': 1.0.2
       c8: 9.1.0
       detect-port: 1.5.1
-      egg-ts-helper: 2.1.0(@types/node@20.12.7)
+      egg-ts-helper: 2.1.0(@types/node@20.12.8)
       egg-utils: 2.5.0
       globby: 11.1.0
       jest-changed-files: 29.7.0
       mocha: 10.3.0
       mochawesome-with-mocha: 7.1.3
       runscript: 1.6.0
-      ts-node: 10.9.2(@types/node@20.12.7)(typescript@5.4.5)
+      ts-node: 10.9.2(@types/node@20.12.8)(typescript@5.4.5)
       tsconfig-paths: 4.2.0
     transitivePeerDependencies:
       - '@swc/core'
@@ -4714,7 +4748,7 @@ packages:
     engines: {node: '>= 14.17.0'}
     dependencies:
       co-busboy: 2.0.1
-      dayjs: 1.11.10
+      dayjs: 1.11.11
       egg-path-matching: 1.1.0
       humanize-bytes: 1.0.1
       stream-wormhole: 1.1.0
@@ -4809,7 +4843,7 @@ packages:
       - supports-color
     dev: false
 
-  /egg-ts-helper@2.1.0(@types/node@20.12.7):
+  /egg-ts-helper@2.1.0(@types/node@20.12.8):
     resolution: {integrity: sha512-vETwoNqRpO/qvhZxqZyHP86KWL/zWkj9DSf491ns1pPFP4tsOXUdzcXVm3vAIz7zH7nz67y5lnDI3zgmXcWjbA==, tarball: https://registry.npmmirror.com/egg-ts-helper/-/egg-ts-helper-2.1.0.tgz}
     engines: {node: '>= 14.21.3'}
     hasBin: true
@@ -4821,7 +4855,7 @@ packages:
       enquirer: 2.4.1
       globby: 11.1.0
       json5: 2.2.3
-      ts-node: 10.9.2(@types/node@20.12.7)(typescript@5.4.2)
+      ts-node: 10.9.2(@types/node@20.12.8)(typescript@5.4.2)
       tslib: 2.6.2
       typescript: 5.4.2
       yn: 3.1.1
@@ -4928,7 +4962,7 @@ packages:
       onelogger: 1.0.0
       sendmessage: 2.0.0
       urllib: 2.41.0
-      urllib-next: /urllib@3.23.0
+      urllib-next: /urllib@3.24.0
       utility: 1.18.0
       ylru: 1.3.2
     transitivePeerDependencies:
@@ -7316,7 +7350,7 @@ packages:
       mongodb-connection-string-url: 2.6.0
       socks: 2.8.1
     optionalDependencies:
-      '@mongodb-js/saslprep': 1.1.5
+      '@mongodb-js/saslprep': 1.1.6
     dev: false
 
   /mongoose@7.6.10:
@@ -9170,7 +9204,7 @@ packages:
     resolution: {integrity: sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==, tarball: https://registry.npmmirror.com/ts-interface-checker/-/ts-interface-checker-0.1.13.tgz}
     dev: true
 
-  /ts-node@10.9.2(@types/node@20.12.7)(typescript@5.4.2):
+  /ts-node@10.9.2(@types/node@20.12.8)(typescript@5.4.2):
     resolution: {integrity: sha512-f0FFpIdcHgn8zcPSbf1dRevwt047YMnaiJM3u2w2RewrB+fob/zePZcrOyQoLMMO7aBIddLcQIEK5dYjkLnGrQ==, tarball: https://registry.npmmirror.com/ts-node/-/ts-node-10.9.2.tgz}
     hasBin: true
     peerDependencies:
@@ -9189,7 +9223,7 @@ packages:
       '@tsconfig/node12': 1.0.11
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.4
-      '@types/node': 20.12.7
+      '@types/node': 20.12.8
       acorn: 8.11.3
       acorn-walk: 8.3.2
       arg: 4.1.3
@@ -9201,7 +9235,7 @@ packages:
       yn: 3.1.1
     dev: true
 
-  /ts-node@10.9.2(@types/node@20.12.7)(typescript@5.4.5):
+  /ts-node@10.9.2(@types/node@20.12.8)(typescript@5.4.5):
     resolution: {integrity: sha512-f0FFpIdcHgn8zcPSbf1dRevwt047YMnaiJM3u2w2RewrB+fob/zePZcrOyQoLMMO7aBIddLcQIEK5dYjkLnGrQ==, tarball: https://registry.npmmirror.com/ts-node/-/ts-node-10.9.2.tgz}
     hasBin: true
     peerDependencies:
@@ -9220,7 +9254,7 @@ packages:
       '@tsconfig/node12': 1.0.11
       '@tsconfig/node14': 1.0.3
       '@tsconfig/node16': 1.0.4
-      '@types/node': 20.12.7
+      '@types/node': 20.12.8
       acorn: 8.11.3
       acorn-walk: 8.3.2
       arg: 4.1.3
@@ -9307,8 +9341,8 @@ packages:
     engines: {node: '>=14.16'}
     dev: true
 
-  /type-fest@4.15.0:
-    resolution: {integrity: sha512-tB9lu0pQpX5KJq54g+oHOLumOx+pMep4RaM6liXh2PKmVRFF+/vAtUP0ZaJ0kOySfVNjF6doBWPHhBhISKdlIA==, tarball: https://registry.npmmirror.com/type-fest/-/type-fest-4.15.0.tgz}
+  /type-fest@4.18.1:
+    resolution: {integrity: sha512-qXhgeNsX15bM63h5aapNFcQid9jRF/l3ojDoDFmekDQEUufZ9U4ErVt6SjDxnHp48Ltrw616R8yNc3giJ3KvVQ==, tarball: https://registry.npmmirror.com/type-fest/-/type-fest-4.18.1.tgz}
     engines: {node: '>=16'}
     dev: false
 
@@ -9623,8 +9657,8 @@ packages:
       - supports-color
     dev: false
 
-  /urllib@3.23.0:
-    resolution: {integrity: sha512-mw+PPlA28SZr/7jwoYiZxp83o4VrNP8XOLqUE54xHaqrf+V00on96H3iO0Vemuqq9imDTQT101IcTXrLlDGFMw==, tarball: https://registry.npmmirror.com/urllib/-/urllib-3.23.0.tgz}
+  /urllib@3.24.0:
+    resolution: {integrity: sha512-A6+ypIUsS4PS0IeqDAAxo/zMobO1P6zViXyivRxI4rkbSKnaW7gFBH9Lmi9bELcYwji5gyrN7mQmCXPdXpzUhA==, tarball: https://registry.npmmirror.com/urllib/-/urllib-3.24.0.tgz}
     engines: {node: '>= 14.19.3'}
     dependencies:
       default-user-agent: 1.0.0
@@ -9635,7 +9669,7 @@ packages:
       mime-types: 2.1.35
       pump: 3.0.0
       qs: 6.12.1
-      type-fest: 4.15.0
+      type-fest: 4.18.1
       undici: 5.28.4
       ylru: 1.3.2
     dev: false
@@ -9728,7 +9762,7 @@ packages:
       merge-anything: 5.1.7
       solid-js: 1.8.15
       solid-refresh: 0.6.3(solid-js@1.8.15)
-      vite: 5.1.5(@types/node@20.11.25)
+      vite: 5.1.5(@types/node@20.11.27)(less@4.2.0)
       vitefu: 0.2.5(vite@5.1.5)
     transitivePeerDependencies:
       - supports-color
@@ -9815,7 +9849,7 @@ packages:
       vite:
         optional: true
     dependencies:
-      vite: 5.1.5(@types/node@20.11.25)
+      vite: 5.1.5(@types/node@20.11.27)(less@4.2.0)
     dev: true
 
   /vitest@1.3.1(@types/node@20.11.25):

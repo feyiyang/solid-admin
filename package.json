@@ -18,8 +18,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "dayjs": "^1.11.10",
-    "sys": "workspace:*",
-    "dlibs": "workspace:*"
+    "dayjs": "^1.11.11",
+    "dlibs": "workspace:*",
+    "sys": "workspace:*"
   }
 }

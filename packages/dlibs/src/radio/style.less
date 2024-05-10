@@ -1,0 +1,25 @@
+@import url(../assets/base.less);
+
+.@{pre}{
+  &radio {
+    width: 16px;
+    height: 16px;
+    @apply flex items-center justify-center;
+    &-input:checked + div{
+      background-image: none;
+      border-color: #444c4d;
+      background-color: #444c4d;
+      box-shadow: 0 0 0 4px #fff inset,0 0 0 4px #fff inset;
+    }
+  }
+  &label{
+    @apply cursor-pointer;
+    text-indent: 8px;
+    &:not(:last-of-type) {
+      @apply mr-4;
+    }
+    &-text{
+      cursor: inherit;
+    }
+  }
+}

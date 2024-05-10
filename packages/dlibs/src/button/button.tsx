@@ -5,16 +5,31 @@ import './style.less'
 
 const Button: Component<ButtonProps> = (props) => {
   const merged = mergeProps(defButton, props)
-  const [local, rest] = splitProps(merged, ['class', 'children', 'type', 'size', 'ghost', 'outline'])
+  const [local, rest] = splitProps(merged, [
+    'class',
+    'children',
+    'type',
+    'size',
+    'ghost',
+    'outline'
+  ])
   const cld = children(() => local.children) || ''
   const clazz = `enn-btn enn-btn-${local.type} enn-btn-${local.size} ${local.class || ''}`
   const clazzObj = {
     'enn-ghost': local.ghost,
     'enn-btn-outline': local.outline
   }
-  
+
   return (
-    <KButton.Root as='button' class={clazz} classList={clazzObj} type='button'>{cld()}</KButton.Root>
+    <KButton.Root
+      as="button"
+      class={clazz}
+      classList={clazzObj}
+      type="button"
+      {...rest}
+    >
+      {cld()}
+    </KButton.Root>
   )
 }
 

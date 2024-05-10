@@ -1,6 +1,7 @@
 import { type Component, createEffect, onMount } from 'solid-js'
 import { TabulatorFull as Tabulator } from 'tabulator-tables'
 import { DButton, DInput, DSelect } from 'dlibs'
+import { ModalMenu, ModalMenuProvider } from './modalMenu'
 import { settingServe } from '@/service'
 import 'tabulator-tables/dist/css/tabulator_semanticui.min.css'
 import './style.less'
@@ -11,11 +12,13 @@ interface Item {
   disabled?: boolean
 }
 const MenuListSet: Component<any> = () => {
-  const [resData] = settingServe.menus({ roleType: 1, t: Date.now() })
+  const [menuRes] = settingServe.menus({ roleType: 1, t: Date.now() })
   const options: Item[] = [
     { label: '正常', value: '0', disabled: false },
     { label: '异常', value: '1' }
   ]
+  const [modalMenuShow, setMenuModalShow] = createSignal(false)
+  const [tableData, setTableData] = createStore([])
   onMount(() => {
     const table = new Tabulator('#tableEle', {
       layout: 'fitColumns',
@@ -38,11 +41,12 @@ const MenuListSet: Component<any> = () => {
           field: 'status',
           headerSort: false,
           width: 80,
-          formatter: (cell) => (
-            cell.getValue() ?
-              <span class="enn-badge enn-badge-primary">正常</span> :
+          formatter: (cell) =>
+            (cell.getValue() ? (
+              <span class="enn-badge enn-badge-primary">正常</span>
+            ) : (
               <span class="enn-badge">异常</span>
-          ) as any
+            )) as any
         },
         { title: '创建时间', field: 'createTime', width: 180 },
         {
@@ -65,8 +69,10 @@ const MenuListSet: Component<any> = () => {
     //   console.log(row.getData())
     // })
     createEffect(() => {
-      if (!resData.loading) {
-        table.setData(treeMaker(resData() as []))
+      if (!menuRes.loading) {
+        const ret = treeMaker(menuRes() as [])
+        setTableData(ret)
+        table.setData(ret)
       }
     })
   })
@@ -94,7 +100,7 @@ const MenuListSet: Component<any> = () => {
           搜索
         </DButton.Root>
         <div class="w-full" />
-        <DButton.Root type="primary" size="sm">
+        <DButton.Root type="primary" size="sm" onClick={() => setMenuModalShow(true)}>
           <span class="icon-[tdesign--add]" />
           新增
         </DButton.Root>
@@ -102,6 +108,11 @@ const MenuListSet: Component<any> = () => {
       <section class="enn-search-result">
         <div id="tableEle" />
       </section>
+      {modalMenuShow() && (
+        <ModalMenuProvider modalMenuShow={modalMenuShow()} setShow={setMenuModalShow}>
+          <ModalMenu tableData={tableData} menuData={menuRes()} />
+        </ModalMenuProvider>
+      )}
     </div>
   )
 }

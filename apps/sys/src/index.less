@@ -5,6 +5,7 @@ html, body, #root {
 }
 body {
   scrollbar-width: thin; /* 控制滚动条宽度 */
+  font-size: 14px;
 }
 
 /* 滚动条样式 */
@@ -31,4 +32,17 @@ body {
 
 ::-webkit-resizer {
   display: none; /* 隐藏调整大小手柄 */
+}
+
+.btn-loader {
+  animation: load-rotate 1.2s infinite linear;
+}
+
+@keyframes load-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }

@@ -9,7 +9,12 @@ import { Slot, getSlots } from '../../utils/slot.tsx'
 const Root: Component<MenuComp> = (props) => {
   const [activMenu, setActiveMenu] = createSignal<string | string[]>('')
   const merged = mergeProps(defMenu, props)
-  const [local, rest] = splitProps(merged, ['class', 'collapse', 'select', 'router'])
+  const [local, rest] = splitProps(merged, [
+    'class',
+    'collapse',
+    'select',
+    'router'
+  ])
   let clazz = `enn-menu`
 
   if (local.class) {
@@ -17,8 +22,16 @@ const Root: Component<MenuComp> = (props) => {
   }
 
   return (
-    <MenuContext.Provider value={{actived: activMenu, setAct: setActiveMenu, collapsed: local.collapse, selector: local.select, router: local.router}}>
-      <Menubar.Root as='ul' class={clazz} {...rest} />
+    <MenuContext.Provider
+      value={{
+        actived: activMenu,
+        setAct: setActiveMenu,
+        collapsed: local.collapse,
+        selector: local.select,
+        router: local.router
+      }}
+    >
+      <Menubar.Root as="ul" class={clazz} {...rest} />
     </MenuContext.Provider>
   )
 }
@@ -32,11 +45,20 @@ const Item: Component<MenuItemComp> = (props) => {
   return (
     <li class={clazz}>
       <Menubar.Menu>
-        <Menubar.Item classList={{active: actived() == name, 'enn-tooltip': collapsed(), 'enn-tooltip-right': collapsed()}} as='a' onSelect={onSelectFn} {...rest}></Menubar.Item>
+        <Menubar.Item
+          classList={{
+            active: actived() == name,
+            'enn-tooltip': collapsed(),
+            'enn-tooltip-right': collapsed()
+          }}
+          as="a"
+          onSelect={onSelectFn}
+          {...rest}
+        ></Menubar.Item>
       </Menubar.Menu>
     </li>
   )
-  function onSelectFn () {
+  function onSelectFn() {
     local.onSelect && local.onSelect()
     selector && selector(path)
     setAct(name)
@@ -44,7 +66,7 @@ const Item: Component<MenuItemComp> = (props) => {
 }
 
 const Trigger: Component<any> = (props) => {
-  return <Slot name='trigger' {...props}></Slot>
+  return <Slot name="trigger" {...props}></Slot>
 }
 
 const Sub = (props: any) => {
@@ -60,9 +82,22 @@ const Sub = (props: any) => {
   })
   return (
     <li onmouseover={() => onFocu(true)} onmouseout={(e) => onFocu(false, 200)}>
-      <details class={`${collapsed() ? 'enn-dropdown enn-dropdown-right' : ''}`} ref={detailRef} open={subShow()}>
-        <summary class='enn-menu-item'>{slots.trigger}</summary>
-        <ul classList={{ 'enn-dropdown-content': collapsed(), 'z-[1]': true, 'enn-menu': true, 'isopen': subShow() }}>{slots.default}</ul>
+      <details
+        class={`${collapsed() ? 'enn-dropdown enn-dropdown-right' : ''}`}
+        ref={detailRef}
+        open={subShow()}
+      >
+        <summary class="enn-menu-item">{slots.trigger}</summary>
+        <ul
+          classList={{
+            'enn-dropdown-content': collapsed(),
+            'z-[1]': true,
+            'enn-menu': true,
+            isopen: subShow()
+          }}
+        >
+          {slots.default}
+        </ul>
       </details>
     </li>
   )

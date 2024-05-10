@@ -1,5 +1,3 @@
 const Table = () => {}
 
-export {
-  Table as DTable
-}
+export { Table as DTable }

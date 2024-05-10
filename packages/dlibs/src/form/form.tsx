@@ -1,4 +1,4 @@
-import { Component, children, splitProps } from "solid-js"
+import { Component, children, splitProps } from 'solid-js'
 import { createForm } from '@felte/solid'
 
 let validate: any = () => {
@@ -7,9 +7,7 @@ let validate: any = () => {
 const FormComp: Component<any> = (props) => {
   const [local, rest] = splitProps(props, ['children', 'onSubmit'])
   const cld = children(() => local.children)
-  const { form, createSubmitHandler, validate: cvalid } = createForm({
-    
-  })
+  const { form, createSubmitHandler, validate: cvalid } = createForm({})
   validate = cvalid
   local.onSubmit = () => createSubmitHandler()
   return (
@@ -20,11 +18,8 @@ const FormComp: Component<any> = (props) => {
 }
 
 const Item: Component<any> = (props) => {
-  return (
-    <></>
-  )
+  return <></>
 }
-
 
 export const DForm = {
   Form: FormComp,

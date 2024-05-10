@@ -16,12 +16,13 @@ export type MenuComp = ComponentProps<any> & {
   'unique-opened'?: boolean
 }
 
-export type MenuItemComp = ComponentProps<'a' | 'button'> & Menubar.MenubarItemProps & {
-  index?: string
-  disabled?: boolean // 是否禁用
-  children?: JSXElement
-  datatip?: any
-}
+export type MenuItemComp = ComponentProps<'a' | 'button'> &
+  Menubar.MenubarItemProps & {
+    index?: string
+    disabled?: boolean // 是否禁用
+    children?: JSXElement
+    datatip?: any
+  }
 
 export const defSub = {
   index: null,

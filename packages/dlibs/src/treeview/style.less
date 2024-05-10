@@ -1,0 +1,39 @@
+@import url(../assets/base.less);
+
+.activebg {
+  @apply bg-slate-50;
+}
+.@{pre}{
+  &tree-{
+    &root{
+      line-height: 1.76;
+    }
+    &control {
+      @apply flex items-center;
+      padding-inline-start: calc((var(--depth) - 1) * 1rem);
+      &:hover, &:focus, &[data-selected] {
+        .activebg;
+      }
+      &[data-state="open"] .icon {
+        transform: rotate(90deg)
+      }
+      .icon {
+        @apply m-1 p-2 text-gray-400;
+        transition: all 200ms ease-out;
+        &:hover {
+          @apply text-gray-700;
+        }
+      }
+      .label-text {
+        @apply flex-1;
+      }
+    }
+    &item {
+      padding-inline-start: calc((var(--depth) - 1) * 1rem + 24px);
+      cursor: pointer;
+      &:hover, &:focus, &[data-selected] {
+        .activebg;
+      }
+    }
+  }
+}

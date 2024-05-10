@@ -26,7 +26,11 @@ export default {
           warning: '#d9c82f',
           error: '#dc3d4f',
           'primary-content': 'white',
-          '--rounded-btn': '4px'
+          '.enn-modal-box': {
+            padding: '1rem 1.4rem',
+          },
+          '--rounded-btn': '4px',
+          '--rounded-box': '8px'
         },
       },
     ],
