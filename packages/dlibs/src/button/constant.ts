@@ -29,12 +29,14 @@ const styleVariants = {
 
 export const defButton = {
   type: 'default',
+  size: 'sm',
   ghost: false,
   link: false,
   outline: false,
   glass: false,
   circle: false,
-  square: false
+  square: false,
+  'native-type': 'button'
 }
 
 export type ButtonProps = Omit<Button.ButtonRootProps, 'type'> &

@@ -1,12 +1,16 @@
 import { type Component, Show, createContext } from 'solid-js'
 import { Portal } from 'solid-js/web'
+import { produce } from 'solid-js/store'
 import { DButton, DDialog, DInput, DRadio, DTreeView } from 'dlibs'
 
 const ModalMenuContext = createContext()
 
-const [dropOpen, setDropOpen] = createSignal(0)
-const [iconSelected, setIconSelect] = createSignal('')
-const [Load, setLoad] = createSignal(false)
+const [dlgState, setDlgState] = createStore({
+  visible: false,
+  loading: false,
+  iconSelected: '',
+  dropOpenIndex: 0
+})
 
 export const ModalMenuProvider = (props: any) => {
   const [state, setState] = createStore({ modalMenuShow: props.modalMenuShow })
@@ -66,12 +70,15 @@ export const ModalMenu: Component<any> = (props) => {
       </div>
       <div class="form-item pb-4">
         <span class="label">菜单图标:</span>
-        <div class="icon-parent enn-dropdown" classList={{ 'enn-dropdown-open': dropOpen() === 2 }}>
-          <DInput.Root class="flex-1" role="button" onClick={() => setDropOpen(2)}>
-            {!!iconSelected() && (
+        <div
+          class="icon-parent enn-dropdown"
+          classList={{ 'enn-dropdown-open': dlgState.dropOpenIndex === 2 }}
+        >
+          <DInput.Root class="flex-1" role="button" onClick={() => setDlgState('dropOpenIndex', 2)}>
+            {!!dlgState.iconSelected && (
               <>
-                <span class={`w-4 h-4 icon-\[tdesign--${iconSelected()}\]`} />
-                {iconSelected()}
+                <span class={`w-4 h-4 icon-\[tdesign--${dlgState.iconSelected}\]`} />
+                {dlgState.iconSelected}
               </>
             )}
             <DInput.Input readonly />
@@ -85,18 +92,54 @@ export const ModalMenu: Component<any> = (props) => {
           </DInput.Root>
           <div class="icon-list enn-dropdown-content">
             <ul onClick={iconClick}>
-              <li><span class="icon-[tdesign--activity]"></span>activity</li>
-              <li><span class="icon-[tdesign--add]"></span>add</li>
-              <li><span class="icon-[tdesign--add-and-subtract]"></span>and-subtract</li>
-              <li><span class="icon-[tdesign--add-circle]"></span>add-circle</li>
-              <li><span class="icon-[tdesign--add-rectangle]"></span>add-rectangle</li>
-              <li><span class="icon-[tdesign--address-book]"></span>address-book</li>
-              <li><span class="icon-[tdesign--adjustment]"></span>adjustment</li>
-              <li><span class="icon-[tdesign--airplay-wave]"></span>airplay-wave</li>
-              <li><span class="icon-[tdesign--alarm]"></span>alarm</li>
-              <li><span class="icon-[tdesign--alarm-add]"></span>alarm-add</li>
-              <li><span class="icon-[tdesign--alarm-off]"></span>alarm-off</li>
-              <li><span class="icon-[tdesign--align-top]"></span>align-top</li>
+              <li>
+                <span class="icon-[tdesign--activity]" />
+                activity
+              </li>
+              <li>
+                <span class="icon-[tdesign--add]" />
+                add
+              </li>
+              <li>
+                <span class="icon-[tdesign--add-and-subtract]" />
+                and-subtract
+              </li>
+              <li>
+                <span class="icon-[tdesign--add-circle]" />
+                add-circle
+              </li>
+              <li>
+                <span class="icon-[tdesign--add-rectangle]" />
+                add-rectangle
+              </li>
+              <li>
+                <span class="icon-[tdesign--address-book]" />
+                address-book
+              </li>
+              <li>
+                <span class="icon-[tdesign--adjustment]" />
+                adjustment
+              </li>
+              <li>
+                <span class="icon-[tdesign--airplay-wave]" />
+                airplay-wave
+              </li>
+              <li>
+                <span class="icon-[tdesign--alarm]" />
+                alarm
+              </li>
+              <li>
+                <span class="icon-[tdesign--alarm-add]" />
+                alarm-add
+              </li>
+              <li>
+                <span class="icon-[tdesign--alarm-off]" />
+                alarm-off
+              </li>
+              <li>
+                <span class="icon-[tdesign--align-top]" />
+                align-top
+              </li>
             </ul>
           </div>
         </div>
@@ -139,8 +182,8 @@ export const ModalMenu: Component<any> = (props) => {
           取消
         </DButton.Root>
         &ensp;
-        <DButton.Root class="w-16 ml-4" size="sm" type="primary" onClick={saveHdl}>
-          <Show when={Load()} fallback={<>确定</>}>
+        <DButton.Root class="w-16 ml-4" size="sm" type="primary" onClick={() => saveHdl(setShow)}>
+          <Show when={dlgState.loading} fallback={<>确定</>}>
             <span class="enn-loading loading-spinner enn-loading-sm" />
             <Portal>
               <div class="modal-mask" />
@@ -159,12 +202,21 @@ function selectionChg<T>(D: any, M: T[]) {
   setMenuSelected(S as any)
 }
 function iconClick(e: any) {
-  setIconSelect(e.target.textContent)
-  setDropOpen(0)
+  // setIconSelect(e.target.textContent)
+  // setDropOpen(0)
+  setDlgState(
+    produce((state) => {
+      state.dropOpenIndex = 0
+      state.iconSelected = e.target.textContent
+    })
+  )
   e.cancelButtle = true
   e.preventDefault()
 }
-function saveHdl() {
-  setLoad(true)
-  setTimeout(() => setLoad(false), 22200)
+function saveHdl(show: any) {
+  setDlgState('loading', true)
+  setTimeout(() => {
+    setDlgState('loading', false)
+    show(false)
+  }, 2200)
 }

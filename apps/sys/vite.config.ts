@@ -12,7 +12,7 @@ export default defineConfig({
   },
   server: {
     proxy: {
-      '/api': 'https://1253457920-2r3uhzjzy5-nj.scf.tencentcs.com'
+      '/api': 'http://127.0.0.1:9000'
     }
   }
 })

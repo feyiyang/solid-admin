@@ -1,5 +1,32 @@
 .home-board {
   // @apply px-2;
+  .top-info {
+    @apply flex items-center py-4 px-8 mb-2 border border-gray-100 rounded-lg bg-white;
+    .enn-avatar {
+      .ring {
+        @apply w-16 rounded-full;
+      }
+    }
+    .todos {
+      .will {
+        width: 46px;
+        height: 46px;
+        @apply inline-block ml-6 text-center bg-indigo-400;
+        border-radius: 8px;
+        line-height: 46px;
+        cursor: pointer;
+        &:nth-of-type(2) {
+          @apply bg-amber-400;
+        }
+        span:nth-of-type(2) {
+          width: 28px;
+          height: 28px;
+          vertical-align: middle;
+          color: #fff;
+        }
+      }
+    }
+  }
   .top-states {
     @apply enn-stats w-full border border-gray-100;
   }

@@ -9,15 +9,18 @@ const Button: Component<ButtonProps> = (props) => {
     'class',
     'children',
     'type',
+    'native-type',
     'size',
     'ghost',
-    'outline'
+    'outline',
+    'circle'
   ])
   const cld = children(() => local.children) || ''
   const clazz = `enn-btn enn-btn-${local.type} enn-btn-${local.size} ${local.class || ''}`
   const clazzObj = {
     'enn-ghost': local.ghost,
-    'enn-btn-outline': local.outline
+    'enn-btn-outline': local.outline,
+    'enn-btn-circle': local.circle
   }
 
   return (
@@ -25,7 +28,7 @@ const Button: Component<ButtonProps> = (props) => {
       as="button"
       class={clazz}
       classList={clazzObj}
-      type="button"
+      type={local['native-type'] as any}
       {...rest}
     >
       {cld()}

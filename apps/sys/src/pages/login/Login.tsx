@@ -69,7 +69,7 @@ const Login: Component = () => {
                 </label>
                 <a href="#">忘记密码</a>
               </p>
-              <DButton.Root class="btn-sub" type="primary">
+              <DButton.Root class="btn-sub" type="primary" native-type="submit">
                 登录
               </DButton.Root>
             </div>

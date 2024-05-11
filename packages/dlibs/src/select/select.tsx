@@ -10,7 +10,7 @@ const Root: Component<KSelect.SelectRootProps<any>> = (props) => {
       optionTextValue="label"
       {...rest}
     >
-      <KSelect.Trigger class="flex w-full enn-input enn-input-bordered enn-input-sm justify-between">
+      <KSelect.Trigger class="flex w-full enn-select enn-select-bordered enn-select-sm pr-2 justify-between bg-none">
         <KSelect.Value>
           {(state) => (state.selectedOption() as any).label}
         </KSelect.Value>
