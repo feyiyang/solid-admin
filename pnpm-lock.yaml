@@ -66,6 +66,9 @@ importers:
       autoprefixer:
         specifier: ^10.4.18
         version: 10.4.18(postcss@8.4.35)
+      daisyui:
+        specifier: ^4.11.1
+        version: 4.11.1(postcss@8.4.35)
       eslint:
         specifier: ^8.57.0
         version: 8.57.0
@@ -4259,6 +4262,18 @@ packages:
   /d3-voronoi@1.1.4:
     resolution: {integrity: sha512-dArJ32hchFsrQ8uMiTBLq256MpnZjeuBtdHpaDlYuQyjU0CVzCJl/BVW+SkszaAeH95D/8gxqAhgx0ouAWAfRg==, tarball: https://registry.npmmirror.com/d3-voronoi/-/d3-voronoi-1.1.4.tgz}
     dev: false
+
+  /daisyui@4.11.1(postcss@8.4.35):
+    resolution: {integrity: sha512-obT9CUbQdW6eoHwSeT5VwaRrWlwrM4OT5qlfdJ0oQlSIEYhwnEl2+L2fwu5PioLbitwuMdYC2X8I1cyy8Pf6LQ==, tarball: https://registry.npmmirror.com/daisyui/-/daisyui-4.11.1.tgz}
+    engines: {node: '>=16.9.0'}
+    dependencies:
+      css-selector-tokenizer: 0.8.0
+      culori: 3.3.0
+      picocolors: 1.0.0
+      postcss-js: 4.0.1(postcss@8.4.35)
+    transitivePeerDependencies:
+      - postcss
+    dev: true
 
   /daisyui@4.7.2(postcss@8.4.38):
     resolution: {integrity: sha512-9UCss12Zmyk/22u+JbkVrHHxOzFOyY17HuqP5LeswI4hclbj6qbjJTovdj2zRy8cCH6/n6Wh0lTLjriGnyGh0g==, tarball: https://registry.npmmirror.com/daisyui/-/daisyui-4.7.2.tgz}
