@@ -13,7 +13,7 @@ export default {
       },
   }
   },
-  plugins: [require('daisyUI'), addDynamicIconSelectors()],
+  plugins: [require('daisyui'), addDynamicIconSelectors()],
   daisyui: {
     themes: [
       {
