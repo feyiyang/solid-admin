@@ -1,8 +1,8 @@
-import { type Component, children, splitProps } from 'solid-js'
+import { type Component, splitProps } from 'solid-js'
 import { Select as KSelect } from '@kobalte/core'
 
 const Root: Component<KSelect.SelectRootProps<any>> = (props) => {
-  const [local, rest] = splitProps(props, ['children'])
+  const [, rest] = splitProps(props, ['children'])
   return (
     <KSelect.Root
       as="div"

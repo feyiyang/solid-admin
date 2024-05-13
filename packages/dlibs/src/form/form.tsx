@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import { Component, children, splitProps } from 'solid-js'
 import { createForm } from '@felte/solid'
 
@@ -11,15 +13,15 @@ const FormComp: Component<any> = (props) => {
   validate = cvalid
   local.onSubmit = () => createSubmitHandler()
   return (
-    <form use:form {...rest}>
+    <form ref={form} {...rest}>
       {cld()}
     </form>
   )
 }
 
-const Item: Component<any> = (props) => {
-  return <></>
-}
+// const Item: Component<any> = (props) => {
+//   return <></>
+// }
 
 export const DForm = {
   Form: FormComp,

@@ -71,7 +71,7 @@ const Trigger: Component<any> = (props) => {
 
 const Sub = (props: any) => {
   let timer: any = null
-  const [local] = splitProps(props, ['index', 'class'])
+  // const [local] = splitProps(props, ['index', 'class'])
   const slots = getSlots(props.children)
   const [subShow, setSubShow] = createSignal(false)
   const { collapsed } = useMenuContext()
@@ -81,7 +81,7 @@ const Sub = (props: any) => {
     detailRef.open = false
   })
   return (
-    <li onmouseover={() => onFocu(true)} onmouseout={(e) => onFocu(false, 200)}>
+    <li onmouseover={() => onFocu(true)} onmouseout={() => onFocu(false, 200)}>
       <details
         class={`${collapsed() ? 'enn-dropdown enn-dropdown-right' : ''}`}
         ref={detailRef}

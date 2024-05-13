@@ -1,6 +1,6 @@
 import { type Component } from 'solid-js'
 
-const NotFound: Component = (props) => {
+const NotFound: Component<any> = (props) => {
   return (
     <>
       404

@@ -43,7 +43,7 @@ const Login: Component = () => {
         </div>
         <div class="section_right">
           <h3>欢迎登录</h3>
-          <form use:form>
+          <form ref={form}>
             <div class="row">
               <p class="ext">
                 <label class="label">用户名: </label>

@@ -6,7 +6,7 @@ import {
 } from 'solid-js'
 import { TextField } from '@kobalte/core'
 import { type InputRootProp, defInput, sizeVariants } from './constant'
-import { InputContext, useInputContext } from './input-context'
+import { InputContext } from './input-context'
 
 const Root: Component<InputRootProp> = (props) => {
   const merged = mergeProps(defInput, props)

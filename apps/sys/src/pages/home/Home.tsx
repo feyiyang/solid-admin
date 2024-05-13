@@ -1,7 +1,6 @@
 import { type Component, type ComponentProps, onCleanup } from 'solid-js'
 import { createStore, produce } from 'solid-js/store'
 import './style.less'
-import { DButton } from 'dlibs'
 
 const [homeState, setHomeState] = createStore({
   hh: '07',

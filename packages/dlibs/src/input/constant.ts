@@ -1,4 +1,4 @@
-import { type Component, type ComponentProps } from 'solid-js'
+import { type ComponentProps } from 'solid-js'
 import { TextField } from '@kobalte/core'
 
 export const defInput = {
