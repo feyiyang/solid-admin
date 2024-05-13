@@ -3,13 +3,14 @@ import { Portal } from 'solid-js/web'
 import { produce } from 'solid-js/store'
 import { DButton, DDialog, DInput, DRadio, DTreeView } from 'dlibs'
 
-const ModalMenuContext = createContext()
+const ModalMenuContext = createContext<any>()
 
 const [dlgState, setDlgState] = createStore({
   visible: false,
   loading: false,
   iconSelected: '',
-  dropOpenIndex: 0
+  dropOpenIndex: 0,
+  isBtn: false
 })
 
 export const ModalMenuProvider = (props: any) => {
@@ -27,28 +28,42 @@ export const ModalMenuProvider = (props: any) => {
   ]
   return <ModalMenuContext.Provider value={store}>{props.children}</ModalMenuContext.Provider>
 }
-function useModalMenu(): any {
-  return useContext(ModalMenuContext)
+function useModalMenu<T>() {
+  return useContext<T>(ModalMenuContext)
 }
 
-const [menuSelected, setMenuSelected] = createSignal({ menuName: '主菜单' })
+const [menuSelected, setMenuSelected] = createSignal({ menuName: '主菜单', menuId: '0', value: 0 })
 export const ModalMenu: Component<any> = (props) => {
-  const [local] = splitProps(props, ['tableData', 'menuData'])
-  const [state, { setShow }] = useModalMenu()
+  const [local] = splitProps(props, ['tableData', 'menuData', 'openData'])
+  const [state, { setShow }] = useModalMenu<any>()
 
   type menuItemT = (typeof local.menuData)[0]
+
+  if (local.openData) {
+    setDlgState(
+      produce((state) => {
+        state.isBtn = local.openData.menuType === 'F'
+      })
+    )
+  }
+
   return (
     <DDialog.Root
-      class="enn-menus-dialog mt-[1vh]"
+      class="enn-menus-dialog"
       title="添加菜单"
       modal={true}
       open={state.modalMenuShow}
       onOpenChange={setShow}
     >
-      <DRadio.Group class="form-item pb-2" defaultValue="1">
+      <DRadio.Group class="form-item pb-2" defaultValue={local.openData.menuType || 'M'} onChange={(val: string) => {
+        setDlgState(produce((state) => {
+          state.isBtn = val === 'F'
+        }))
+      }}>
         <DRadio.GroupLabel class="label">菜单类型:</DRadio.GroupLabel>
-        <DRadio.Radio value="1">目录</DRadio.Radio>
-        <DRadio.Radio value="2">菜单</DRadio.Radio>
+        <DRadio.Radio value="M">目录</DRadio.Radio>
+        <DRadio.Radio value="C">菜单</DRadio.Radio>
+        <DRadio.Radio value="F">按钮</DRadio.Radio>
       </DRadio.Group>
       <div class="form-item pb-4">
         <span class="label">上级菜单:</span>
@@ -68,7 +83,7 @@ export const ModalMenu: Component<any> = (props) => {
           </div>
         </div>
       </div>
-      <div class="form-item pb-4">
+      <div class="form-item pb-4" hidden={dlgState.isBtn}>
         <span class="label">菜单图标:</span>
         <div
           class="icon-parent enn-dropdown"
@@ -140,6 +155,14 @@ export const ModalMenu: Component<any> = (props) => {
                 <span class="icon-[tdesign--align-top]" />
                 align-top
               </li>
+              <li>
+                <span class="icon-[tdesign--system-regulation]" />
+                system-regulation
+              </li>
+              <li>
+                <span class="icon-[tdesign--work]" />
+                work
+              </li>
             </ul>
           </div>
         </div>
@@ -147,14 +170,14 @@ export const ModalMenu: Component<any> = (props) => {
       <div class="form-item pb-4 menus-name">
         <span class="label">菜单名称:</span>
         <DInput.Root class="w206">
-          <DInput.Input name="menuName" />
+          <DInput.Input name="menuName" value={local.openData.menuName || ''} />
         </DInput.Root>
-        <span class="label ml-8">显式排序:</span>
+        <span class="label ml-8">显示排序:</span>
         <DInput.Root class="w206">
-          <DInput.Input name="menuSort" type="number" />
+          <DInput.Input name="menuSort" type="number" value={local.openData.orderNum} />
         </DInput.Root>
       </div>
-      <div class="form-item pb-2">
+      <div class="form-item pb-2" hidden={dlgState.isBtn}>
         <span class="label">是否外链:</span>
         <DRadio.Group class="flex items-center w206 mr-8" defaultValue="2">
           <DRadio.Radio value="1">是</DRadio.Radio>
@@ -166,15 +189,30 @@ export const ModalMenu: Component<any> = (props) => {
         </DInput.Root>
       </div>
       <div class="form-item">
-        <span class="label">显示状态:</span>
-        <DRadio.Group class="flex items-center w206 mr-8" defaultValue="1">
-          <DRadio.Radio value="1">显示</DRadio.Radio>
-          <DRadio.Radio value="2">隐藏</DRadio.Radio>
-        </DRadio.Group>
+        {!dlgState.isBtn && (
+          <>
+            <span class="label">显示状态:</span>
+            <DRadio.Group 
+              class="flex items-center w206 mr-8"
+              defaultValue={local.openData.visible || '0'}
+            >
+              <DRadio.Radio value="0">显示</DRadio.Radio>
+              <DRadio.Radio value="1">隐藏</DRadio.Radio>
+            </DRadio.Group>
+          </>
+        )}
+        {dlgState.isBtn && (
+          <>
+            <span class="label">权限字符:</span>{local.openData.prems}
+            <DInput.Root class="flex items-center w206 mr-8" value={local.openData.perms}>
+              <DInput.Input />
+            </DInput.Root>
+          </>
+        )}
         <span class="label">菜单状态:</span>
-        <DRadio.Group class="flex items-center w206" defaultValue="1">
-          <DRadio.Radio value="1">正常</DRadio.Radio>
-          <DRadio.Radio value="2">停用</DRadio.Radio>
+        <DRadio.Group class="flex items-center w206" defaultValue={local.openData.states || '0'}>
+          <DRadio.Radio value="0">正常</DRadio.Radio>
+          <DRadio.Radio value="1">停用</DRadio.Radio>
         </DRadio.Group>
       </div>
       <DDialog.Footer>
@@ -195,15 +233,21 @@ export const ModalMenu: Component<any> = (props) => {
   )
 }
 
-function selectionChg<T>(D: any, M: T[]) {
+function selectionChg<T>(D: any, M: T[]): void {
+  if (D.focusedId === '0') {
+    setMenuSelected({
+      menuId: '0',
+      menuName: '主菜单',
+      value: '0'
+    } as any)
+    return
+  }
   const S = M.find((v: any) => {
     return v.menuId === D.focusedId
   })
   setMenuSelected(S as any)
 }
 function iconClick(e: any) {
-  // setIconSelect(e.target.textContent)
-  // setDropOpen(0)
   setDlgState(
     produce((state) => {
       state.dropOpenIndex = 0

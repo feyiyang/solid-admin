@@ -1,7 +1,12 @@
-import Mock from 'mockjs'
-import { menu } from './menus'
+import Mock from 'better-mock'
+import { menulist, rolemenu } from './menus'
 
-Mock.mock('/menus', 'get', (opt) => {
-  console.log(opt)
-  return menu
+const apipre = import.meta.env.DEV ? '' : '/api'
+
+Mock.mock(`${apipre}/menus/show`, 'get', () => {
+  return rolemenu
+})
+
+Mock.mock(`${apipre}/system/menus/get`, 'get', () => {
+  return menulist
 })

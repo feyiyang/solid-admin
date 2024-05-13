@@ -11,6 +11,7 @@ interface Item {
   label: string
   disabled?: boolean
 }
+const [openDlgData, setOpenDlgData] = createStore<{ [str: string]: any }>({})
 const MenuListSet: Component<any> = () => {
   const [menuRes] = settingServe.menus({ roleType: 1, t: Date.now() })
   const options: Item[] = [
@@ -18,7 +19,7 @@ const MenuListSet: Component<any> = () => {
     { label: '异常', value: '1' }
   ]
   const [modalMenuShow, setMenuModalShow] = createSignal(false)
-  const [tableData, setTableData] = createStore([])
+  const [tableData, setTableData] = createStore<any[]>([])
   onMount(() => {
     const table = new Tabulator('#tableEle', {
       layout: 'fitColumns',
@@ -53,21 +54,25 @@ const MenuListSet: Component<any> = () => {
           title: '操作',
           headerSort: false,
           width: 160,
-          formatter: () => {
+          formatter: (cell) => {
+            const datas = cell.getData()
             return (
-              <div class="handlers">
-                <span class="btn btn-edit">编辑</span>
-                <span class="btn btn-add">新增</span>
-                <span class="btn btn-del">删除</span>
+              <div
+                class="handlers"
+                onClick={(e) => {
+                  cellClick(e, datas)
+                  setMenuModalShow(true)
+                }
+              }>
+                <span class="btn btn-edit" data-edit>编辑</span>
+                <span class="btn btn-add" data-add>新增</span>
+                <span class="btn btn-del" data-delet>删除</span>
               </div>
             ) as any
           }
         }
       ]
     })
-    // table.on('rowClick', (e, row) => {
-    //   console.log(row.getData())
-    // })
     createEffect(() => {
       if (!menuRes.loading) {
         const ret = treeMaker(menuRes() as [])
@@ -110,15 +115,15 @@ const MenuListSet: Component<any> = () => {
       </section>
       {modalMenuShow() && (
         <ModalMenuProvider modalMenuShow={modalMenuShow()} setShow={setMenuModalShow}>
-          <ModalMenu tableData={tableData} menuData={menuRes()} />
+          <ModalMenu tableData={tableData} menuData={menuRes()} openData={openDlgData} />
         </ModalMenuProvider>
       )}
     </div>
   )
 }
 
-function treeMaker(data: any[], pid: string | number = 0) {
-  const ret: any = []
+function treeMaker<T>(data: any[], pid: string | number = 0, intorFn?: (itm: T) => T[]) {
+  const ret: T[] = []
   data.forEach((v) => {
     if (v.parentId === pid) {
       v.children = treeMaker(data, v.menuId)
@@ -126,9 +131,17 @@ function treeMaker(data: any[], pid: string | number = 0) {
         delete v.children
       }
       ret.push(v)
+      intorFn && intorFn(v)
     }
   })
   return ret
+}
+
+function cellClick<T>(_E: any, _D: T) {
+  const { dataset } = _E.srcElement
+  if (dataset.edit !== undefined) {
+    setOpenDlgData(_D as any)
+  }
 }
 
 export default MenuListSet

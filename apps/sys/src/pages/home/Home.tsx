@@ -35,7 +35,7 @@ const Home: Component<ComponentProps<'div'>> = () => {
             <p>{Number.parseInt(homeState.hh) < 12 ? '上' : '下'}午好，系统管理员！</p>
             <p class="text-gray-400">
               今日天气晴朗，气温在15℃至25℃之间，东南风。
-              <span class="enn-countdown font-mono text-2xl">
+              <span class="enn-countdown font-mono text-xl">
                 <span style={{"--value": homeState.hh}}></span>:
                 <span style={{"--value": homeState.mm}}></span>:
                 <span style={{"--value": homeState.ss}}></span>

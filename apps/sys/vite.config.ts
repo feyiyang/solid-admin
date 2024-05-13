@@ -7,7 +7,8 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': '/src',
-      '@p/': '../../packages/'
+      '@p/': '../../packages/',
+      '@b/': '../../backend/'
     }
   },
   server: {

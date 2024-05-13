@@ -26,13 +26,16 @@
   &dialog {
     max-width: none;
     width: 660px;
-    min-height: 400px;
+    min-height: 100px;
     padding: 10px 20px;
     .w206 {
       width: 206px;
     }
     .form-item {
       @apply flex items-center;
+      &[hidden] {
+        display: none;
+      }
       .label {
         width: 6em;
       }
@@ -58,9 +61,9 @@
         @apply w-full border bg-white;
         ul {
           max-height: 200px;
-          @apply flex justify-between flex-wrap px-2 pt-2 overflow-y-auto;
+          @apply flex flex-wrap px-2 pt-2 overflow-y-auto;
           li {
-            width: 29%;
+            width: 33.3%;
             @apply flex items-center mb-1 whitespace-nowrap cursor-pointer;
             span {
               width: 16px;

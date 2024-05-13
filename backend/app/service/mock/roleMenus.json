@@ -168,7 +168,7 @@
     "alwaysShow": true,
     "meta": {
         "title": "系统监控",
-        "icon": "monitor",
+        "icon": "icon-[tdesign--system-regulation]",
         "noCache": false,
         "link": null
     },
@@ -208,7 +208,7 @@
     "alwaysShow": true,
     "meta": {
         "title": "系统工具",
-        "icon": "tool",
+        "icon": "icon-[tdesign--work]",
         "noCache": false,
         "link": null
     },
