@@ -18,6 +18,8 @@
     "@solidjs/router": "^0.10.9",
     "better-mock": "^0.3.7",
     "dlibs": "workspace:^",
+    "echarts": "^5.5.0",
+    "echarts-solid": "^0.1.0",
     "solid-js": "^1.8.15",
     "tabulator-tables": "^6.2.1"
   },

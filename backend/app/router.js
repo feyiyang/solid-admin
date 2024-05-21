@@ -9,5 +9,6 @@ module.exports = app => {
 
   router.get('/api/menus/show', controller.menus.show)
   router.get('/api/system/menus/get', controller.menus.list)
+  router.get('/api/home/data', controller.home.data)
   router.get('/', controller.home.index);
 };

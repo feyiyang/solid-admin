@@ -1,5 +1,5 @@
 import Mock from 'better-mock'
-import { menulist, rolemenu } from './menus'
+import { homeChartsData, menulist, rolemenu } from './mdatas'
 
 const apipre = import.meta.env.DEV ? '' : '/api'
 
@@ -9,4 +9,8 @@ Mock.mock(`${apipre}/menus/show`, 'get', () => {
 
 Mock.mock(`${apipre}/system/menus/get`, 'get', () => {
   return menulist
+})
+
+Mock.mock(`${apipre}/home/data`, 'get', () => {
+  return homeChartsData
 })

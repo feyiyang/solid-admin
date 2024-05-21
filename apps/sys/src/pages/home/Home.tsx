@@ -1,21 +1,142 @@
-import { type Component, type ComponentProps, onCleanup } from 'solid-js'
+import { type Component, type ComponentProps, createEffect, onCleanup } from 'solid-js'
 import { createStore, produce } from 'solid-js/store'
+import { ECharts } from 'echarts-solid'
+import { homeServe } from '@/service'
 import './style.less'
 
-const [homeState, setHomeState] = createStore({
+const [homeState, setHomeState] = createStore<{
+  hh: string, mm: string, ss: string, charts: null | Record<string, []>
+}>({
   hh: '07',
   mm: '00',
-  ss: '00'
+  ss: '00',
+  charts: null
 })
 
 const ssTimer: any = setInterval(() => {
   const _t: Date = new Date()
-  setHomeState(produce((state) => {
-    state.hh = (_t.getHours().toString()).padStart(2, '0')
-    state.mm = (_t.getMinutes().toString()).padStart(2, '0')
-    state.ss = (_t.getSeconds().toString()).padStart(2, '0')
-  }))
+  setHomeState(
+    produce((state) => {
+      state.hh = _t.getHours().toString().padStart(2, '0')
+      state.mm = _t.getMinutes().toString().padStart(2, '0')
+      state.ss = _t.getSeconds().toString().padStart(2, '0')
+    })
+  )
 }, 1000)
+
+const Charts: Component<any> = () => {
+  let fromCharts: any
+  let trendCharts: any
+  const [homeRes] = homeServe.charts() as any
+  const optionFromState = {
+    title: {
+      text: '用户来源渠道分布',
+      subtext: 'Fake Data',
+      left: 'left'
+    },
+    tooltip: {
+      trigger: 'item'
+    },
+    legend: {
+      show: false,
+      orient: 'vertical',
+      left: 'left'
+    },
+    series: [
+      {
+        type: 'pie',
+        radius: ['40%', '65%'],
+        data: [],
+        emphasis: {
+          itemStyle: {
+            shadowBlur: 10,
+            shadowOffsetX: 0,
+            shadowColor: 'rgba(0, 0, 0, 0.5)'
+          }
+        }
+      }
+    ]
+  }
+  const optionTrendState: Record<string, any> = {
+    title: {
+      text: '用户趋势分析'
+    },
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: {
+        type: 'shadow'
+      }
+    },
+    legend: {},
+    grid: {
+      left: '3%',
+      right: '4%',
+      bottom: '3%',
+      containLabel: true
+    },
+    yAxis: {
+      type: 'value',
+      boundaryGap: [0, 0.01]
+    },
+    xAxis: {
+      type: 'category',
+      data: []
+    },
+    series: [
+      { name: 'UV', type: 'bar', data: [] },
+      { name: 'PV', type: 'bar', data: [] },
+      { name: '注册用户数', type: 'bar', data: [] },
+      { name: '付费用户数', type: 'bar', data: [] }
+    ]
+  }
+  createEffect(() => {
+    if (!homeRes.loading && homeRes()) {
+      setHomeState(
+        produce((state) => {
+          state.charts = homeRes()
+        })
+      )
+      homeState.charts?.userFrom.forEach((v: any) => {
+        optionFromState.series[0].data.push({
+          name: v.dim_b_渠道名称_0,
+          value: v.index_a_注册用户数_0
+        } as never)
+      })
+      homeState.charts?.userTrend.forEach((v: any, i: number) => {
+        optionTrendState.xAxis.data.push(v['dim_a_日期_1'])
+        optionTrendState.series.forEach((itm: any) => {
+          itm.data[i] = v[`index_a_${itm.name}_1`]
+        })
+      })
+      fromCharts.setOption(optionFromState)
+      trendCharts.setOption(optionTrendState)
+    }
+  })
+  return (
+    <div class="chart_wrap">
+      <div class="row">
+        <ECharts
+          option={optionFromState as any}
+          width="auto"
+          height={320}
+          theme="walden"
+          onInit={(ci) => {
+            fromCharts = ci
+          }}
+        />
+        <ECharts
+          option={optionTrendState as any}
+          width="auto"
+          height={320}
+          theme="walden"
+          onInit={(ci) => {
+            trendCharts = ci
+          }}
+        />
+      </div>
+    </div>
+  )
+}
 
 const Home: Component<ComponentProps<'div'>> = () => {
   onCleanup(() => {
@@ -106,8 +227,10 @@ const Home: Component<ComponentProps<'div'>> = () => {
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-info shrink-0 w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
         <span>此项目受 ruoyi.vip 等优秀开源项目启发，用 solid.js 和 eggjs 做的个人实验项目。  solid.js 是一个无虚拟dom，比 react 更 react 的框架，更新粒度超细，目前生态还在完善中。  </span>
       </div>
+      <Charts />
     </div>
   )
 }
+
 
 export default Home

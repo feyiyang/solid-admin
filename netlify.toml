@@ -1,0 +1,5 @@
+[[redirects]]
+from = "/*"
+to = "/apps/sys/index.html"
+status = 200
+force = true
