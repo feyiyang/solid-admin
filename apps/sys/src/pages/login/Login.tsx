@@ -28,6 +28,7 @@ const Login: Component = () => {
     },
     onSubmit(values) {
       console.log('submit:::', values)
+      sessionStorage.setItem('isLogin', '1')
       navigate('/')
     },
     onError(evt) {
