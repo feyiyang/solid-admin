@@ -1,6 +1,6 @@
 import { type Component } from 'solid-js'
 
-const Charts: Component<any> = (props) => {
+const Charts: Component<any> = () => {
   return (
     <></>
   )
