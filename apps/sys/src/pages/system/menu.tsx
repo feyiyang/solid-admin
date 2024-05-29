@@ -1,7 +1,7 @@
 import { type Component, createEffect, onMount } from 'solid-js'
 import { TabulatorFull as Tabulator } from 'tabulator-tables'
-import { DButton, DInput, DSelect } from 'dlibs'
-import { ModalMenu, ModalMenuProvider } from './modalMenu'
+import { DButton, DDialog, DInput, DSelect, DToast } from 'dlibs'
+import { ModalMenu, ModalMenuProvider } from './components/modalMenu'
 import { settingServe } from '@/service'
 import 'tabulator-tables/dist/css/tabulator_semanticui.min.css'
 import './style.less'
@@ -11,6 +11,7 @@ interface Item {
   label: string
   disabled?: boolean
 }
+
 const [openDlgData, setOpenDlgData] = createStore<{ [str: string]: any }>({})
 const MenuListSet: Component<any> = () => {
   const [menuRes] = settingServe.menus({ roleType: 1, t: Date.now() })
@@ -19,7 +20,20 @@ const MenuListSet: Component<any> = () => {
     { label: '异常', value: '1' }
   ]
   const [modalMenuShow, setMenuModalShow] = createSignal(false)
+  const [modalDelShow, setModalDelShow] = createSignal(false)
   const [tableData, setTableData] = createStore<any[]>([])
+  const cellClick = (_E: any, _D: Record<string, any>) => {
+    if (_E !== 'add') {
+      setOpenDlgData(_D)
+    }
+    if (_E === 'delet') {
+      setModalDelShow(true)
+    }
+  }
+  const delHandler = () => {
+    DToast.show({ message: '仅演示，无数据操作!', type: 'success' })
+    setModalDelShow(false)
+  }
   onMount(() => {
     const table = new Tabulator('#tableEle', {
       layout: 'fitColumns',
@@ -59,14 +73,26 @@ const MenuListSet: Component<any> = () => {
             return (
               <div
                 class="handlers"
-                onClick={(e) => {
-                  cellClick(e, datas)
-                  setMenuModalShow(true)
-                }
-              }>
-                <span class="btn btn-edit" data-edit>编辑</span>
-                <span class="btn btn-add" data-add>新增</span>
-                <span class="btn btn-del" data-delet>删除</span>
+                onClick={(e: any) => {
+                  const { dataset } = e.srcElement
+                  if (!dataset.show) {
+                    return
+                  }
+                  cellClick(dataset.show, datas)
+                  if (/edit|add/.test(dataset.show)) {
+                    setMenuModalShow(true)
+                  }
+                }}
+              >
+                <span class="btn btn-edit" data-show="edit">
+                  编辑
+                </span>
+                <span class="btn btn-add" data-show="add">
+                  新增
+                </span>
+                <span class="btn btn-del" data-show="delet">
+                  删除
+                </span>
               </div>
             ) as any
           }
@@ -81,44 +107,63 @@ const MenuListSet: Component<any> = () => {
       }
     })
   })
+
   return (
-    <div class="page-menu-manage">
-      <section class="enn-search-form flex">
-        <div class="form-item pr-4">
-          <span class="label">菜单名称</span>
-          <DInput.Root>
-            <DInput.Input placeholder="请输入菜单名称" />
-          </DInput.Root>
-        </div>
-        <div class="form-item pr-4">
-          <span class="label">状态</span>
-          <DSelect.Root
-            class="w-32"
-            placeholder="请选择"
-            options={options}
-            itemComponent={(props) => (
-              <DSelect.Option item={props.item} label={props.item.rawValue.label} />
-            )}
-          />
-        </div>
-        <DButton.Root type="primary" size="sm" outline>
-          搜索
-        </DButton.Root>
-        <div class="w-full" />
-        <DButton.Root type="primary" size="sm" onClick={() => setMenuModalShow(true)}>
-          <span class="icon-[tdesign--add]" />
-          新增
-        </DButton.Root>
-      </section>
-      <section class="enn-search-result">
-        <div id="tableEle" />
-      </section>
-      {modalMenuShow() && (
-        <ModalMenuProvider modalMenuShow={modalMenuShow()} setShow={setMenuModalShow}>
-          <ModalMenu tableData={tableData} menuData={menuRes()} openData={openDlgData} />
-        </ModalMenuProvider>
-      )}
-    </div>
+    <>
+      <DToast.Region>
+        <DToast.List />
+      </DToast.Region>
+      <div class="page-menu-manage">
+        <section class="enn-search-form flex">
+          <div class="form-item pr-4">
+            <span class="label">菜单名称</span>
+            <DInput.Root>
+              <DInput.Input placeholder="请输入菜单名称" />
+            </DInput.Root>
+          </div>
+          <div class="form-item pr-4">
+            <span class="label">状态</span>
+            <DSelect.Root
+              class="w-32"
+              placeholder="请选择"
+              options={options}
+              itemComponent={(props) => (
+                <DSelect.Option item={props.item} label={props.item.rawValue.label} />
+              )}
+            />
+          </div>
+          <DButton.Root type="primary" size="sm" outline>
+            搜索
+          </DButton.Root>
+          <div class="w-full" />
+          <DButton.Root type="primary" size="sm" onClick={() => setMenuModalShow(true)}>
+            <span class="icon-[tdesign--add]" />
+            新增
+          </DButton.Root>
+        </section>
+        <section class="enn-search-result">
+          <div id="tableEle" />
+        </section>
+        {modalMenuShow() && (
+          <ModalMenuProvider modalMenuShow={modalMenuShow()} setShow={setMenuModalShow}>
+            <ModalMenu tableData={tableData} menuData={menuRes()} openData={openDlgData} />
+          </ModalMenuProvider>
+        )}
+        <DDialog.Root title="系统提示" open={modalDelShow()} onOpenChange={setModalDelShow}>
+          {/* <h3></h3> */}
+          <div role="alert" class="alert p-2 my-4">
+            <span class="w-6 h-6 icon-[tdesign--error-triangle] text-warning align-middle" />
+            <span class="align-middle ml-4">是否确认删除名称为"系统监控"的数据项？</span>
+          </div>
+          <DDialog.Footer>
+            <DButton.Root onClick={() => setModalDelShow(false)}>取消</DButton.Root>
+            <DButton.Root type="primary" onClick={delHandler}>
+              确定
+            </DButton.Root>
+          </DDialog.Footer>
+        </DDialog.Root>
+      </div>
+    </>
   )
 }
 
@@ -127,21 +172,12 @@ function treeMaker<T>(data: any[], pid: string | number = 0, intorFn?: (itm: T) 
   data.forEach((v) => {
     if (v.parentId === pid) {
       v.children = treeMaker(data, v.menuId)
-      if (!v.children?.length) {
-        delete v.children
-      }
+      if (!v.children?.length) delete v.children
       ret.push(v)
       intorFn && intorFn(v)
     }
   })
   return ret
-}
-
-function cellClick<T>(_E: any, _D: T) {
-  const { dataset } = _E.srcElement
-  if (dataset.edit !== undefined) {
-    setOpenDlgData(_D as any)
-  }
 }
 
 export default MenuListSet

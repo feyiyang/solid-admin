@@ -225,7 +225,7 @@ const Home: Component<ComponentProps<'div'>> = () => {
       </div>
       <div role="alert" class="enn-alert my-4 bg-white">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-info shrink-0 w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-        <span>此项目受 ruoyi.vip 等优秀开源项目启发，用 solid.js 和 eggjs 做的个人实验项目。  solid.js 是一个无虚拟dom，比 react 更 react 的框架，更新粒度超细，目前生态还在完善中。  </span>
+        <span>此项目受 ruoyi.vip 等优秀开源项目启发，用 solid.js 和 eggjs 做的个人实验项目(线上mock)。  solid.js 是一个无虚拟dom，比 react 更 react 的框架，更新粒度超细，目前生态还在完善中。  </span>
       </div>
       <Charts />
     </div>
