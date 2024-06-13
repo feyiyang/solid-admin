@@ -1,0 +1,53 @@
+[
+  {
+      "createBy": "admin",
+      "createTime": "2023-04-23 16:13:24",
+      "updateBy": null,
+      "updateTime": null,
+      "remark": "性别男",
+      "dictCode": 1,
+      "dictSort": 1,
+      "dictLabel": "男",
+      "dictValue": "0",
+      "dictType": "sys_user_sex",
+      "cssClass": "",
+      "listClass": "",
+      "isDefault": "Y",
+      "status": "0",
+      "default": true
+  },
+  {
+      "createBy": "admin",
+      "createTime": "2023-04-23 16:13:24",
+      "updateBy": null,
+      "updateTime": null,
+      "remark": "性别女",
+      "dictCode": 2,
+      "dictSort": 2,
+      "dictLabel": "女",
+      "dictValue": "1",
+      "dictType": "sys_user_sex",
+      "cssClass": "",
+      "listClass": "",
+      "isDefault": "N",
+      "status": "0",
+      "default": false
+  },
+  {
+      "createBy": "admin",
+      "createTime": "2023-04-23 16:13:25",
+      "updateBy": null,
+      "updateTime": null,
+      "remark": "性别未知",
+      "dictCode": 3,
+      "dictSort": 3,
+      "dictLabel": "未知",
+      "dictValue": "2",
+      "dictType": "sys_user_sex",
+      "cssClass": "",
+      "listClass": "",
+      "isDefault": "N",
+      "status": "0",
+      "default": false
+  }
+]

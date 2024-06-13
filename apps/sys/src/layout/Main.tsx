@@ -53,8 +53,20 @@ const mainLayout: Component<ComponentProps<'div'>> = (props) => {
 }
 
 function mainMenu(menus: any) {
+  let defOpened, defActive
+  const pathActive = location.pathname.split('/')
+  if (pathActive.length > 1) {
+    defOpened = [pathActive[1]]
+    defActive = pathActive[pathActive.length - 1]
+  }
   return (
-    <DMenu.Root classList={{ collapsed: collapse() }} collapse={collapse} select={menuValueChg}>
+    <DMenu.Root
+      classList={{ collapsed: collapse() }}
+      defaultExpand={defOpened}
+      defaultActive={defActive}
+      collapse={collapse}
+      select={menuValueChg}
+    >
       <For each={menus()}>
         {(menu) => {
           if (menu?.children?.length) {

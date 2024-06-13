@@ -1,18 +1,24 @@
-import { type Component, splitProps } from 'solid-js'
+import { type Component, splitProps, createEffect } from 'solid-js'
 import { Select as KSelect } from '@kobalte/core'
 
 const Root: Component<KSelect.SelectRootProps<any>> = (props) => {
-  const [, rest] = splitProps(props, ['children'])
+  const [local, rest] = splitProps(props, ['children', 'options', 'optionTextValue'])
   return (
     <KSelect.Root
       as="div"
+      options={local.options || []}
       optionValue="value"
-      optionTextValue="label"
+      optionTextValue={local.optionTextValue}
       {...rest}
     >
-      <KSelect.Trigger class="flex w-full enn-select enn-select-bordered enn-select-sm pr-2 justify-between bg-none">
+      <KSelect.Trigger class="flex w-full enn-select enn-select-bordered enn-select-sm pr-2 justify-between bg-none" as="div">
         <KSelect.Value>
-          {(state) => (state.selectedOption() as any).label}
+          {(state) => {
+            return <div>
+              {(state.selectedOption() as any)[local.optionTextValue || 'label' as any]}
+              <span class="icon-[tdesign--close]" />
+            </div> 
+          }}
         </KSelect.Value>
         <KSelect.Icon>
           <span class="icon-[tdesign--chevron-down]"></span>
@@ -28,9 +34,10 @@ const Root: Component<KSelect.SelectRootProps<any>> = (props) => {
 }
 
 const Option: Component<any> = (props) => {
+  const [local, rest] = splitProps(props, ['item', 'label'])
   return (
-    <KSelect.Item class="select-item" item={props.item} {...props}>
-      <KSelect.Label>{props.label}</KSelect.Label>
+    <KSelect.Item class="select-item" item={local.item} {...rest}>
+      <KSelect.Label>{local.label}</KSelect.Label>
       <KSelect.ItemIndicator
         as="span"
         class="select__item-indicator inline-flex"

@@ -1,5 +1,5 @@
 import type { Component } from 'solid-js'
-import { createSignal, splitProps, mergeProps, createEffect } from 'solid-js'
+import { createSignal, splitProps, mergeProps, createEffect, onMount } from 'solid-js'
 import { Menubar } from '@kobalte/core'
 import { MenuContext, useMenuContext } from './menu-context.tsx'
 import type { MenuComp, MenuItemComp } from './constant'
@@ -7,14 +7,16 @@ import { defMenu } from './constant'
 import { Slot, getSlots } from '../../utils/slot.tsx'
 
 const Root: Component<MenuComp> = (props) => {
-  const [activMenu, setActiveMenu] = createSignal<string | string[]>('')
   const merged = mergeProps(defMenu, props)
   const [local, rest] = splitProps(merged, [
     'class',
     'collapse',
     'select',
-    'router'
+    'router',
+    'defaultExpand',
+    'defaultActive'
   ])
+  const [activMenu, setActiveMenu] = createSignal<string | string[]>(local.defaultActive || '')
   let clazz = `enn-menu`
 
   if (local.class) {
@@ -24,11 +26,12 @@ const Root: Component<MenuComp> = (props) => {
   return (
     <MenuContext.Provider
       value={{
-        actived: activMenu,
+        actived: activMenu || local.defaultActive,
         setAct: setActiveMenu,
         collapsed: local.collapse,
         selector: local.select,
-        router: local.router
+        router: local.router,
+        expand: local.defaultExpand,
       }}
     >
       <Menubar.Root as="ul" class={clazz} {...rest} />
@@ -42,6 +45,7 @@ const Item: Component<MenuItemComp> = (props) => {
   const path = local.index
   const name = path?.replace(/\w+\//g, '').trim()
   const clazz = `enn-menu-item ${local.class || ''}`
+  
   return (
     <li class={clazz}>
       <Menubar.Menu>
@@ -73,12 +77,15 @@ const Sub = (props: any) => {
   let timer: any = null
   // const [local] = splitProps(props, ['index', 'class'])
   const slots = getSlots(props.children)
-  const [subShow, setSubShow] = createSignal(false)
-  const { collapsed } = useMenuContext()
+  const { collapsed, expand } = useMenuContext()
+  const [subShow, setSubShow] = createSignal(expand.includes(props.index))
   let detailRef: any = null
   createEffect(() => {
     onFocu(!collapsed(), 0)
     detailRef.open = false
+  })
+  onMount(() => {
+    detailRef.open = subShow()
   })
   return (
     <li onmouseover={() => onFocu(true)} onmouseout={() => onFocu(false, 200)}>

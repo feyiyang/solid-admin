@@ -5,7 +5,8 @@ export const defMenu = {
   mode: 'vertical',
   collapse: false,
   router: false,
-  'unique-opened': true
+  'unique-opened': true,
+  defaultExpand: []
 }
 
 export type MenuComp = ComponentProps<any> & {
@@ -14,6 +15,7 @@ export type MenuComp = ComponentProps<any> & {
   router?: boolean
   'default-active'?: string
   'unique-opened'?: boolean
+  defaultExpand?: any[]
 }
 
 export type MenuItemComp = ComponentProps<'a' | 'button'> &

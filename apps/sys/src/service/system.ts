@@ -4,6 +4,17 @@ const menus = (params: any) => {
   return useFetch({ url: '/api/system/menus/get', method: 'GET', params })
 }
 
+const userSex = () => {
+  return useFetch({ url: '/api/system/dict/type/user_sex', method: 'GET' })
+}
+
+const sysNOD = () => useFetch({ url: '/api/system/dict/type/sys_normal_disable', method: 'GET' })
+
+const userList = () => useFetch({ url: '/api/system/user/list', method: 'GET' })
+
 export const settingServe = {
-  menus
+  menus,
+  userSex,
+  sysNOD,
+  userList
 }

@@ -9,3 +9,12 @@ export const HOMENAME = Symbol('HOME')
 
 export const MENUPATH = '/system/menu'
 export const MENUNAME = Symbol('SYSTEM_MENU')
+
+export const USERPATH = '/system/user'
+export const USERNAME = Symbol('SYSTEM_USER')
+
+export const ROLESPATH = '/system/roles'
+export const ROLESNAME = Symbol('SYSTEM_ROLES')
+
+export const DEPARTMENTPATH = '/system/department'
+export const DEPARTMENTNAME = Symbol('SYSTEM_DEPARTMENT')

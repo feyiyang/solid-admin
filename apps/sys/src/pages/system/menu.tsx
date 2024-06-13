@@ -136,7 +136,20 @@ const MenuListSet: Component<any> = () => {
             搜索
           </DButton.Root>
           <div class="w-full" />
-          <DButton.Root type="primary" size="sm" onClick={() => setMenuModalShow(true)}>
+          <DButton.Root
+            type="primary"
+            size="sm"
+            onClick={() => {
+              setOpenDlgData(
+                produce((state) => {
+                  for (const key in state) {
+                    state[key] = null
+                  }
+                }
+              ))
+              setMenuModalShow(true)
+            }}
+          >
             <span class="icon-[tdesign--add]" />
             新增
           </DButton.Root>
