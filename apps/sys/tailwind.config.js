@@ -19,13 +19,16 @@ export default {
       {
         emerald: {
           ...require("daisyui/src/theming/themes")['emerald'],
-          primary: '#659fff',
           default: "#93a5bc",
+          primary: '#659fff',
+          'primary-content': '#fff',
           secondary: '#06b6d4',
           success: '#4b9956',
-          warning: '#d9c82f',
+          'success-content': '#fff',
+          warning: '#e7c826',
           error: '#dc3d4f',
-          'primary-content': 'white',
+          'error-content': '#fff',
+          'info': '#8d7cd3',
           '.enn-modal-box': {
             padding: '1rem 1.4rem',
           },
@@ -37,3 +40,15 @@ export default {
     prefix: 'enn-'
   }
 }
+
+// {
+// "primary": "#1d4ed8",
+// "secondary": "#60a5fa",
+// "accent": "#34d399",
+// "neutral": "#fdba74",
+// "base-100": "#ffffff",
+// "info": "#d6d3d1",
+// "success": "#84cc16",
+// "warning": "#ea580c",
+// "error": "#fc2626",
+// }

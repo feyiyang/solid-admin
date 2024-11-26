@@ -1,7 +1,7 @@
 import { type Component, Show, createContext } from 'solid-js'
 import { Portal } from 'solid-js/web'
 import { produce } from 'solid-js/store'
-import { DButton, DDialog, DInput, DRadio, DTreeView, DToast } from 'dlibs'
+import { DButton, DDialog, DInput, DRadioGroup, DToast, DTreeView } from 'dlibs'
 
 const ModalMenuContext = createContext<any>()
 
@@ -56,16 +56,22 @@ export const ModalMenu: Component<any> = (props) => {
         open={state.modalMenuShow}
         onOpenChange={setShow}
       >
-        <DRadio.Group class="form-item pb-2" defaultValue={local.openData.menuType || 'M'} onChange={(val: string) => {
-          setDlgState(produce((state) => {
-            state.isBtn = val === 'F'
-          }))
-        }}>
-          <DRadio.GroupLabel class="label">菜单类型:</DRadio.GroupLabel>
-          <DRadio.Radio value="M">目录</DRadio.Radio>
-          <DRadio.Radio value="C">菜单</DRadio.Radio>
-          <DRadio.Radio value="F">按钮</DRadio.Radio>
-        </DRadio.Group>
+        <DRadioGroup.Root
+          class="form-item pb-2"
+          defaultValue={local.openData.menuType || 'M'}
+          onChange={(val: string) => {
+            setDlgState(
+              produce((state) => {
+                state.isBtn = val === 'F'
+              })
+            )
+          }}
+        >
+          <DRadioGroup.GroupLabel class="label">菜单类型:</DRadioGroup.GroupLabel>
+          <DRadioGroup.Radio value="M">目录</DRadioGroup.Radio>
+          <DRadioGroup.Radio value="C">菜单</DRadioGroup.Radio>
+          <DRadioGroup.Radio value="F">按钮</DRadioGroup.Radio>
+        </DRadioGroup.Root>
         <div class="form-item pb-4">
           <span class="label">上级菜单:</span>
           <div class="menu-parent enn-dropdown">
@@ -75,7 +81,9 @@ export const ModalMenu: Component<any> = (props) => {
             <div class="menu-tree enn-dropdown-content">
               {local.tableData.length > 0 && (
                 <DTreeView
-                  data={[{ menuName: '主菜单', menuId: '0', value: '0', children: local.tableData }]}
+                  data={[
+                    { menuName: '主菜单', menuId: '0', value: '0', children: local.tableData }
+                  ]}
                   idName="menuId"
                   labelName="menuName"
                   onSelectionChange={(D) => selectionChg<menuItemT>(D, local.menuData)}
@@ -90,7 +98,11 @@ export const ModalMenu: Component<any> = (props) => {
             class="icon-parent enn-dropdown"
             classList={{ 'enn-dropdown-open': dlgState.dropOpenIndex === 2 }}
           >
-            <DInput.Root class="flex-1" role="button" onClick={() => setDlgState('dropOpenIndex', 2)}>
+            <DInput.Root
+              class="flex-1"
+              role="button"
+              onClick={() => setDlgState('dropOpenIndex', 2)}
+            >
               {!!dlgState.iconSelected && (
                 <>
                   <span class={`w-4 h-4 icon-\[tdesign--${dlgState.iconSelected}\]`} />
@@ -180,10 +192,10 @@ export const ModalMenu: Component<any> = (props) => {
         </div>
         <div class="form-item pb-2" hidden={dlgState.isBtn}>
           <span class="label">是否外链:</span>
-          <DRadio.Group class="flex items-center w206 mr-8" defaultValue="2">
-            <DRadio.Radio value="1">是</DRadio.Radio>
-            <DRadio.Radio value="2">否</DRadio.Radio>
-          </DRadio.Group>
+          <DRadioGroup.Root class="flex items-center w206 mr-8" defaultValue="2">
+            <DRadioGroup.Radio value="1">是</DRadioGroup.Radio>
+            <DRadioGroup.Radio value="2">否</DRadioGroup.Radio>
+          </DRadioGroup.Root>
           <span class="label">路由地址:</span>
           <DInput.Root class="w206">
             <DInput.Input />
@@ -193,28 +205,29 @@ export const ModalMenu: Component<any> = (props) => {
           {!dlgState.isBtn && (
             <>
               <span class="label">显示状态:</span>
-              <DRadio.Group 
+              <DRadioGroup.Root
                 class="flex items-center w206 mr-8"
                 defaultValue={local.openData.visible || '0'}
               >
-                <DRadio.Radio value="0">显示</DRadio.Radio>
-                <DRadio.Radio value="1">隐藏</DRadio.Radio>
-              </DRadio.Group>
+                <DRadioGroup.Radio value="0">显示</DRadioGroup.Radio>
+                <DRadioGroup.Radio value="1">隐藏</DRadioGroup.Radio>
+              </DRadioGroup.Root>
             </>
           )}
           {dlgState.isBtn && (
             <>
-              <span class="label">权限字符:</span>{local.openData.prems}
+              <span class="label">权限字符:</span>
+              {local.openData.prems}
               <DInput.Root class="flex items-center w206 mr-8" value={local.openData.perms}>
                 <DInput.Input />
               </DInput.Root>
             </>
           )}
           <span class="label">菜单状态:</span>
-          <DRadio.Group class="flex items-center w206" defaultValue={local.openData.states || '0'}>
-            <DRadio.Radio value="0">正常</DRadio.Radio>
-            <DRadio.Radio value="1">停用</DRadio.Radio>
-          </DRadio.Group>
+          <DRadioGroup.Root class="flex items-center w206" defaultValue={local.openData.states || '0'}>
+            <DRadioGroup.Radio value="0">正常</DRadioGroup.Radio>
+            <DRadioGroup.Radio value="1">停用</DRadioGroup.Radio>
+          </DRadioGroup.Root>
         </div>
         <DDialog.Footer>
           <DButton.Root class="w-16" size="sm" onClick={() => setShow(false)}>

@@ -14,7 +14,7 @@ export const sizeVariants: any = {
   md: 'enn-input-md'
 }
 
-export type InputRootProp = TextField.TextFieldRootProps & {
+export type InputRootProp = TextField.TextFieldRootProps & ComponentProps<any> & {
   clearable?: boolean
   size?: 'xs' | 'sm' | 'md'
 }

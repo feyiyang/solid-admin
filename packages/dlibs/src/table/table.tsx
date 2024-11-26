@@ -1,11 +1,13 @@
 import { type Component, type ComponentProps, children, createSignal, onMount, splitProps, JSXElement, createEffect } from 'solid-js'
-import { Tabulator } from 'tabulator-tables'
+import { render } from 'solid-js/web'
+import _ from 'lodash'
+import { TabulatorFull as Tabulator, type Options } from 'tabulator-tables'
 import { tabelProps, ColumnDefinition } from './constant'
 
 import 'tabulator-tables/dist/css/tabulator_semanticui.min.css'
 
-const Root: Component<ComponentProps<'div'> & tabelProps> = (props: any) => {
-  const [local, rest] = splitProps(props, ['data', 'height', 'children'])
+const Root: Component<ComponentProps<'div'> & tabelProps & Options> = (props) => {
+  const [local, rest] = splitProps(props, ['data', 'children', 'class'])
   const cld = children(() => local.children)
   let tableRef: any
   let tableInstance: any
@@ -23,30 +25,54 @@ const Root: Component<ComponentProps<'div'> & tabelProps> = (props: any) => {
       })
       console.log(columnCld, local.data, otherCld)
       const table = new Tabulator(tableRef, {
-        layout: 'fitColumns',
-        height: local.height || 120,
-        minHeight: 120,
-        data: local.data || [],
-        columns: columnCld
+        columns: columnCld,
+        ..._.merge({
+          layout: 'fitColumns',
+          placeholder:"暂无数据",
+          data: local.data || [],
+          columnDefaults: {
+            headerSort: false,
+            vertAlign: "middle"
+          }
+        }, rest)
       })
-      tableInstance = table
+      table.on("tableBuilt", () => {
+        tableInstance = table
+      })
     }
   })
   createEffect(() => {
-    if (local.data?.length) {
+    if (local.data && tableInstance) {
       tableInstance.setData(local.data)
     }
   })
   return (
-    <div ref={tableRef}></div>
+    <div ref={tableRef} />
   )
 }
 
-const Columns = (props: ColumnDefinition) => {
-  return {
+const Columns = (props: ColumnDefinition & ComponentProps<any>) => {
+  const [local, rest] = splitProps(props, ['children', 'class'])
+  const cld = children(() => local.children)
+
+  const ret: any = {
     name: 'columns',
-    ...props
-  } as unknown as JSXElement
+    ...rest
+  }
+
+  if (cld()) {
+    const call = cld() as any
+    ret.formatter = (cell: any) => {
+      
+      if (typeof call === 'function') {
+        let ele = document.createElement('div')
+        render(() => call(cell.getData(), cell.getRow().getPosition()),  ele)
+        return ele
+      }
+      return call
+    }
+  }
+  return ret
 }
 
 export const DTable = {

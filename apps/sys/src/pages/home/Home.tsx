@@ -5,7 +5,10 @@ import { homeServe } from '@/service'
 import './style.less'
 
 const [homeState, setHomeState] = createStore<{
-  hh: string, mm: string, ss: string, charts: null | Record<string, []>
+  hh: string
+  mm: string
+  ss: string
+  charts: null | Record<string, []>
 }>({
   hh: '07',
   mm: '00',
@@ -156,9 +159,9 @@ const Home: Component<ComponentProps<'div'>> = () => {
             <p class="text-gray-400">
               今日天气晴朗，气温在15℃至25℃之间，东南风。
               <span class="enn-countdown font-mono text-xl">
-                <span style={{"--value": homeState.hh}}></span>:
-                <span style={{"--value": homeState.mm}}></span>:
-                <span style={{"--value": homeState.ss}}></span>
+                <span style={{ '--value': homeState.hh }} />:
+                <span style={{ '--value': homeState.mm }} />:
+                <span style={{ '--value': homeState.ss }} />
               </span>
             </p>
           </div>
@@ -166,11 +169,11 @@ const Home: Component<ComponentProps<'div'>> = () => {
         <div class="todos">
           <span class="will enn-indicator" title="消息">
             <span class="enn-indicator-item enn-badge enn-badge-sm enn-badge-neutral">99+</span>
-            <span class="icon-[tdesign--chat-message] "></span>
+            <span class="icon-[tdesign--chat-message] " />
           </span>
           <span class="will enn-indicator" title="待办">
             <span class="enn-indicator-item enn-badge enn-badge-sm enn-badge-neutral">19</span>
-            <span class="icon-[tdesign--root-list]"></span>
+            <span class="icon-[tdesign--root-list]" />
           </span>
         </div>
       </div>
@@ -224,13 +227,27 @@ const Home: Component<ComponentProps<'div'>> = () => {
         </div>
       </div>
       <div role="alert" class="enn-alert my-4 bg-white">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-info shrink-0 w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-        <span>此项目受 ruoyi.vip 等优秀开源项目启发，用 solid.js 和 eggjs 做的个人实验项目(线上mock)。  solid.js 是一个无虚拟dom，比 react 更 react 的框架，更新粒度超细，目前生态还在完善中。  </span>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          class="stroke-info shrink-0 w-6 h-6"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+          />
+        </svg>
+        <span>
+          此项目受 ruoyi.vip 等优秀开源项目启发，用 solid.js 和 eggjs 做的个人实验项目(线上mock)。
+          solid.js 是一个无虚拟dom，比 react 更 react 的框架，更新粒度超细，目前生态还在完善中。{' '}
+        </span>
       </div>
       <Charts />
     </div>
   )
 }
-
 
 export default Home

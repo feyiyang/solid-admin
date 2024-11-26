@@ -20,6 +20,10 @@
   "dependencies": {
     "dayjs": "^1.11.11",
     "dlibs": "workspace:*",
+    "lodash": "^4.17.21",
     "sys": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.17.13"
   }
 }

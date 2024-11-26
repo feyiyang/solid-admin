@@ -2,7 +2,7 @@ import { children, splitProps, type Component } from 'solid-js'
 import { RadioGroup } from '@kobalte/core'
 import { radioGroupProps, radioItemProps } from './constant'
 
-const Group: Component<radioGroupProps> = (props) => {
+const Root: Component<radioGroupProps> = (props) => {
   return <RadioGroup.Root {...props} />
 }
 
@@ -11,7 +11,7 @@ const GroupLabel: Component<any> = (props) => {
 }
 
 const Radio: Component<radioItemProps> = (props) => {
-  const [local, rest] = splitProps(props, ['value', 'children'])
+  const [local, rest] = splitProps(props, ['value', 'children', 'orientation'])
   const cld = children(() => local.children)
   return (
     <RadioGroup.Item class="enn-label" value={local.value} {...rest}>
@@ -26,8 +26,8 @@ const Radio: Component<radioItemProps> = (props) => {
   )
 }
 
-export const DRadio = {
-  Group,
+export const DRadioGroup = {
+  Root,
   GroupLabel,
   Radio
 }

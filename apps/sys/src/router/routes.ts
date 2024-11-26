@@ -26,6 +26,14 @@ const routes: ({ name?: symbol } & RouteDefinition<string, unknown>)[] = [
         component: lazy(() => import('../pages/system/departments.tsx'))
       },
       {
+        path: NAMES.ROLESPATH,
+        component: lazy(() => import('../pages/system/roles.tsx'))
+      },
+      {
+        path: NAMES.BASECOMPONENTSPATH,
+        component: lazy(() => import('../pages/tool/gen/index.tsx'))
+      },
+      {
         path: '*404',
         component: lazy(() => import('../pages/NotFound.tsx'))
       }

@@ -13,14 +13,22 @@ const Button: Component<ButtonProps> = (props) => {
     'size',
     'ghost',
     'outline',
-    'circle'
+    'circle',
+    'link',
+    'glass',
+    'round'
   ])
   const cld = children(() => local.children) || ''
-  const clazz = `enn-btn enn-btn-${local.type} enn-btn-${local.size} ${local.class || ''}`
+  const clazz = `enn-btn ${local.class || ''}`
   const clazzObj = {
+    [`enn-btn-${local.type}`]: local.type && !local.link,
+    [`enn-btn-${local.size}`]: local.size && !local.link,
     'enn-ghost': local.ghost,
     'enn-btn-outline': local.outline,
-    'enn-btn-circle': local.circle
+    'enn-btn-circle': local.circle,
+    'enn-btn-link': local.link,
+    'enn-btn-round': local.round,
+    'enn-glass': local.glass,
   }
 
   return (

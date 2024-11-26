@@ -10,20 +10,19 @@ import { InputContext } from './input-context'
 
 const Root: Component<InputRootProp> = (props) => {
   const merged = mergeProps(defInput, props)
-  const [local, rest] = splitProps(merged, ['size', 'class', 'asChild'])
+  const [local, rest] = splitProps(merged, ['size', 'class'])
 
   return (
     <InputContext.Provider value={{ size: local.size }}>
       <TextField.Root
         class={`enn-input enn-input-bordered flex items-center gap-2 ${sizeVariants[local.size]} ${local.class || ''}`}
-        asChild={local.asChild}
         as="label"
         {...rest}
       />
     </InputContext.Provider>
   )
 }
-const Input: Component<ComponentProps<'input'>> = (props) => {
+const Input: Component<ComponentProps<any>> = (props) => {
   const [local] = splitProps(props, ['class'])
   return <TextField.Input class={`grow ${local.class || ''}`} {...props} />
 }

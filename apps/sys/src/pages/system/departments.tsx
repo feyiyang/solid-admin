@@ -1,5 +1,5 @@
-import { type Component, createEffect } from "solid-js"
-import { DButton, DInput, DSelect, DTable } from "dlibs"
+import { type Component, createEffect } from 'solid-js'
+import { DButton, DInput, DSelect, DTable } from 'dlibs'
 import { settingServe } from '@/service'
 import './style.less'
 
@@ -18,8 +18,8 @@ const User: Component<any> = () => {
       produce((state) => {
         state.user_sex = sexRes() as any
         state.sys_normal_disable = sysNODRes() as any
-      }
-    ))
+      })
+    )
   })
   createEffect(() => {
     if (!uList.loading) {
@@ -37,7 +37,7 @@ const User: Component<any> = () => {
         </div>
         <div class="form-item pr-4">
           <span class="label">状态</span>
-          <DSelect.Root 
+          <DSelect.Root
             class="w-32"
             placeholder="请选择"
             options={deptStats.sys_normal_disable}
@@ -48,7 +48,7 @@ const User: Component<any> = () => {
             }}
             itemComponent={(props) => (
               <DSelect.Option item={props.item} label={props.item.rawValue.dictLabel} />
-            )} 
+            )}
           />
         </div>
         <div class="form-item pr-4">

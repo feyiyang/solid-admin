@@ -12,9 +12,12 @@ const sysNOD = () => useFetch({ url: '/api/system/dict/type/sys_normal_disable',
 
 const userList = () => useFetch({ url: '/api/system/user/list', method: 'GET' })
 
+const rolesList = () => useFetch({ url: '/api/system/role/list', method: 'GET' })
+
 export const settingServe = {
   menus,
   userSex,
   sysNOD,
-  userList
+  userList,
+  rolesList
 }

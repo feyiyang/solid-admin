@@ -1,3 +1,21 @@
+@import url(../assets/base.less);
 .enn-btn {
   --rounded-btn: 0.2rem;
+  // @apply h-10 min-h-10;
+  & + &{
+    @apply ml-2;
+  }
+  &-md {
+    min-height: 2.4rem;
+    height: 2.4rem;
+  }
+  &-link {
+    @apply h-auto min-h-fit p-0;
+  }
+  &-round {
+    @apply rounded-full;
+  }
+  &-circle {
+    @apply w-10 rounded-full;
+  }
 }

@@ -70,42 +70,6 @@
             }
         },
         {
-            "name": "Post",
-            "path": "post",
-            "hidden": false,
-            "component": "system/post/index",
-            "meta": {
-                "title": "岗位管理",
-                "icon": "post",
-                "noCache": false,
-                "link": null
-            }
-        },
-        {
-            "name": "Dict",
-            "path": "dict",
-            "hidden": false,
-            "component": "system/dict/index",
-            "meta": {
-                "title": "字典管理",
-                "icon": "dict",
-                "noCache": false,
-                "link": null
-            }
-        },
-        {
-            "name": "Config",
-            "path": "config",
-            "hidden": false,
-            "component": "system/config/index",
-            "meta": {
-                "title": "参数设置",
-                "icon": "edit",
-                "noCache": false,
-                "link": null
-            }
-        },
-        {
             "name": "Notice",
             "path": "notice",
             "hidden": false,
@@ -125,7 +89,7 @@
             "component": "ParentView",
             "alwaysShow": true,
             "meta": {
-                "title": "日志管理",
+                "title": "内层级菜单",
                 "icon": "log",
                 "noCache": false,
                 "link": null
@@ -137,7 +101,7 @@
                     "hidden": false,
                     "component": "monitor/operlog/index",
                     "meta": {
-                        "title": "操作日志",
+                        "title": "内层菜单一",
                         "icon": "form",
                         "noCache": false,
                         "link": null
@@ -149,53 +113,13 @@
                     "hidden": false,
                     "component": "monitor/logininfor/index",
                     "meta": {
-                        "title": "登录日志",
+                        "title": "内层菜单二",
                         "icon": "logininfor",
                         "noCache": false,
                         "link": null
                     }
                 }
             ]
-        }
-    ]
-},
-{
-    "name": "Monitor",
-    "path": "/monitor",
-    "hidden": false,
-    "redirect": "noRedirect",
-    "component": "Layout",
-    "alwaysShow": true,
-    "meta": {
-        "title": "系统监控",
-        "icon": "icon-[tdesign--system-regulation]",
-        "noCache": false,
-        "link": null
-    },
-    "children": [
-        {
-            "name": "Online",
-            "path": "online",
-            "hidden": false,
-            "component": "monitor/online/index",
-            "meta": {
-                "title": "在线用户",
-                "icon": "online",
-                "noCache": false,
-                "link": null
-            }
-        },
-        {
-            "name": "Job",
-            "path": "job",
-            "hidden": false,
-            "component": "monitor/job/index",
-            "meta": {
-                "title": "定时任务",
-                "icon": "job",
-                "noCache": false,
-                "link": null
-            }
         }
     ]
 },
@@ -207,7 +131,7 @@
     "component": "Layout",
     "alwaysShow": true,
     "meta": {
-        "title": "系统工具",
+        "title": "组件工具",
         "icon": "icon-[tdesign--work]",
         "noCache": false,
         "link": null
@@ -231,20 +155,8 @@
             "hidden": false,
             "component": "tool/gen/index",
             "meta": {
-                "title": "代码生成",
+                "title": "基础组件",
                 "icon": "code",
-                "noCache": false,
-                "link": null
-            }
-        },
-        {
-            "name": "Swagger",
-            "path": "swagger",
-            "hidden": false,
-            "component": "tool/swagger/index",
-            "meta": {
-                "title": "系统接口",
-                "icon": "swagger",
                 "noCache": false,
                 "link": null
             }
