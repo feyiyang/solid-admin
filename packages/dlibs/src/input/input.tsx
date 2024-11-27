@@ -13,16 +13,16 @@ const Root: Component<InputRootProp> = (props) => {
   const merged = mergeProps(defInput, props)
   const [local, rest] = splitProps(merged, ['size', 'class', 'children'])
 
-  const cld = children(() => local.children)
-  console.log(cld(), props)
+  // const cld = children(() => local.children)
+  // console.log(cld(), props)
 
   return (
     <InputContext.Provider value={{ size: local.size }}>
       <TextField
         class={`enn-input enn-input-bordered flex items-center gap-2 ${sizeVariants[local.size]} ${local.class || ''}`}
         as="label"
-        {...rest}
-      >{cld()}</TextField>
+        {...props}
+      />
     </InputContext.Provider>
   )
 }
