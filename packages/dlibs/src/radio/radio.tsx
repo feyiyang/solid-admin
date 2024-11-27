@@ -23,7 +23,7 @@ const Radio: Component<radioItemProps> = (props) => {
   return (
     <RadioGroup.Item class="enn-radio-label" value={local.value} {...rest}>
       <RadioGroup.ItemInput ref={rdRef} />
-      <RadioGroup.ItemControl<any> class="enn-radio" disabled={props.disabled} aria-checked={rdRef.checked}>
+      <RadioGroup.ItemControl<typeof RadioGroup.ItemControl & {disabled: boolean}> class="enn-radio" disabled={props.disabled} aria-checked={rdRef.checked}>
         <RadioGroup.ItemIndicator class="enn-radio-indicator" />
       </RadioGroup.ItemControl>
       <RadioGroup.ItemLabel class="enn-label-text">
