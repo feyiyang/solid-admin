@@ -1,5 +1,5 @@
 import { children, splitProps, type Component } from 'solid-js'
-import { RadioGroup, RadioGroupItemControlOptions } from '@kobalte/core/radio-group'
+import { RadioGroup } from '@kobalte/core/radio-group'
 import { radioGroupProps, radioItemProps } from './constant'
 interface RadioGroup {
   ItemControl: {
