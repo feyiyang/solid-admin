@@ -34,18 +34,6 @@
             }
         },
         {
-            "name": "User",
-            "path": "user",
-            "hidden": false,
-            "component": "system/user/index",
-            "meta": {
-                "title": "用户管理",
-                "icon": "icon-[tdesign--user-setting]",
-                "noCache": false,
-                "link": null
-            }
-        },
-        {
             "name": "Role",
             "path": "role",
             "hidden": false,
@@ -58,25 +46,13 @@
             }
         },
         {
-            "name": "Dept",
-            "path": "dept",
-            "hidden": false,
-            "component": "system/dept/index",
-            "meta": {
-                "title": "部门管理",
-                "icon": "icon-[tdesign--tree-round-dot]",
-                "noCache": false,
-                "link": null
-            }
-        },
-        {
             "name": "Notice",
             "path": "notice",
             "hidden": false,
             "component": "system/notice/index",
             "meta": {
                 "title": "通知公告",
-                "icon": "message",
+                "icon": "icon-[tdesign--system-messages]",
                 "noCache": false,
                 "link": null
             }

@@ -43,10 +43,7 @@ const User: Component<any> = () => {
             options={deptStats.sys_normal_disable}
             optionValue="dictValue"
             optionTextValue="dictLabel"
-            onChange={(d) => {
-              console.log(d)
-            }}
-            itemComponent={(props) => (
+            itemComponent={(props: any) => (
               <DSelect.Option item={props.item} label={props.item.rawValue.dictLabel} />
             )}
           />

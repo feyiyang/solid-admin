@@ -47,7 +47,7 @@ const Roles: Component<any> = () => {
             options={rolesStats.sys_normal_disable}
             optionValue="dictValue"
             optionTextValue="dictLabel"
-            itemComponent={(props) => (
+            itemComponent={(props: any) => (
               <DSelect.Option item={props.item} label={props.item.rawValue.dictLabel} />
             )}
           >

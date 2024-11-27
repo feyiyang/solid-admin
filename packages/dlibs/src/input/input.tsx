@@ -2,8 +2,7 @@ import {
   splitProps,
   type Component,
   mergeProps,
-  ComponentProps,
-  children
+  ComponentProps
 } from 'solid-js'
 import { TextField } from '@kobalte/core/text-field'
 import { type InputRootProp, defInput, sizeVariants } from './constant'
@@ -11,7 +10,7 @@ import { InputContext } from './input-context'
 
 const Root: Component<InputRootProp> = (props) => {
   const merged = mergeProps(defInput, props)
-  const [local, rest] = splitProps(merged, ['size', 'class', 'children'])
+  const [local,] = splitProps(merged, ['size', 'class', 'children'])
 
   // const cld = children(() => local.children)
   // console.log(cld(), props)

@@ -34,7 +34,7 @@ const Root = (props: AlertDialog.AlertDialogRootProps & ComponentProps<any>) => 
     )
 }
 
-const useAlertDialog = () => {
+export const useAlertDialog = () => {
   const modal = {
     confirm () {
       return (

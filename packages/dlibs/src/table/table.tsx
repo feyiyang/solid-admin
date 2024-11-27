@@ -1,4 +1,4 @@
-import { type Component, type ComponentProps, children, createSignal, onMount, splitProps, JSXElement, createEffect } from 'solid-js'
+import { type Component, type ComponentProps, children, onMount, splitProps, createEffect } from 'solid-js'
 import { render } from 'solid-js/web'
 import _ from 'lodash'
 import { TabulatorFull as Tabulator, type Options } from 'tabulator-tables'

@@ -1,5 +1,5 @@
 import { ComponentProps } from 'solid-js'
-import { Button } from '@kobalte/core'
+import { ButtonRootProps } from '@kobalte/core/button'
 
 export const styleVariants = {
   type: {
@@ -39,7 +39,7 @@ export const defButton = {
   'native-type': 'button'
 }
 
-export type ButtonProps = Omit<Button.ButtonRootProps, 'type'> &
+export type ButtonProps = Omit<ButtonRootProps, 'type'> &
   Omit<ComponentProps<'input' | 'button'>, 'type'> & {
     type?: keyof typeof styleVariants.type
     size?: keyof typeof styleVariants.size

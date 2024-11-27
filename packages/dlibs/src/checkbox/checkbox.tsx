@@ -1,4 +1,4 @@
-import { children, createEffect, onMount, splitProps, type ComponentProps } from "solid-js"
+import { children, splitProps, type ComponentProps } from "solid-js"
 
 import { Checkbox } from "@kobalte/core/checkbox"
 

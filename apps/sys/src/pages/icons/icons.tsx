@@ -51,6 +51,7 @@ const icons: Component<any> = () => {
       <i class="icon-[tdesign--indent-left]" title="icon-[tdesign--indent-left]" />
       <i class="icon-[tdesign--indent-right]" title="icon-[tdesign--indent-right]" />
       <i class="icon-[tdesign--error-circle]" title="icon-[tdesign--error-circle]" />
+      <i class="icon-[tdesign--system-messages]" title="icon-[tdesign--system-messages]" />
     </div>
   );
 };

@@ -1,10 +1,15 @@
 import { children, splitProps, type Component } from 'solid-js'
-import { RadioGroup } from '@kobalte/core'
+import { RadioGroup, RadioGroupItemControlOptions } from '@kobalte/core/radio-group'
 import { radioGroupProps, radioItemProps } from './constant'
+interface RadioGroup {
+  ItemControl: {
+    disabled: boolean
+  }
+}
 
 const Root: Component<radioGroupProps> = (props) => {
   const [local, rest] = splitProps(props, ['orientation', 'class'])
-  return <RadioGroup.Root class={`enn-radio-group-${local.orientation || 'horizontal'} ${local.class || ''}`} {...rest} />
+  return <RadioGroup class={`enn-radio-group-${local.orientation || 'horizontal'} ${local.class || ''}`} {...rest} />
 }
 
 const GroupLabel: Component<any> = (props) => {
@@ -18,7 +23,7 @@ const Radio: Component<radioItemProps> = (props) => {
   return (
     <RadioGroup.Item class="enn-radio-label" value={local.value} {...rest}>
       <RadioGroup.ItemInput ref={rdRef} />
-      <RadioGroup.ItemControl class="enn-radio" disabled={props.disabled} aria-checked={rdRef.checked}>
+      <RadioGroup.ItemControl<any> class="enn-radio" disabled={props.disabled} aria-checked={rdRef.checked}>
         <RadioGroup.ItemIndicator class="enn-radio-indicator" />
       </RadioGroup.ItemControl>
       <RadioGroup.ItemLabel class="enn-label-text">
