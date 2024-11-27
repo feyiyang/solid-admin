@@ -4,9 +4,20 @@ import { DRadioGroup } from "dlibs"
 const RadioContain: Component<any> = () => {
   return (
     <div class="gap-4">
-      <div class="enn-divider enn-divider-start">基础用法</div>
-      <div>
-        <DRadioGroup.Root>
+      <div class="enn-divider enn-divider-start">单选框组</div>
+      <DRadioGroup.Root>
+        <DRadioGroup.Radio value="1">选项</DRadioGroup.Radio>
+        <DRadioGroup.Radio value="2">选项</DRadioGroup.Radio>
+      </DRadioGroup.Root>
+      <div class="enn-divider enn-divider-start">禁用</div>
+      <div class="grid grid-cols-4">
+        <DRadioGroup.Root class="mr-8" defaultValue="1">
+          <span class="mr-6">禁用项</span>
+          <DRadioGroup.Radio value="1" disabled>选项</DRadioGroup.Radio>
+          <DRadioGroup.Radio value="2">选项</DRadioGroup.Radio>
+        </DRadioGroup.Root>
+        <DRadioGroup.Root disabled>
+          <span class="ml-16 mr-6">禁用组</span>
           <DRadioGroup.Radio value="1">选项</DRadioGroup.Radio>
           <DRadioGroup.Radio value="2">选项</DRadioGroup.Radio>
         </DRadioGroup.Root>

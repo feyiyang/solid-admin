@@ -2,24 +2,27 @@
 
 .@{pre}{
   &radio {
-    width: 16px;
-    height: 16px;
-    @apply flex items-center justify-center;
-    &-input:checked + div{
-      background-image: none;
-      border-color: #444c4d;
-      background-color: #444c4d;
-      box-shadow: 0 0 0 4px #fff inset,0 0 0 4px #fff inset;
+    @apply w-5 h-5 inline-flex justify-center;
+    cursor: inherit;
+    &-group-horizontal{
+      @apply inline-flex;
+    }
+    &-control {
+      @apply size-4 rounded-full border-2;
     }
   }
-  &label{
-    @apply cursor-pointer;
-    text-indent: 8px;
+  &radio-label{
+    @apply inline-flex items-center cursor-pointer;
+    
+    &[data-disabled] {
+      @apply cursor-not-allowed opacity-55;
+    }
     &:not(:last-of-type) {
-      @apply mr-4;
+      @apply pr-4;
     }
-    &-text{
-      cursor: inherit;
-    }
+  }
+  &label-text{
+    cursor: inherit;
+    text-indent: 8px;
   }
 }

@@ -2,6 +2,8 @@ import { type ComponentProps } from "solid-js"
 import IconTDesign from '../../icons/icons'
 import ButtonContain from './components/buttons'
 import RadioContain from "./components/radios"
+import CheckBoxContain from "./components/checks"
+import InputContain from "./components/inputs"
 import './style.less'
 
 const BaseComponent: ComponentProps<any> = () => {
@@ -28,6 +30,16 @@ const BaseComponent: ComponentProps<any> = () => {
         <input type="radio" name="my_tabs_1" role="tab" class="enn-tab" aria-label="单选框" />
         <div role="tabpanel" class="enn-tab-content p-6 border-base-300 rounded-box">
           <RadioContain />
+        </div>
+
+        <input type="radio" name="my_tabs_1" role="tab" class="enn-tab" aria-label="多选框"/>
+        <div role="tabpanel" class="enn-tab-content p-6 border-base-300 rounded-box">
+          <CheckBoxContain />
+        </div>
+
+        <input type="radio" name="my_tabs_1" role="tab" class="enn-tab" aria-label="输入框"/>
+        <div role="tabpanel" class="enn-tab-content p-6 border-base-300 rounded-box">
+          <InputContain />
         </div>
       </div>
     </div>

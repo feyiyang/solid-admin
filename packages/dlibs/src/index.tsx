@@ -1,5 +1,5 @@
 /* @refresh reload */
-import './index.css'
+import './index.less'
 
 export * from './button'
 export * from './menu'
@@ -13,3 +13,4 @@ export * from './toast'
 export * from './table'
 export * from './switch'
 export * from './alert'
+export * from './checkbox'

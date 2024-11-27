@@ -1,0 +1,23 @@
+@import url(../assets/base.less);
+
+.@{pre} {
+  &checkbox-label {
+    @apply mr-4 inline-flex items-center cursor-pointer;
+    &[data-disabled]{
+      @apply cursor-not-allowed opacity-55;
+      .enn-checkbox {
+        @apply bg-gray-200;
+      }
+    }
+  }
+  &checkbox {
+    @apply w-5 h-5;
+    cursor: inherit;
+    i {
+      font-size: 20px;
+    }
+  }
+  &label-text {
+    text-indent: 8px;
+  }
+}

@@ -3,7 +3,7 @@ import { DButton } from "dlibs"
 const ButtonContain:Component<any> = () => {
   return (
     <>
-      <div class="enn-divider enn-divider-start">基础用法</div>
+      <div class="enn-divider enn-divider-start">基本用法</div>
       <DButton.Root>默认按钮</DButton.Root>
       <DButton.Root type="primary">主要按钮</DButton.Root>
       <DButton.Root type="success">成功按钮</DButton.Root>
