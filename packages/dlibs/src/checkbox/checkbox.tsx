@@ -10,7 +10,7 @@ const Root = (props: ComponentProps<any>) => {
   return (
     <Checkbox class="enn-checkbox-label" {...rest}>
       <Checkbox.Input ref={ckRef} />
-      <Checkbox.Control class='enn-checkbox' classList={{ 'enn-checkbox-indeterminate': local.indeterminate }} aria-checked={ckRef.checked} />
+      <Checkbox.Control class='enn-checkbox' classList={{ 'enn-checkbox-indeterminate': local.indeterminate }} aria-checked={ckRef.checked} as="button" />
       <Checkbox.Label class="enn-label-text">
         {cld()}
       </Checkbox.Label>

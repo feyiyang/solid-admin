@@ -20,9 +20,12 @@
     &:not(:last-of-type) {
       @apply pr-4;
     }
+    .@{pre}label-text{
+      padding-left: 8px;
+      cursor: inherit;
+    }
   }
-  &label-text{
-    cursor: inherit;
-    text-indent: 8px;
+  &radio-item:not(:last-of-type) {
+    margin-right: 16px;
   }
 }

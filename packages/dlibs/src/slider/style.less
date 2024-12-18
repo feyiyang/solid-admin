@@ -1,0 +1,47 @@
+@import url(../assets/base.less);
+
+.@{pre} {
+  &slider-root {
+    appearance: none;
+    --focus-shadow: theme(colors.primary / 70%);
+    --range-shdw: theme(colors.primary);
+    @apply flex items-center flex-col;
+    &[data-disabled] {
+      opacity: .65;
+    }
+  }
+  &slider-label {
+    @apply w-full flex justify-between;
+  }
+  &slider-track {
+    @apply relative h-2 w-full rounded-box bg-base-content/10;
+  }
+  &slider-fill {
+    @apply absolute bg-primary/80 rounded-box;
+    height: 100%;
+  }
+  .thumb_init {
+    width: 16px;
+    height: 16px;
+    margin-top: -4px;
+  }
+  &slider-thumb {
+    .thumb_init();
+    top: 0;
+    box-shadow: 0 0 0 3px var(--focus-shadow);
+    @apply rounded-full border border-primary bg-base-100 cursor-pointer;
+    transition-property: width, height, margin;
+    transition-duration: 0.1s;
+    &:hover {
+      width: 20px;
+      height: 20px;
+      margin-top: -6px;
+    }
+    &[data-disabled] {
+      @apply cursor-not-allowed;
+      &:hover {
+        .thumb_init();
+      }
+    }
+  }
+}

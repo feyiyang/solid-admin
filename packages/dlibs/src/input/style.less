@@ -2,8 +2,28 @@
 
 .@{pre}input {
   // padding: 0;
+  // input {
+  //   margin: 0 -1rem;
+  //   padding: 0 1rem;
+  // }
+  overflow: hidden;
   input {
-    margin: 0 -1rem;
-    padding: 0 1rem;
+    @apply w-full;
+  }
+  .btn-clear {
+    @apply hidden cursor-pointer;
+  }
+  &:hover {
+    .btn-clear {
+      display: block;
+    }
+  }
+}
+.@{pre}textarea {
+  // border: 2px #000 solid;
+  padding-right: 0.2rem;
+  &:focus {
+    box-shadow: none;
+    @apply border-base-content/20 outline-base-content/20 outline outline-2 outline-offset-2;
   }
 }

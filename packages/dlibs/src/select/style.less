@@ -1,6 +1,6 @@
 @import url(../assets//base.less);
 .@{pre}select-content {
-  @apply p-1 enn-dropdown-open bg-white border;
+  @apply py-1 enn-dropdown-open bg-white border rounded-sm shadow;
   z-index: 99;
   transform-origin: var(--kb-select-content-transform-origin);
   animation: contentHide 200ms ease-in forwards;
@@ -11,14 +11,66 @@
     &:not(:last-of-type) {
       @apply mb-1;
     }
-    @apply flex justify-between items-center p-1 cursor-pointer text-sm;
+    @apply flex justify-between items-center px-2 py-1 cursor-pointer text-sm;
     &:hover {
       @apply bg-slate-50;
+    }
+    &-disabled {
+      @apply bg-none opacity-50 cursor-not-allowed;
+      &:hover {
+        @apply bg-none;
+      }
+    }
+    &[data-selected] {
+      @apply bg-primary/10 text-primary;
     }
   }
 }
 .@{pre}{
-  &{}
+  &select {
+    height: auto;
+    position: relative;
+    @apply items-center;
+    &-multiple {
+      padding: 0;
+      padding-right: 0.5rem;
+      .@{pre}value-item {
+        padding: 4px;
+        @apply inline-flex items-center whitespace-nowrap bg-base-200/50 border;
+        border-radius: 4px;
+        line-height: 1;
+      }
+      .@{pre}select-values{
+        padding: 4px;
+        @apply flex flex-wrap gap-1;
+        &[data-placeholder-shown] {
+          padding: 0;
+          text-indent: 1rem;
+        }
+      }
+      .@{pre}btn-clear {
+        margin-left: 2px;
+      }
+    }
+    
+    .@{pre}select-values {
+      flex: 1;
+    }
+    &:hover {
+      .@{pre}select-values:not([data-placeholder-shown]) + .chevron-down {
+        display: none;
+      }
+      .@{pre}btn-clearall {
+        @apply block;
+      }
+    }
+  }
+  &btn-clearall {
+    @apply hidden absolute right-2 top-1/2 h-8 -translate-y-4 opacity-40;
+    &:hover {
+      @apply opacity-70;
+    }
+  }
 }
 
 @keyframes contentShow {

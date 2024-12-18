@@ -1,8 +1,8 @@
-import { type Component, splitProps, ComponentProps } from 'solid-js'
+import { type Component, splitProps, ComponentProps, Show, For } from 'solid-js'
 import { Select as KSelect } from '@kobalte/core'
 
 const Root: Component<KSelect.SelectRootProps<any> & ComponentProps<any>> = (props) => {
-  const [local, rest] = splitProps(props, ['children', 'options', 'optionTextValue'])
+  const [local, rest] = splitProps(props, ['children', 'options', 'optionTextValue', 'clearable'])
   return (
     <KSelect.Root
       as="div"
@@ -11,16 +11,32 @@ const Root: Component<KSelect.SelectRootProps<any> & ComponentProps<any>> = (pro
       optionTextValue={local.optionTextValue}
       {...rest}
     >
-      <KSelect.Trigger class="flex w-full enn-select enn-select-bordered enn-select-sm pr-2 justify-between bg-none" as="div">
-        <KSelect.Value>
-          {(state) => {
-            return <div>
-              {(state.selectedOption() as any)[local.optionTextValue || 'label' as any]}
-              <span class="icon-[tdesign--close]" />
-            </div> 
-          }}
+      <KSelect.Trigger class="flex w-full enn-select enn-select-bordered enn-select-sm pr-2 justify-between bg-none" classList={{
+        'enn-select-disabled': props.disabled,
+        'enn-select-multiple': props.multiple
+      }} as="div">
+        <KSelect.Value class='enn-select-values'>
+          {(state) => (
+            <>
+              <For each={state.selectedOptions()}>
+                {(option: any) => (
+                  <span class='enn-value-item' onPointerDown={e => e.stopPropagation()}>
+                    {option.label}
+                    <Show when={props.multiple}>
+                      <button class='enn-btn-clear' onClick={() => state.remove(option)}>
+                        <i class="icon-[tdesign--close]" />
+                      </button>
+                    </Show>
+                  </span>
+                )}
+              </For>
+              <Show when={props.clearable}>
+                <span class="icon-[tdesign--close-circle] enn-btn-clearall" onPointerDown={e => e.stopPropagation()} onClick={state.clear} />
+              </Show>
+            </> 
+          )}
         </KSelect.Value>
-        <KSelect.Icon>
+        <KSelect.Icon class='chevron-down'>
           <span class="icon-[tdesign--chevron-down]"></span>
         </KSelect.Icon>
       </KSelect.Trigger>
@@ -36,7 +52,9 @@ const Root: Component<KSelect.SelectRootProps<any> & ComponentProps<any>> = (pro
 const Option: Component<any> = (props) => {
   const [local, rest] = splitProps(props, ['item', 'label'])
   return (
-    <KSelect.Item class="select-item" item={local.item} {...rest}>
+    <KSelect.Item class="select-item" classList={{
+      'select-item-disabled': local.item.disabled
+    }} item={local.item} {...rest}>
       <KSelect.Label>{local.label}</KSelect.Label>
       <KSelect.ItemIndicator
         as="span"

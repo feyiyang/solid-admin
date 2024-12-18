@@ -21,13 +21,11 @@ const Radio: Component<radioItemProps> = (props) => {
   const cld = children(() => local.children)
   let rdRef: any
   return (
-    <RadioGroup.Item class="enn-radio-label" value={local.value} {...rest}>
+    <RadioGroup.Item class='enn-radio-item' value={local.value} {...rest}>
       <RadioGroup.ItemInput ref={rdRef} />
-      <RadioGroup.ItemControl<typeof RadioGroup.ItemControl & {disabled: boolean}> class="enn-radio" disabled={props.disabled} aria-checked={rdRef.checked}>
-        <RadioGroup.ItemIndicator class="enn-radio-indicator" />
-      </RadioGroup.ItemControl>
-      <RadioGroup.ItemLabel class="enn-label-text">
-        {cld()}
+      <RadioGroup.ItemLabel class="enn-radio-label">
+        <RadioGroup.ItemControl class="enn-radio" disabled={props.disabled} aria-checked={rdRef.checked} as="button" />
+        <span class="enn-label-text">{cld()}</span>
       </RadioGroup.ItemLabel>
     </RadioGroup.Item>
   )
