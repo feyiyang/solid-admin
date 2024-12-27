@@ -1,6 +1,6 @@
-import type { Component, ComponentProps } from "solid-js"
-import { createSignal } from "solid-js"
-import { DInput } from "dlibs"
+import type { Component, ComponentProps } from 'solid-js'
+import { createSignal } from 'solid-js'
+import { DInput } from 'dlibs'
 
 const InputContain: Component<ComponentProps<any>> = () => {
   const [defVal, setDefVal] = createSignal('可清空')
@@ -9,13 +9,13 @@ const InputContain: Component<ComponentProps<any>> = () => {
       <div class="enn-divider enn-divider-start">Text Field</div>
       <DInput.Root class="max-w-md">
         prefix
-        <DInput.Input placeholder="Text Field"></DInput.Input>
+        <DInput.Input placeholder="Text Field" />
         suffix
       </DInput.Root>
       <div class="enn-divider enn-divider-start">禁用状态</div>
       <DInput.Root disabled class="max-w-md">
         prefix
-        <DInput.Input placeholder="Text Field"></DInput.Input>
+        <DInput.Input placeholder="Text Field" />
         suffix
       </DInput.Root>
       <div class="enn-divider enn-divider-start">可清空</div>

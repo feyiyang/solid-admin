@@ -1,0 +1,39 @@
+@import url(../assets/base.less);
+
+.@{pre} {
+  &rate-group {
+    --shdw: theme(colors.base-300);
+    @apply flex gap-x-1 w-fit;
+    &[data-readonly] {
+      .@{pre}rate-item {
+        &:hover {
+          transform: none;
+        }
+        i {
+          cursor: auto;
+        }
+      }
+    }
+  }
+  &rate-item {
+    @apply w-6 h-6;
+    i {
+      @apply inline-block w-full h-full cursor-pointer;
+      background-color: var(--shdw);
+    }
+    &:hover {
+      transform: scale(1.2);
+    }
+    &[data-highlighted] {
+      --shdw: theme(colors.primary);
+      &[data-half] {
+        .@{pre}mask-half-2 {
+          --shdw: theme(colors.base-300);
+        }
+      }
+    }
+    .@{pre}mask-half-1, .@{pre}mask-half-2 {
+      width: 50%;
+    }
+  }
+}

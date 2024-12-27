@@ -1,5 +1,5 @@
-import type { Component } from 'solid-js';
-import './style.less';
+import type { Component } from 'solid-js'
+import './style.less'
 
 const icons: Component<any> = () => {
   return (
@@ -28,7 +28,10 @@ const icons: Component<any> = () => {
       <i class="icon-[tdesign--check-circle]" title="icon-[tdesign--check-circle]" />
       <i class="icon-[tdesign--check-circle-filled]" title="icon-[tdesign--check-circle-filled]" />
       <i class="icon-[tdesign--check-rectangle]" title="icon-[tdesign--check-rectangle]" />
-      <i class="icon-[tdesign--check-rectangle-filled]" title="icon-[tdesign--check-rectangle-filled]" />
+      <i
+        class="icon-[tdesign--check-rectangle-filled]"
+        title="icon-[tdesign--check-rectangle-filled]"
+      />
       <i class="icon-[tdesign--close]" title="icon-[tdesign--close]" />
       <i class="icon-[tdesign--close-circle]" title="icon-[tdesign--close-circle]" />
       <i class="icon-[tdesign--close-circle-filled]" title="icon-[tdesign--close-circle-filled]" />
@@ -52,8 +55,10 @@ const icons: Component<any> = () => {
       <i class="icon-[tdesign--indent-right]" title="icon-[tdesign--indent-right]" />
       <i class="icon-[tdesign--error-circle]" title="icon-[tdesign--error-circle]" />
       <i class="icon-[tdesign--system-messages]" title="icon-[tdesign--system-messages]" />
+      <i class="icon-[tdesign--star]" title="icon-[tdesign--star]" />
+      <i class="icon-[tdesign--star-filled]" title="icon-[tdesign--star-filled]" />
     </div>
-  );
-};
+  )
+}
 
-export default icons;
+export default icons

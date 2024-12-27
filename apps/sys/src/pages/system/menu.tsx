@@ -145,8 +145,8 @@ const MenuListSet: Component<any> = () => {
                   for (const key in state) {
                     state[key] = null
                   }
-                }
-              ))
+                })
+              )
               setMenuModalShow(true)
             }}
           >
@@ -169,8 +169,10 @@ const MenuListSet: Component<any> = () => {
             <span class="align-middle ml-4">是否确认删除名称为"系统监控"的数据项？</span>
           </div>
           <DDialog.Footer>
-            <DButton.Root size='sm' onClick={() => setModalDelShow(false)}>取消</DButton.Root>
-            <DButton.Root type="primary" size='sm' onClick={delHandler}>
+            <DButton.Root size="sm" onClick={() => setModalDelShow(false)}>
+              取消
+            </DButton.Root>
+            <DButton.Root type="primary" size="sm" onClick={delHandler}>
               确定
             </DButton.Root>
           </DDialog.Footer>

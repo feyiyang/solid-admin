@@ -224,7 +224,10 @@ export const ModalMenu: Component<any> = (props) => {
             </>
           )}
           <span class="label">菜单状态:</span>
-          <DRadioGroup.Root class="flex items-center w206" defaultValue={local.openData.states || '0'}>
+          <DRadioGroup.Root
+            class="flex items-center w206"
+            defaultValue={local.openData.states || '0'}
+          >
             <DRadioGroup.Radio value="0">正常</DRadioGroup.Radio>
             <DRadioGroup.Radio value="1">停用</DRadioGroup.Radio>
           </DRadioGroup.Root>

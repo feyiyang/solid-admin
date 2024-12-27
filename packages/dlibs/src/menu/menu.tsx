@@ -45,6 +45,8 @@ const Item: Component<MenuItemComp> = (props) => {
   const path = local.index
   const name = path?.replace(/\w+\//g, '').trim()
   const clazz = `enn-menu-item ${local.class || ''}`
+
+  console.log(actived())
   
   return (
     <li class={clazz}>

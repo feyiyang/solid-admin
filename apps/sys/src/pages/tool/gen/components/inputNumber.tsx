@@ -1,4 +1,4 @@
-import type { ComponentProps } from "solid-js"
+import type { ComponentProps } from 'solid-js'
 import { DInputNumber } from 'dlibs'
 
 const InputNumberContain: ComponentProps<any> = () => {

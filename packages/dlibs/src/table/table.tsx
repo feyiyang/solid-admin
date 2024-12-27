@@ -23,7 +23,7 @@ const Root: Component<ComponentProps<'div'> & tabelProps & Options> = (props) =>
         otherCld.push(v)
         return false
       })
-      console.log(columnCld, local.data, otherCld)
+      // console.log(columnCld, local.data, otherCld)
       const table = new Tabulator(tableRef, {
         columns: columnCld,
         ..._.merge({

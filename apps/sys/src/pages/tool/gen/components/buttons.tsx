@@ -1,6 +1,6 @@
-import {type Component} from 'solid-js'
-import { DButton } from "dlibs"
-const ButtonContain:Component<any> = () => {
+import { type Component } from 'solid-js'
+import { DButton } from 'dlibs'
+const ButtonContain: Component<any> = () => {
   return (
     <>
       <div class="enn-divider enn-divider-start">基本用法</div>
@@ -12,16 +12,32 @@ const ButtonContain:Component<any> = () => {
       <DButton.Root type="error">危险按钮</DButton.Root>
       <div class="py-[8px]" />
       <DButton.Root outline>边框按钮</DButton.Root>
-      <DButton.Root outline type="primary">主要按钮</DButton.Root>
-      <DButton.Root outline type="success">成功按钮</DButton.Root>
-      <DButton.Root outline type="info">信息按钮</DButton.Root>
-      <DButton.Root outline type="warning">警告按钮</DButton.Root>
-      <DButton.Root outline type="error">危险按钮</DButton.Root>
+      <DButton.Root outline type="primary">
+        主要按钮
+      </DButton.Root>
+      <DButton.Root outline type="success">
+        成功按钮
+      </DButton.Root>
+      <DButton.Root outline type="info">
+        信息按钮
+      </DButton.Root>
+      <DButton.Root outline type="warning">
+        警告按钮
+      </DButton.Root>
+      <DButton.Root outline type="error">
+        危险按钮
+      </DButton.Root>
       <div class="py-[8px]" />
       <DButton.Root round>圆角按钮</DButton.Root>
-      <DButton.Root round outline>圆角按钮</DButton.Root>
-      <DButton.Root circle><i class="icon-[tdesign--close]" /></DButton.Root>
-      <DButton.Root circle outline><i class="icon-[tdesign--close]" /></DButton.Root>
+      <DButton.Root round outline>
+        圆角按钮
+      </DButton.Root>
+      <DButton.Root circle>
+        <i class="icon-[tdesign--close]" />
+      </DButton.Root>
+      <DButton.Root circle outline>
+        <i class="icon-[tdesign--close]" />
+      </DButton.Root>
       <div class="mt-6 enn-divider enn-divider-start">禁用状态</div>
       <DButton.Root disabled>禁用按钮</DButton.Root>
       <div class="mt-6 enn-divider enn-divider-start">加载中</div>

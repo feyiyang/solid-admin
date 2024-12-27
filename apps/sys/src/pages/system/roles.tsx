@@ -8,7 +8,11 @@ const [rolesStats, setRolesStats] = createStore({
 })
 const Roles: Component<any> = () => {
   let diaRef: any
-  const [activeItem, setActiveItem] = createStore<{setChecked?: any, cell: any, to?: boolean}>({setChecked: undefined, to: false, cell: null})
+  const [activeItem, setActiveItem] = createStore<{ setChecked?: any; cell: any; to?: boolean }>({
+    setChecked: undefined,
+    to: false,
+    cell: null
+  })
   const [sysNODRes] = settingServe.sysNOD()
   const [rList] = settingServe.rolesList()
   const [tableData, setTableData] = createSignal([])
@@ -99,13 +103,17 @@ const Roles: Component<any> = () => {
                       })
                       // setDialogVisible(true)
                     }}
-                  >编辑</DButton.Root>
+                  >
+                    编辑
+                  </DButton.Root>
                   <DButton.Root
                     link
                     onClick={() => {
                       // setDialogVisible(true)
                     }}
-                  >删除</DButton.Root>
+                  >
+                    删除
+                  </DButton.Root>
                 </div>
               )
             }}
@@ -126,7 +134,8 @@ const Roles: Component<any> = () => {
           setConfirmVisible(false)
         }}
       >
-        <i class="icon-[tdesign--error-circle] text-warning" /> 确认要"{activeItem?.to ? '启用' : '停用'}""{activeItem?.cell?.roleName}"角色吗？
+        <i class="icon-[tdesign--error-circle] text-warning" /> 确认要"
+        {activeItem?.to ? '启用' : '停用'}""{activeItem?.cell?.roleName}"角色吗？
       </DAlertDialog>
     </div>
   )

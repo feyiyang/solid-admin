@@ -8,6 +8,11 @@ import InputNumberContain from './components/inputNumber'
 import SelectContain from './components/selects'
 import SwitchContain from './components/switchs'
 import SlidersContain from './components/slider'
+import RateContain from './components/rates'
+import AvatarContain from './components/avatars'
+import CardContain from './components/cards'
+import CollapseContain from './components/collapses'
+import BadgeContain from './components/badges'
 import './style.less'
 
 const BaseComponent: ComponentProps<any> = () => {
@@ -80,6 +85,36 @@ const BaseComponent: ComponentProps<any> = () => {
         <input type="radio" name="my_tabs_1" role="tab" class="enn-tab" aria-label="滑动条" />
         <div role="tabpanel" class="enn-tab-content p-6 border-base-300 rounded-box">
           <SlidersContain />
+        </div>
+
+        <input type="radio" name="my_tabs_1" role="tab" class="enn-tab" aria-label="评分" />
+        <div role="tabpanel" class="enn-tab-content p-6 border-base-300 rounded-box">
+          <RateContain />
+        </div>
+      </div>
+
+      <div class="header">
+        <h3 class="block pt-4 pb-2 text-lg">数据展示</h3>
+      </div>
+      <div role="tablist" class="my-2 enn-tabs enn-tabs-lifted">
+        <input type="radio" name="my_tabs_2" role="tab" class="enn-tab" checked aria-label="头像" />
+        <div role="tabpanel" class="enn-tab-content p-6 border-base-300 rounded-box">
+          <AvatarContain />
+        </div>
+
+        <input type="radio" name="my_tabs_2" role="tab" class="enn-tab" aria-label="卡片" />
+        <div role="tabpanel" class="enn-tab-content p-6 border-base-300 rounded-box">
+          <CardContain />
+        </div>
+
+        <input type="radio" name="my_tabs_2" role="tab" class="enn-tab" aria-label="折叠面板" />
+        <div role="tabpanel" class="enn-tab-content p-6 border-base-300 rounded-box">
+          <CollapseContain />
+        </div>
+
+        <input type="radio" name="my_tabs_2" role="tab" class="enn-tab" aria-label="徽标" />
+        <div role="tabpanel" class="enn-tab-content p-6 border-base-300 rounded-box">
+          <BadgeContain />
         </div>
       </div>
     </div>

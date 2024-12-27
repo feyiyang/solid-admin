@@ -29,6 +29,7 @@ export default {
           error: '#dc3d4f',
           'error-content': '#fff',
           'info': '#8d7cd3',
+          'accent-content': '#fff',
           '.enn-modal-box': {
             padding: '1rem 1.4rem',
           },

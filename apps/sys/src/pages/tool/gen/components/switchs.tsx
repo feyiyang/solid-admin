@@ -1,4 +1,4 @@
-import { type Component, type ComponentProps } from "solid-js"
+import { type Component, type ComponentProps } from 'solid-js'
 import { DSwitch } from 'dlibs'
 
 const SwitchContain: Component<ComponentProps<any>> = () => {

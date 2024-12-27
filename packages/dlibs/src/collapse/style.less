@@ -1,0 +1,25 @@
+@import url(../assets/base.less);
+
+.@{pre} {
+  &collapse-root {
+    @apply w-full;
+    .@{pre} {
+      &collapse-item {
+        @apply enn-collapse bg-base-100 border border-base-300;
+        &[data-expanded] {
+          @apply enn-collapse-open;
+        }
+      }
+      &collapse-title {
+        @apply w-full min-h-fit;
+      }
+      &collapse-content {
+        @apply pb-4;
+        transition: visibility 0.2s, padding 0.2s ease-out,;
+        &[data-expanded] {
+          @apply visible min-h-fit;
+        }
+      }
+    }
+  }
+}

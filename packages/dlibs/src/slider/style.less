@@ -15,6 +15,10 @@
   }
   &slider-track {
     @apply relative h-2 w-full rounded-box bg-base-content/10;
+    &[data-orientation="vertical"] {
+      width: 8px;
+      height: 100%;
+    }
   }
   &slider-fill {
     @apply absolute bg-primary/80 rounded-box;
@@ -41,6 +45,14 @@
       @apply cursor-not-allowed;
       &:hover {
         .thumb_init();
+      }
+    }
+    &[aria-orientation="vertical"] {
+      top: auto;
+      left: -4px;
+      &:hover {
+        margin-top: -6px;
+        margin-left: -2px;
       }
     }
   }

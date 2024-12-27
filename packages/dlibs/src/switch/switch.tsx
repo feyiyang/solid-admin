@@ -12,7 +12,7 @@ const Root = (props: SwitchRootProps & ComponentProps<any>) => {
   }
   
   return (
-    <Switch.Root class={`enn-label inline-flex ${local.class || ''}`} checked={initChecked()} onChange={setInitChecked} {...rest}>
+    <Switch.Root class={`enn-label relative inline-flex ${local.class || ''}`} checked={initChecked()} onChange={setInitChecked} {...rest}>
       {local.label && <Switch.Label class="enn-label-text">{local.label}</Switch.Label>}
       <Switch.Input />
       <Switch.Control class={`enn-toggle ${initChecked() ? 'enn-toggle-checked' : ''}`}>
