@@ -1,7 +1,20 @@
-import { children, Show, splitProps, type Component, type ComponentProps } from "solid-js"
+import {
+  children,
+  Show,
+  splitProps,
+  type Component,
+  type ComponentProps
+} from 'solid-js'
 
 const Root: Component<ComponentProps<any>> = (props) => {
-  const [local, rest] = splitProps(props, ["class", 'children', 'title', 'cover', 'alt', 'overlay'])
+  const [local, rest] = splitProps(props, [
+    'class',
+    'children',
+    'title',
+    'cover',
+    'alt',
+    'overlay'
+  ])
   const cld = children(() => local.children)
   const clazz = `enn-card shadow ${local.class || ''}`
   return (
@@ -20,15 +33,16 @@ const Root: Component<ComponentProps<any>> = (props) => {
 }
 
 const Cover: Component<ComponentProps<any>> = (props) => {
-  return (
-    <></>
-  )
+  return <></>
 }
 
 const Action: Component<ComponentProps<any>> = (props) => {
-  const [local, rest] = splitProps(props, ["class"])
+  const [local, rest] = splitProps(props, ['class'])
   return (
-    <div class={`enn-card-actions justify-end ${local.class || ''}`} {...rest} />
+    <div
+      class={`enn-card-actions justify-end ${local.class || ''}`}
+      {...rest}
+    />
   )
 }
 

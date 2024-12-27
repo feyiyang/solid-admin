@@ -28,7 +28,7 @@ const Button: Component<ButtonProps> = (props) => {
     'enn-btn-circle': local.circle,
     'enn-btn-link': local.link,
     'enn-btn-round': local.round,
-    'enn-glass': local.glass,
+    'enn-glass': local.glass
   }
 
   return (

@@ -1,9 +1,7 @@
 import { type Component } from 'solid-js'
 
 const Charts: Component<any> = () => {
-  return (
-    <></>
-  )
+  return <></>
 }
 
 export const DEcharts = Charts

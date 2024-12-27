@@ -1,5 +1,13 @@
-import { type Component, type ComponentProps, Show, Index, mergeProps, splitProps, createEffect } from "solid-js"
-import { RatingGroup, RatingGroupRootProps } from "@ark-ui/solid/rating-group"
+import {
+  type Component,
+  type ComponentProps,
+  Show,
+  Index,
+  mergeProps,
+  splitProps,
+  createEffect
+} from 'solid-js'
+import { RatingGroup, RatingGroupRootProps } from '@ark-ui/solid/rating-group'
 
 const defProps = {
   label: 'Label'
@@ -21,12 +29,17 @@ const Root: Component<RatingGroupRootProps & ComponentProps<any>> = (props) => {
                     <RatingGroup.ItemContext>
                       {(context) => {
                         const ctx = context()
-                        return props.allowHalf ?
-                          (
-                            <>
-                              <i class="enn-mask enn-mask-star-2 enn-mask-half-1" /><i class="enn-mask enn-mask-star-2 enn-mask-half-2" classList={{half: ctx.half}} />
-                            </>
-                          ) : <i class="enn-mask enn-mask-star-2" />
+                        return props.allowHalf ? (
+                          <>
+                            <i class="enn-mask enn-mask-star-2 enn-mask-half-1" />
+                            <i
+                              class="enn-mask enn-mask-star-2 enn-mask-half-2"
+                              classList={{ half: ctx.half }}
+                            />
+                          </>
+                        ) : (
+                          <i class="enn-mask enn-mask-star-2" />
+                        )
                       }}
                     </RatingGroup.ItemContext>
                   </RatingGroup.Item>

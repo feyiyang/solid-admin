@@ -31,9 +31,7 @@ const Root: Component<any> = (props) => {
 }
 
 const Footer: Component<any> = (props) => {
-  return (
-    <div class="enn-modal-action" {...props} />
-  )
+  return <div class="enn-modal-action" {...props} />
 }
 
 export const DDialog = {

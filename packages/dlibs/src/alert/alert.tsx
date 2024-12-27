@@ -1,1 +1,1 @@
-export {Alert as DAlert} from '@kobalte/core'
+export { Alert as DAlert } from '@kobalte/core'

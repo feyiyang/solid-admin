@@ -53,7 +53,11 @@ const TreeContent: Component<any> = (props) => {
                 ></span>
                 <span class="label-text">{item[local.labelName]}</span>
               </ATreeView.BranchControl>
-              <ATreeView.BranchContent class="tree-sub" hidden={!open()} {...rest}>
+              <ATreeView.BranchContent
+                class="tree-sub"
+                hidden={!open()}
+                {...rest}
+              >
                 <TreeContent data={item.children} labelName={local.labelName} />
               </ATreeView.BranchContent>
             </ATreeView.Branch>

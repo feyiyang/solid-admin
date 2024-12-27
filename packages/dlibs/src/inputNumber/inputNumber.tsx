@@ -1,5 +1,11 @@
-import { type Component, type ComponentProps, mergeProps, Show, splitProps } from "solid-js"
-import { NumberField } from "@kobalte/core/number-field"
+import {
+  type Component,
+  type ComponentProps,
+  mergeProps,
+  Show,
+  splitProps
+} from 'solid-js'
+import { NumberField } from '@kobalte/core/number-field'
 
 interface InputNumberProps {
   size?: 'xs' | 'sm' | 'md' | 'lg'
@@ -14,7 +20,7 @@ const defProps: InputNumberProps = {
 
 const Root: Component<ComponentProps<any>> = (props) => {
   const merged = mergeProps(defProps, props)
-  const [local, rest] = splitProps(merged, ["class", 'size', 'theme', 'align'])
+  const [local, rest] = splitProps(merged, ['class', 'size', 'theme', 'align'])
   const clazz = `inline-flex items-center enn-input enn-input-bordered enn-input-${local.size} ${local.class || ''}`
   const showTrigger = () => {
     return local.theme === 'normal'

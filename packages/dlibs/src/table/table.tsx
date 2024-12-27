@@ -1,4 +1,11 @@
-import { type Component, type ComponentProps, children, onMount, splitProps, createEffect } from 'solid-js'
+import {
+  type Component,
+  type ComponentProps,
+  children,
+  onMount,
+  splitProps,
+  createEffect
+} from 'solid-js'
 import { render } from 'solid-js/web'
 import _ from 'lodash'
 import { TabulatorFull as Tabulator, type Options } from 'tabulator-tables'
@@ -6,7 +13,9 @@ import { tabelProps, ColumnDefinition } from './constant'
 
 import 'tabulator-tables/dist/css/tabulator_semanticui.min.css'
 
-const Root: Component<ComponentProps<'div'> & tabelProps & Options> = (props) => {
+const Root: Component<ComponentProps<'div'> & tabelProps & Options> = (
+  props
+) => {
   const [local, rest] = splitProps(props, ['data', 'children', 'class'])
   const cld = children(() => local.children)
   let tableRef: any
@@ -26,17 +35,20 @@ const Root: Component<ComponentProps<'div'> & tabelProps & Options> = (props) =>
       // console.log(columnCld, local.data, otherCld)
       const table = new Tabulator(tableRef, {
         columns: columnCld,
-        ..._.merge({
-          layout: 'fitColumns',
-          placeholder:"暂无数据",
-          data: local.data || [],
-          columnDefaults: {
-            headerSort: false,
-            vertAlign: "middle"
-          }
-        }, rest)
+        ..._.merge(
+          {
+            layout: 'fitColumns',
+            placeholder: '暂无数据',
+            data: local.data || [],
+            columnDefaults: {
+              headerSort: false,
+              vertAlign: 'middle'
+            }
+          },
+          rest
+        )
       })
-      table.on("tableBuilt", () => {
+      table.on('tableBuilt', () => {
         tableInstance = table
       })
     }
@@ -46,9 +58,7 @@ const Root: Component<ComponentProps<'div'> & tabelProps & Options> = (props) =>
       tableInstance.setData(local.data)
     }
   })
-  return (
-    <div ref={tableRef} />
-  )
+  return <div ref={tableRef} />
 }
 
 const Columns = (props: ColumnDefinition & ComponentProps<any>) => {
@@ -63,10 +73,9 @@ const Columns = (props: ColumnDefinition & ComponentProps<any>) => {
   if (cld()) {
     const call = cld() as any
     ret.formatter = (cell: any) => {
-      
       if (typeof call === 'function') {
         let ele = document.createElement('div')
-        render(() => call(cell.getData(), cell.getRow().getPosition()),  ele)
+        render(() => call(cell.getData(), cell.getRow().getPosition()), ele)
         return ele
       }
       return call

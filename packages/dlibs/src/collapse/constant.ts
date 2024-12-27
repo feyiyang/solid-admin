@@ -1,4 +1,4 @@
-import { Accordion } from "@kobalte/core"
+import { Accordion } from '@kobalte/core'
 
 export const defProps = {
   arrow: true

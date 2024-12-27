@@ -1,5 +1,11 @@
 import type { Component } from 'solid-js'
-import { createSignal, splitProps, mergeProps, createEffect, onMount } from 'solid-js'
+import {
+  createSignal,
+  splitProps,
+  mergeProps,
+  createEffect,
+  onMount
+} from 'solid-js'
 import { Menubar } from '@kobalte/core'
 import { MenuContext, useMenuContext } from './menu-context.tsx'
 import type { MenuComp, MenuItemComp } from './constant'
@@ -16,7 +22,9 @@ const Root: Component<MenuComp> = (props) => {
     'defaultExpand',
     'defaultActive'
   ])
-  const [activMenu, setActiveMenu] = createSignal<string | string[]>(local.defaultActive || '')
+  const [activMenu, setActiveMenu] = createSignal<string | string[]>(
+    local.defaultActive || ''
+  )
   let clazz = `enn-menu`
 
   if (local.class) {
@@ -31,7 +39,7 @@ const Root: Component<MenuComp> = (props) => {
         collapsed: local.collapse,
         selector: local.select,
         router: local.router,
-        expand: local.defaultExpand,
+        expand: local.defaultExpand
       }}
     >
       <Menubar.Root as="ul" class={clazz} {...rest} />
@@ -47,7 +55,7 @@ const Item: Component<MenuItemComp> = (props) => {
   const clazz = `enn-menu-item ${local.class || ''}`
 
   console.log(actived())
-  
+
   return (
     <li class={clazz}>
       <Menubar.Menu>

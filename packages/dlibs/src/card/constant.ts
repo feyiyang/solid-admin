@@ -1,4 +1,3 @@
-
 export interface cardProps {
   alt?: string
   cover?: string

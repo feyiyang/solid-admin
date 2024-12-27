@@ -23,6 +23,6 @@ export interface avatarProps {
   image?: string
   alt?: string
   size?: 'sm' | 'md' | 'lg'
-  shape?: 'rounded' | 'circle',
+  shape?: 'rounded' | 'circle'
   presence?: 'on' | 'off'
 }

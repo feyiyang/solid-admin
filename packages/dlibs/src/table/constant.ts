@@ -1,4 +1,4 @@
-export {type ColumnDefinition, type OptionsGeneral} from 'tabulator-tables'
+export { type ColumnDefinition, type OptionsGeneral } from 'tabulator-tables'
 
 export type tabelProps = {
   class?: string
@@ -11,5 +11,10 @@ export type tabelProps = {
   size?: ''
   showHeader?: boolean
   emptyText?: string
-  layout?: 'fitData' | 'fitDataFill' | 'fitDataStretch' | 'fitDataTable' | 'fitColumns'
+  layout?:
+    | 'fitData'
+    | 'fitDataFill'
+    | 'fitDataStretch'
+    | 'fitDataTable'
+    | 'fitColumns'
 }

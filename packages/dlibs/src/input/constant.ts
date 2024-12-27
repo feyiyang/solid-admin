@@ -19,9 +19,10 @@ export const alignVariants = {
   right: 'text-right'
 }
 
-export type InputRootProp = TextField.TextFieldRootProps & ComponentProps<any> & {
-  clearable?: boolean
-  size?: 'xs' | 'sm' | 'md'
-}
+export type InputRootProp = TextField.TextFieldRootProps &
+  ComponentProps<any> & {
+    clearable?: boolean
+    size?: 'xs' | 'sm' | 'md'
+  }
 export type InputTextProp = ComponentProps<'input'> &
   TextField.TextFieldInputProps & {}
