@@ -1,11 +1,9 @@
 import {
   type Component,
   type ComponentProps,
-  Show,
   Index,
   mergeProps,
-  splitProps,
-  createEffect
+  splitProps
 } from 'solid-js'
 import { RatingGroup, RatingGroupRootProps } from '@ark-ui/solid/rating-group'
 

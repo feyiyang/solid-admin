@@ -151,7 +151,7 @@ const Home: Component<ComponentProps<'div'>> = () => {
         <div class="sec-left flex items-center grow">
           <div class="enn-avatar mr-8">
             <div class="ring ring-primary ring-offset-base-100 ring-offset-2">
-              <img src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+              <img src="https://api.dicebear.com/9.x/miniavs/svg?seed=Jude" />
             </div>
           </div>
           <div class="cont grow">

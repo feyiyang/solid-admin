@@ -79,16 +79,12 @@ export const ModalMenu: Component<any> = (props) => {
               <DInput.Input value={menuSelected()?.menuName} />
             </DInput.Root>
             <div class="menu-tree enn-dropdown-content">
-              {local.tableData.length > 0 && (
-                <DTreeView
-                  data={[
-                    { menuName: '主菜单', menuId: '0', value: '0', children: local.tableData }
-                  ]}
-                  idName="menuId"
-                  labelName="menuName"
-                  onSelectionChange={(D) => selectionChg<menuItemT>(D, local.menuData)}
-                />
-              )}
+              <DTreeView<any>
+                data={[{ menuName: '主菜单', menuId: '000', children: local.tableData }]}
+                idName="menuId"
+                labelName="menuName"
+                onSelectionChange={(D: any) => selectionChg<menuItemT>(D, local.menuData)}
+              />
             </div>
           </div>
         </div>
@@ -99,13 +95,13 @@ export const ModalMenu: Component<any> = (props) => {
             classList={{ 'enn-dropdown-open': dlgState.dropOpenIndex === 2 }}
           >
             <DInput.Root
-              class="flex-1"
+              class="flex-1 whitespace-nowrap"
               role="button"
               onClick={() => setDlgState('dropOpenIndex', 2)}
             >
               {!!dlgState.iconSelected && (
                 <>
-                  <span class={`w-4 h-4 icon-\[tdesign--${dlgState.iconSelected}\]`} />
+                  <span class={`w-6 h-6 icon-\[tdesign--${dlgState.iconSelected}\]`} />
                   {dlgState.iconSelected}
                 </>
               )}
@@ -255,7 +251,7 @@ export const ModalMenu: Component<any> = (props) => {
 }
 
 function selectionChg<T>(D: any, M: T[]): void {
-  if (D.focusedId === '0') {
+  if (D.focusedValue === '000') {
     setMenuSelected({
       menuId: '0',
       menuName: '主菜单',
@@ -264,7 +260,7 @@ function selectionChg<T>(D: any, M: T[]): void {
     return
   }
   const S = M.find((v: any) => {
-    return v.menuId === D.focusedId
+    return v.menuId === D.focusedValue
   })
   setMenuSelected(S as any)
 }

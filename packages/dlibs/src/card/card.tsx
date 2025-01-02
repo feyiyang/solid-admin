@@ -7,7 +7,7 @@ import {
 } from 'solid-js'
 
 const Root: Component<ComponentProps<any>> = (props) => {
-  const [local, rest] = splitProps(props, [
+  const [local] = splitProps(props, [
     'class',
     'children',
     'title',
@@ -32,7 +32,7 @@ const Root: Component<ComponentProps<any>> = (props) => {
   )
 }
 
-const Cover: Component<ComponentProps<any>> = (props) => {
+const Cover: Component<ComponentProps<any>> = () => {
   return <></>
 }
 

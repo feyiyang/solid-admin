@@ -21,7 +21,7 @@ const MenuListSet: Component<any> = () => {
   ]
   const [modalMenuShow, setMenuModalShow] = createSignal(false)
   const [modalDelShow, setModalDelShow] = createSignal(false)
-  const [tableData, setTableData] = createStore<any[]>([])
+  const [tableData, setTableData] = createSignal<any[]>([])
   const cellClick = (_E: any, _D: Record<string, any>) => {
     if (_E !== 'add') {
       setOpenDlgData(_D)
@@ -159,7 +159,7 @@ const MenuListSet: Component<any> = () => {
         </section>
         {modalMenuShow() && (
           <ModalMenuProvider modalMenuShow={modalMenuShow()} setShow={setMenuModalShow}>
-            <ModalMenu tableData={tableData} menuData={menuRes()} openData={openDlgData} />
+            <ModalMenu tableData={tableData()} menuData={menuRes()} openData={openDlgData} />
           </ModalMenuProvider>
         )}
         <DDialog.Root title="系统提示" open={modalDelShow()} onOpenChange={setModalDelShow}>

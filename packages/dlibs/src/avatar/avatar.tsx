@@ -11,7 +11,7 @@ const Root: Component<avatarProps & ComponentProps<'img' | 'div'>> = (
   props
 ) => {
   const merged = mergeProps(defaltProps, props)
-  const [local, rest] = splitProps(merged, [
+  const [local] = splitProps(merged, [
     'class',
     'children',
     'image',

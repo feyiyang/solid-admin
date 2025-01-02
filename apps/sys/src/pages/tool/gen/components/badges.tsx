@@ -5,7 +5,7 @@ const BadgeContain: Component<any> = () => {
   return (
     <div class="gap-4">
       <div class="enn-divider enn-divider-start">基本用法</div>
-      <div class="flex items-center gap-4">
+      <div class="flex items-center gap-8">
         <div>数字</div>
         <DBadge value={2}>
           <DButton.Root>按钮</DButton.Root>
@@ -20,15 +20,15 @@ const BadgeContain: Component<any> = () => {
         <DBadge dot>解锁新徽</DBadge>
       </div>
       <div class="enn-divider enn-divider-start">不同颜色</div>
-      <div class="pb-2 text-gray-500">说明：当没有子节点时，将以纯徽标节点展示</div>
-      <div class="flex gap-2 items-center">
+      <div class="flex gap-4 items-center flex-wrap">
+        <div class="w-full text-gray-500">说明：当没有子节点时，将以纯徽标节点展示</div>
         <DBadge value="default" />
         <DBadge type="primary" value="primary" />
         <DBadge type="success" value="success" />
         <DBadge type="info" value="info" />
         <DBadge type="warning" value="warning" />
         <DBadge type="error" value="error" />
-        <div class="pl-4">outline:</div>
+        <div class="w-full">outline:</div>
         <DBadge value="default" outline />
         <DBadge type="primary" value="primary" outline />
         <DBadge type="success" value="success" outline />
