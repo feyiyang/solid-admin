@@ -20,3 +20,5 @@ export const DEPARTMENTPATH = '/system/department'
 export const DEPARTMENTNAME = Symbol('SYSTEM_DEPARTMENT')
 
 export const BASECOMPONENTSPATH = '/tool/gen'
+
+export const WANGEDITROPATH = '/tool/plugin/wangeditor'

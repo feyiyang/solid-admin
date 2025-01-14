@@ -132,10 +132,48 @@
             "component": "tool/gen/index",
             "meta": {
                 "title": "基础组件",
-                "icon": "code",
+                "icon": "icon-[tdesign--system-components]",
                 "noCache": false,
                 "link": null
             }
+        },
+        {
+            "name": "Plugin",
+            "path": "plugin",
+            "hidden": false,
+            "component": "tool/plugin/index",
+            "meta": {
+                "title": "插件",
+                "icon": "icon-[tdesign--extension]",
+                "noCache": false,
+                "link": null
+            },
+            "children": [
+                {
+                    "name": "Wangeditor",
+                    "path": "wangeditor",
+                    "hidden": false,
+                    "component": "tool/plugins/wang",
+                    "meta": {
+                        "title": "wangeditor",
+                        "icon": "combination",
+                        "noCache": false,
+                        "link": null
+                    }
+                },
+                {
+                    "name": "Tiptap",
+                    "path": "tiptap",
+                    "hidden": false,
+                    "component": "tool/plugins/tiptap",
+                    "meta": {
+                        "title": "tiptap",
+                        "icon": "combination",
+                        "noCache": false,
+                        "link": null
+                    }
+                }
+            ]
         }
     ]
 },

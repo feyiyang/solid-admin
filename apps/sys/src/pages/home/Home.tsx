@@ -241,7 +241,7 @@ const Home: Component<ComponentProps<'div'>> = () => {
           />
         </svg>
         <span>
-          此项目受 ruoyi.vip 等优秀开源项目启发，用 solid.js 和 eggjs 做的个人实验项目(线上mock)。
+          此项目受 ruoyi.vip 等优秀开源项目启发，用 solid.js 和 eggjs 做的个人兴趣项目(线上mock)。
           solid.js 是一个无虚拟dom，比 react 更 react 的框架，更新粒度超细，目前生态还在完善中。{' '}
         </span>
       </div>

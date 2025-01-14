@@ -47,7 +47,9 @@ const Login: Component = () => {
           <form ref={form}>
             <div class="row">
               <p class="ext">
-                <label class="label">用户名: </label>
+                <label class="label">
+                  用户名: <span class="text-slate-300">admin</span>
+                </label>
                 <span class="err-tip">{errors()?.username?.[0]}</span>
               </p>
               <DInput.Root>
@@ -56,7 +58,9 @@ const Login: Component = () => {
             </div>
             <div class="row">
               <p class="ext">
-                <label class="label">密码: </label>
+                <label class="label">
+                  密码: <span class="text-slate-300">123456</span>
+                </label>
                 <span class="err-tip">{errors()?.password?.[0]}</span>
               </p>
               <DInput.Root>
@@ -77,6 +81,7 @@ const Login: Component = () => {
           </form>
         </div>
       </div>
+      <div class="absolute bottom-0 left-0 w-full text-center"> © isjianqiang@qq.com </div>
     </div>
   )
 }

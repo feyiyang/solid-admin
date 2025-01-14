@@ -57,6 +57,10 @@ const icons: Component<any> = () => {
       <i class="icon-[tdesign--system-messages]" title="icon-[tdesign--system-messages]" />
       <i class="icon-[tdesign--star]" title="icon-[tdesign--star]" />
       <i class="icon-[tdesign--star-filled]" title="icon-[tdesign--star-filled]" />
+      <i class="icon-[tdesign--palette-1]" title="icon-[tdesign--palette-1]" />
+      <i class="icon-[tdesign--combination]" title="icon-[tdesign--combination]" />
+      <i class="icon-[tdesign--system-components]" title="icon-[tdesign--system-components]" />
+      <i class="icon-[tdesign--extension]" title="icon-[tdesign--extension]" />
     </div>
   )
 }

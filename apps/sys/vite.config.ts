@@ -7,6 +7,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': '/src',
+      '@plugin': '/src/pages/tool/plugins/components',
       '@p/': '../../packages/',
       '@b/': '../../backend/'
     }

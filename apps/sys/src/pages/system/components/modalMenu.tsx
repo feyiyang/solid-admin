@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-escape, solid/no-innerhtml */
 import { type Component, Show, createContext } from 'solid-js'
 import { Portal } from 'solid-js/web'
 import { produce } from 'solid-js/store'

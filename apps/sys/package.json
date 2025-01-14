@@ -16,6 +16,7 @@
     "@antv/g2": "^5.1.19",
     "@solid-primitives/fetch": "^2.4.9",
     "@solidjs/router": "^0.10.9",
+    "@wangeditor/editor": "^5.1.23",
     "better-mock": "^0.3.7",
     "dlibs": "workspace:^",
     "echarts": "^5.5.0",
