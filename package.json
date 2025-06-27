@@ -10,7 +10,7 @@
   "scripts": {
     "dev": "pnpm --filter sys dev",
     "start:dev": "pnpm --stream -r run dev",
-    "build": "pnpm --stream -r && --filter sys run build",
+    "build": "pnpm --stream -r --filter sys run build",
     "clean": "rm -rf .parcel-cache && pnpm -r run clean",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

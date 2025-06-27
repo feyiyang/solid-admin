@@ -2,7 +2,7 @@ import { Editor, type EditorOptions } from '@tiptap/core'
 import { type ComponentProps, createContext, createEffect, onMount } from 'solid-js'
 import StarterKit from '@tiptap/starter-kit'
 
-import { DButton, DropMenu } from 'dlibs'
+import { DropMenu } from 'dlibs'
 
 import './editor.less'
 
@@ -16,7 +16,7 @@ const Root = (props: ComponentProps<any>) => {
 const Contain = (props: ComponentProps<any> & Omit<Partial<EditorOptions>, 'element'>) => {
   const [local, rest] = splitProps(props, ['class'])
   const { setEditor } = useContext(editroCtx) as any
-  let editorRef, editorInstance
+  let editorRef: any, editorInstance: any
   const cls = `tiptap-editor ${local.class || ''}`
   onMount(() => {
     editorInstance = new Editor({
@@ -46,7 +46,7 @@ const Toolbar = () => {
   const [isUnder, setIsUnder] = createSignal(false)
   const { editor } = useContext(editroCtx) as any
   createEffect(() => {
-    editor()?.on('selectionUpdate', ({ editor }) => {
+    editor()?.on('selectionUpdate', ({ editor }: {editor: any}) => {
       const headActive = [1, 2, 3, 4, 5].find((level: number) => {
         return editor.isActive('heading', { level })
       })
@@ -82,25 +82,32 @@ const Toolbar = () => {
       </DropMenu.Root>
       <span
         class="tool-btn"
-        classList={{ 'active': isBold() }}
+        classList={{ active: isBold() }}
         onClick={() => {
           editor()?.chain().focus().toggleBold().run()
           setIsBold(!isBold())
         }}
-      >B</span>
-      <span 
-        class='tool-btn underline'
-        classList={{ 'active': isUnder() }}
+      >
+        B
+      </span>
+      <span
+        class="tool-btn underline"
+        classList={{ active: isUnder() }}
         onClick={() => {
           editor()?.commands.toggleUnderline()
           setIsUnder(!isUnder())
         }}
-      >U</span>
-      <span class='tool-btn italic'
+      >
+        U
+      </span>
+      <span
+        class="tool-btn italic"
         onClick={() => {
           editor()?.chain().focus().toggleItalic().run()
         }}
-      >I</span>
+      >
+        I
+      </span>
     </div>
   )
 }

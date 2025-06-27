@@ -1,4 +1,4 @@
-import { Component, createSignal, createContext, useContext, For, splitProps } from "solid-js"
+import { Component, createSignal, createContext, For, splitProps } from "solid-js"
 import { DropdownMenu } from "@kobalte/core/dropdown-menu"
 
 const MenuContext = createContext()
@@ -12,7 +12,7 @@ const Trigger: Component<any> = (props) => {
 }
 
 const Contain: Component<any> = (props) => {
-  const [local, rest] = splitProps(props, ['items', 'class', 'value', 'onSelect'])
+  const [local] = splitProps(props, ['items', 'class', 'value', 'onSelect'])
   const cls = `z-10 ${local.class || ''} bg-base-100 border`
   return <DropdownMenu.Portal>
     <DropdownMenu.Content class={cls}>
