@@ -22,3 +22,6 @@ export const DEPARTMENTNAME = Symbol('SYSTEM_DEPARTMENT')
 export const BASECOMPONENTSPATH = '/tool/gen'
 
 export const WANGEDITROPATH = '/tool/plugin/wangeditor'
+export const TIPTAPPATH = '/tool/plugin/tiptap'
+
+export const BUILDFORM = '/tool/build/form'

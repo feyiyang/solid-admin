@@ -1,6 +1,7 @@
 /* eslint-disable no-useless-escape, solid/no-innerhtml */
 import { type IDomEditor } from '@wangeditor/editor'
 import { WangEditor } from '@plugin/wangeditor'
+import './style.less'
 
 const Wang = () => {
   const [editorRef, setEditorRef] = createSignal<IDomEditor | null>(null)
@@ -34,15 +35,15 @@ const Wang = () => {
         <WangEditor class="border-2 border-slate-300">
           <WangEditor.Toolbar editor={editorRef() as any} />
           <WangEditor.Contain
-            class="h-[300px] caret-blue-500"
+            class="h-[300px] w-full caret-blue-500"
             value={html()}
             onCreated={setEditorRef}
             onChange={(editor: any) => setHtml(editor.getHtml())}
             defaultConfig={{}}
           />
         </WangEditor>
-        <pre class="p-4 my-4 bg-white">{html()}</pre>
-        <div class="p-4 bg-white" innerHTML={html()} />
+        <textarea class="w-full h-16 p-2 my-4 bg-white border border-stone-400" readonly>{html()}</textarea>
+        <div class="wang-content-view" innerHTML={html()} />
       </div>
     </>
   )

@@ -1,7 +1,7 @@
 [
   {
       "name": "Home",
-      "path": "/",
+      "path": "",
       "meta": {
           "title": "首页",
           "icon": "icon-[tdesign--home]"
@@ -9,7 +9,7 @@
   },
 {
     "name": "System",
-    "path": "/system",
+    "path": "system",
     "hidden": false,
     "redirect": "noRedirect",
     "component": "Layout",
@@ -101,7 +101,7 @@
 },
 {
     "name": "Tool",
-    "path": "/tool",
+    "path": "tool",
     "hidden": false,
     "redirect": "noRedirect",
     "component": "Layout",
@@ -115,9 +115,9 @@
     "children": [
         {
             "name": "Build",
-            "path": "build",
+            "path": "build/form",
             "hidden": false,
-            "component": "tool/build/index",
+            "component": "tool/build/form",
             "meta": {
                 "title": "表单构建",
                 "icon": "build",

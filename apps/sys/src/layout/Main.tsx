@@ -73,8 +73,8 @@ function mainMenu(menus: any) {
             return subMenu(menu)
           }
           return (
-            <DMenu.Item index={menu.name} data-tip={menu.meta.title} href={`/${menu.name}`}>
-              <i class={`w-[16px] h-[18px] ${menu.meta.icon}`} />
+            <DMenu.Item index={menu.name} data-tip={menu.meta.title} href={`/${menu.path}`}>
+              <i class={`w-[16px] h-[18px] ${menu.meta?.icon}`} />
               {!collapse() && menu.meta.title}
             </DMenu.Item>
           )
@@ -88,20 +88,20 @@ function subMenu(menu: any, parentIndex?: string) {
   return (
     <DMenu.Sub index={menu.name}>
       <DMenu.Trigger>
-        <i class={`w-[16px] h-[18px] ${menu.meta.icon}`} />
-        {(!collapse() || parentIndex) && menu.meta.title}
+        <i class={`w-[16px] h-[18px] ${menu.meta?.icon}`} />
+        {(!collapse() || parentIndex) && menu.meta?.title}
       </DMenu.Trigger>
       <For each={menu.children}>
         {(submenu) => {
           let ind = typeof parentIndex === 'undefined' ? '' : `${parentIndex}/`
           if (submenu.children?.length) {
-            return subMenu(submenu, menu.name)
+            return subMenu(submenu, menu.path)
           }
-          ind += `${menu.name}/${submenu.name}`
+          ind += `${menu.path}/${submenu.path}`
           return (
             <DMenu.Item index={ind} href={`/${ind}`}>
-              <i class={`w-[16px] h-[18px] ${submenu.meta.icon}`} />
-              {submenu.meta.title}
+              <i class={`w-[16px] h-[18px] ${submenu.meta?.icon}`} />
+              {submenu.meta?.title}
             </DMenu.Item>
           )
         }}

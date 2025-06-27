@@ -85,6 +85,7 @@ const Toolbar = (props: toolbarProps & ComponentProps<'div'>) => {
   const [local, rest] = splitProps(props, ['class', 'style', 'editor', 'defaultConfig'])
   let bar!: HTMLDivElement
   let barRef: any = null
+  const cls = `${local.class || ''}`
   createEffect(() => {
     if (!bar || !local.editor || barRef) return
     barRef = createToolbar({
@@ -94,7 +95,7 @@ const Toolbar = (props: toolbarProps & ComponentProps<'div'>) => {
       ...rest
     })
   })
-  return <div ref={bar} class={local.class || ''} style={local.style} />
+  return <div ref={bar} class={cls} style={local.style} />
 }
 
 export const WangEditor = Object.assign(Root, {

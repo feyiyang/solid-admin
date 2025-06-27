@@ -38,6 +38,14 @@ const routes: ({ name?: symbol } & RouteDefinition<string, unknown>)[] = [
         component: lazy(() => import('../pages/tool/plugins/wang.tsx'))
       },
       {
+        path: NAMES.TIPTAPPATH,
+        component: lazy(() => import('../pages/tool/plugins/tiptap.tsx'))
+      },
+      {
+        path: NAMES.BUILDFORM,
+        component: lazy(() => import('../pages/tool/build/form.tsx'))
+      },
+      {
         path: '*404',
         component: lazy(() => import('../pages/NotFound.tsx'))
       }
